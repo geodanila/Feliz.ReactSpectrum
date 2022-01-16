@@ -6,8 +6,8 @@
     <PackageId>Feliz.ReactSpectrum</PackageId>
     <RepositoryUrl>https://github.com/geodanila/Feliz.ReactSpectrum</RepositoryUrl>
     <PackageProjectUrl>https://github.com/geodanila/Feliz.ReactSpectrum</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/geodanila/Feliz.ReactSpectrum/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageReleaseNotes>https://github.com/geodanila/Feliz.ReactSpectrum/blob/master/RELEASE_NOTES.md</PackageReleaseNotes>
+    <PackageLicenseUrl>https://github.com/geodanila/Feliz.ReactSpectrum/blob/main/LICENSE</PackageLicenseUrl>
+    <PackageReleaseNotes>https://github.com/geodanila/Feliz.ReactSpectrum/blob/main/RELEASE_NOTES.md</PackageReleaseNotes>
     <PackageIconUrl>
     </PackageIconUrl>
     <PackageTags>fsharp;fable;spectrum;feliz;react;html</PackageTags>

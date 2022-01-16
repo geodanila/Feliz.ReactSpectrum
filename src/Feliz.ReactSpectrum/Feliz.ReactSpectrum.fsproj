@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageId>Feliz.ReactSpectrum</PackageId>
+    <RepositoryUrl>https://github.com/geodanila/Feliz.ReactSpectrum</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/geodanila/Feliz.ReactSpectrum</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/geodanila/Feliz.ReactSpectrum/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageReleaseNotes>https://github.com/geodanila/Feliz.ReactSpectrum/blob/master/RELEASE_NOTES.md</PackageReleaseNotes>
+    <PackageIconUrl>
+    </PackageIconUrl>
+    <PackageTags>fsharp;fable;spectrum;feliz;react;html</PackageTags>
+    <Description>Feliz-style Fable bindings for Adobe's React Spectrum components.</Description>
+    <Authors>George Danila</Authors>
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="*.fsproj; *.fs; *.js;" PackagePath="fable\" />
+    <Compile Include="Common.fs" />
+    <Compile Include="BaseComponents.fs" />
+    <Compile Include="Provider.fs" />
+    <Compile Include="Content.fs" />
+    <Compile Include="Layout.fs" />
+    <Compile Include="Icon.fs" />
+    <Compile Include="Buttons.fs" />
+    <Compile Include="Collections.fs" />
+    <Compile Include="Forms.fs" />
+    <Compile Include="Navigation.fs" />
+    <Compile Include="Overlays.fs" />
+    <Compile Include="Pickers.fs" />
+    <Compile Include="Sliders.fs" />
+    <Compile Include="Status.fs" />
+    <Compile Include="Spectrum.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Fable.Browser.Dom" Version="2.8.0" />
+    <PackageReference Include="Fable.Core" Version="3.6.1" />
+    <PackageReference Include="Feliz" Version="1.56.0" />
+  </ItemGroup>
+  <PropertyGroup>
+    <NpmDependencies>
+      <NpmPackage Name="@adobe/react-spectrum" Version="gte 3.15.1 lt 4" ResolutionStrategy="max" />
+      <NpmPackage Name="@spectrum-icons/illustrations" Version="gte 3.2.2 lt 4" ResolutionStrategy="max" />
+      <NpmPackage Name="@spectrum-icons/workflow" Version="gte 3.2.1 lt 4" ResolutionStrategy="max" />
+    </NpmDependencies>
+  </PropertyGroup>
+</Project>

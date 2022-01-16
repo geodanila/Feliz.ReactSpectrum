@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <DefineConstants>FABLE_COMPILER</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AppShell.fs" />
+    <Compile Include="Main.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Fable.Browser.Dom" Version="2.8.0" />
+    <PackageReference Include="Fable.Core" Version="3.6.1" />
+    <PackageReference Include="Feliz" Version="1.56.0" />
+    <PackageReference Include="Fable.React" Version="7.4.2" />
+    <PackageReference Include="Fable.Elmish" Version="3.1.0" />
+    <PackageReference Include="Fable.Elmish.React" Version="3.0.1" />
+    <PackageReference Include="Fable.Elmish.Debugger" Version="3.3.0" />
+    <PackageReference Include="Fable.Elmish.HMR" Version="5.1.0" />
+    <PackageReference Include="Feliz.Router" Version="3.8.0" />
+    <PackageReference Include="Feliz.UseElmish" Version="1.6.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Feliz.ReactSpectrum\Feliz.ReactSpectrum.fsproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{81482EC1-BD40-4AD1-9B0D-2F4853DCFA33}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Feliz.ReactSpectrum", "src\Feliz.ReactSpectrum\Feliz.ReactSpectrum.fsproj", "{0305AE00-1EE4-4275-BB06-C3909A10962F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{725FE22D-455D-4974-8D40-7DE2081AA627}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "App", "docs\src\App.fsproj", "{9659F009-C395-4997-A781-95FBA7831DD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0305AE00-1EE4-4275-BB06-C3909A10962F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0305AE00-1EE4-4275-BB06-C3909A10962F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0305AE00-1EE4-4275-BB06-C3909A10962F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0305AE00-1EE4-4275-BB06-C3909A10962F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9659F009-C395-4997-A781-95FBA7831DD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9659F009-C395-4997-A781-95FBA7831DD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9659F009-C395-4997-A781-95FBA7831DD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9659F009-C395-4997-A781-95FBA7831DD5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0305AE00-1EE4-4275-BB06-C3909A10962F} = {81482EC1-BD40-4AD1-9B0D-2F4853DCFA33}
+		{9659F009-C395-4997-A781-95FBA7831DD5} = {725FE22D-455D-4974-8D40-7DE2081AA627}
+	EndGlobalSection
+EndGlobal

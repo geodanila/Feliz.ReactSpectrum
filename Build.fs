@@ -47,8 +47,7 @@ let publish projectPath =
         |> (fun x -> x.FullName)
 
     let pushCmd = sprintf "nuget push %s -s nuget.org -k %s" nupkg nugetKey
-    //run dotnet pushCmd projectPath
-    printfn "Would run '%s'" pushCmd
+    run dotnet pushCmd projectPath
 
 Target.create "Clean" <| fun _ ->
     cleanFableFiles()
@@ -85,7 +84,6 @@ let dependencies = [
         ==> "PublishDocs"
 
     "Clean"
-        ==> "InstallNpmPackages"
         ==> "PublishNuget"
 ]
 

@@ -25,9 +25,13 @@ let cleanFableFiles () =
     run dotnet "fable clean --yes" libPath
     run dotnet "fable clean --yes" docsSrcPath
 
+let validateFemto projectPath =
+    run dotnet "femto --validate" projectPath
+
 let publish projectPath =
     [ projectPath </> "bin"
       projectPath </> "obj" ] |> Shell.cleanDirs
+    validateFemto projectPath
     run dotnet "restore --no-cache" projectPath
     run dotnet "pack -c Release" projectPath
     let nugetKey =

@@ -64,7 +64,7 @@ Target.create "RunDocs" <| fun _ ->
     run npm "run start" docsPath
 
 Target.create "PublishDocs" <| fun _ ->
-    printfn "Should figure out how to publish the doc files..."
+    run npm "run publish-docs" docsPath
 
 Target.create "PublishNuget" <| fun _ ->
     publish libPath

@@ -3,10 +3,12 @@
     "scripts": {
         "postinstall": "dotnet tool restore",
         "build": "dotnet fable src --run vite build",
+        "publish-docs": "node publish.js",
         "start": "dotnet fable watch src --run vite --open",
         "serve": "vite preview"
     },
     "devDependencies": {
+        "gh-pages": "^3.2.3",
         "vite": "^2.7.10"
     },
     "dependencies": {

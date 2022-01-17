@@ -17,6 +17,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="*.fsproj; *.fs; *.js;" PackagePath="fable\" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Common.fs" />
     <Compile Include="BaseComponents.fs" />
     <Compile Include="Provider.fs" />

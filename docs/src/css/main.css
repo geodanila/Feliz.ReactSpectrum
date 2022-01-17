@@ -1,6 +1,6 @@
 @import url("reset.css");
 
-html, body, #app-root {
+html, body, #app-root, #spectrum-provider {
     width: 100%;
     height: 100%;
 }

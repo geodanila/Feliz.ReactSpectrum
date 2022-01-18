@@ -99,7 +99,7 @@ let runOrDefault args =
         match args with
         | [| "help" |] -> Target.listAvailable()
         | [| target |] -> Target.runOrDefault target
-        | _ -> Target.runOrDefault "Build"
+        | _ -> Target.runOrDefault "RunDocs"
         0
     with e ->
         printfn "%A" e

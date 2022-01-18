@@ -21,7 +21,7 @@ module ApplicationDocs =
         ]
     ]
 ]"""
-        Example "Using the Provider component" code [
+        Example "Using the Provider component" code [] [
             Spectrum.Provider [
                 Provider.defaultTheme
                 Provider.colorScheme ColorScheme.Light
@@ -40,35 +40,72 @@ module ApplicationDocs =
         let code = """Spectrum.Provider [
     Provider.defaultTheme
     Provider.colorScheme ColorScheme.Light
-    Provider.locale "en-US"
-    Provider.scale Scale.Medium
     Provider.breakpoints(M = 640, L = 1024)
     Provider.children [
         Spectrum.View [
             View.height (DimValue.Size Size1000)
             View.backgroundColor (ResponsiveProp.make(
-                baseValue = (BackgroundColorValue.Color Celery600),
-                mediumValue = (BackgroundColorValue.Color Blue600),
-                largeValue = (BackgroundColorValue.Color Magenta600))
+                base' = (BackgroundColorValue.Color Celery600),
+                M = (BackgroundColorValue.Color Blue600),
+                L = (BackgroundColorValue.Color Magenta600))
             )
         ]
     ]
 ]"""
-        Example "Overriding the default size breakpoints using the Provider component" code [
+        let description = [
+            Html.p [
+                prop.className "paragraph"
+                prop.children [ Html.text "You can override the default screen breakpoints as follows:" ]
+            ]
+        ]
+
+        Example "Provider screen breakpoints" code description [
             Spectrum.Provider [
                 Provider.defaultTheme
                 Provider.colorScheme ColorScheme.Light
-                Provider.locale "en-US"
-                Provider.scale Scale.Medium
                 Provider.breakpoints(M = 640, L = 1024)
                 Provider.children [
                     Spectrum.View [
                         View.height (DimValue.Size Size1000)
                         View.backgroundColor (ResponsiveProp.make(
-                            baseValue = (BackgroundColorValue.Color Celery600),
-                            mediumValue = (BackgroundColorValue.Color Blue600),
-                            largeValue = (BackgroundColorValue.Color Magenta600))
+                            base' = (BackgroundColorValue.Color Celery600),
+                            M = (BackgroundColorValue.Color Blue600),
+                            L = (BackgroundColorValue.Color Magenta600))
                         )
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let ProviderExample3 () =
+        let code = """Spectrum.Provider [
+    Provider.defaultTheme
+    Provider.colorScheme ColorScheme.Dark
+    Provider.children [
+        Spectrum.View [
+            View.padding 20
+            View.children [
+                Spectrum.ActionButton [
+                    ActionButton.content "Dark mode!"
+                ]
+            ]
+        ]
+    ]
+]
+"""
+        Example "Color scheme" code [] [
+            Spectrum.Provider [
+                Provider.defaultTheme
+                Provider.colorScheme ColorScheme.Dark
+                Provider.children [
+                    Spectrum.View [
+                        View.padding 20
+                        View.children [
+                            Spectrum.ActionButton [
+                                ActionButton.content "Dark mode!"
+                            ]
+                        ]
                     ]
                 ]
             ]
@@ -91,4 +128,5 @@ module ApplicationDocs =
         ExampleGroup "Provider" description [
             ProviderExample1 ()
             ProviderExample2 ()
+            ProviderExample3 ()
         ]

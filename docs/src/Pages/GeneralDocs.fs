@@ -96,9 +96,9 @@ module GeneralDocs =
                         prop.children [ Html.text "Femto dotnet tool" ]
                     ]
                     Html.text " since this will also take care of installing the correct npm dependencies."
-                    Code Bash "dotnet femto install Feliz.ReactSpectrum"
                 ]
             ]
+            Code Bash "dotnet femto install Feliz.ReactSpectrum"
             Html.h2 [
                 prop.className "subtitle"
                 prop.children [

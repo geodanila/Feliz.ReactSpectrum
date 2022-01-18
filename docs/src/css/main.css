@@ -9,6 +9,7 @@ html, body, #app-root, #spectrum-provider {
 #content-host {
     overflow-x: hidden;
     overflow-y: auto;
+    padding-right: 10px;
 }
 
 body {

@@ -61,18 +61,25 @@ module SharedModule =
                 prop.className "example-group-description"
                 prop.children description
             ]
-            for example in examples do
+
+            for i, example in List.indexed examples do
                 example
-                Html.br []
+                if i <> examples.Length - 1 then
+                    Html.br []
+                    Spectrum.Divider [
+                        Divider.size DividerSize.S
+                    ]
+                    Html.br []
         ]
 
     [<ReactComponent>]
-    let Example (title: string) (code: string) (elements: ReactElement list) =
+    let Example (title: string) (code: string) (description: ReactElement list) (elements: ReactElement list) =
         React.fragment [
             Html.h2 [
                 prop.className "subtitle"
                 prop.children [ Html.text title ]
             ]
+            for el in description do el
             Spectrum.Flex [
                 Flex.direction FlexDirection.Column
                 Flex.gap (DimValue.Size Size100)

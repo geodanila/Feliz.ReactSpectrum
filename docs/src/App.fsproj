@@ -4,6 +4,12 @@
     <DefineConstants>FABLE_COMPILER</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Pages\OverviewDocs.fs" />
+    <Compile Include="Pages\InstallationDocs.fs" />
+    <Compile Include="Pages\APIDescriptionDocs.fs" />
+    <Compile Include="Pages\ActionButtonDocs.fs" />
+    <Compile Include="Pages\ButtonDocs.fs" />
+    <Compile Include="Pages\ToggleButtonDocs.fs" />
     <Compile Include="AppShell.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>

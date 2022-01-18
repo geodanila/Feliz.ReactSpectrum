@@ -4,6 +4,7 @@
     <DefineConstants>FABLE_COMPILER</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Pages\Shared.fs" />
     <Compile Include="Pages\OverviewDocs.fs" />
     <Compile Include="Pages\InstallationDocs.fs" />
     <Compile Include="Pages\APIDescriptionDocs.fs" />

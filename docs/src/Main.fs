@@ -11,10 +11,6 @@ open Elmish.HMR
 
 importSideEffects "./css/main.css"
 
-let init () = (), Cmd<_>.Empty
-let update () () = (), Cmd<_>.Empty
-let view () _ = AppShell ()
-
-Program.mkProgram init update view
+Program.mkProgram AppShell.init AppShell.update AppShell.view
 |> Program.withReactSynchronous "app-root"
 |> Program.run

@@ -5,6 +5,8 @@ open Feliz
 open Fable.Core
 open Fable.Core.JsInterop
 open Pages
+open Elmish
+open Elmish.React
 
 [<StringEnum; RequireQualifiedAccess>]
 type SectionId =
@@ -58,9 +60,23 @@ let getDocs = function
     | DocsId.ActionButton -> ActionButtonDocs ()
     | DocsId.ToggleButton -> ToggleButtonDocs ()
 
-[<ReactComponent>]
-let AppShell () =
-    let selection, setSelection = React.useState(DocsId.Overview)
+type Model =
+    { SelectedDoc: DocsId }
+
+type Msg =
+    | SelectDocsId of DocsId
+
+let init () : Model * Cmd<Msg> =
+    let cmd = Cmd<_>.Empty
+    let model = { SelectedDoc = DocsId.Overview }
+    model, cmd
+
+let update (msg: Msg) (model: Model) : Model * Cmd<Msg> =
+    let cmd = Cmd<_>.Empty
+    match msg with
+    | SelectDocsId id -> { model with SelectedDoc = id }, cmd
+
+let view (model: Model) dispatch =
     let navSections = buildNavSections()
 
     Spectrum.Provider [
@@ -90,10 +106,10 @@ let AppShell () =
                                         ListBox.children navSections
                                         ListBox.selectionMode SelectionMode.Single
                                         ListBox.disallowEmptySelection true
-                                        ListBox.selectedKeys [ selection ]
+                                        ListBox.selectedKeys [ model.SelectedDoc ]
                                         ListBox.onSelectionChange (
                                             function
-                                            | [ newSelection ] -> setSelection(newSelection)
+                                            | [ newSelection ] -> (SelectDocsId(newSelection) |> dispatch)
                                             | _ -> ()
                                         )
                                     ]
@@ -103,7 +119,7 @@ let AppShell () =
                                 View.flexGrow 1
                                 View.paddingTop 20
                                 View.children [
-                                    getDocs selection
+                                    getDocs model.SelectedDoc
                                 ]
                             ]
                         ]

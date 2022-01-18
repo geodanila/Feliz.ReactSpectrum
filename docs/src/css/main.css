@@ -10,3 +10,28 @@ body {
     font-size: 20px;
     margin: 0;
 }
+
+pre.language-fsharp > code.language-fsharp,
+pre.language-fsharp::after,
+pre.language-fsharp::before {
+    box-shadow: none;
+}
+
+pre.language-fsharp > code.language-fsharp {
+    border-top: 1px solid rgb(209, 209, 209);
+    border-bottom: 1px solid rgb(209, 209, 209);
+    border-right: 1px solid rgb(209, 209, 209);
+}
+
+.example-group-title {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.example-group-description {
+    margin-bottom: 20px;
+}
+
+.example-title {
+    font-size: 18px;
+}

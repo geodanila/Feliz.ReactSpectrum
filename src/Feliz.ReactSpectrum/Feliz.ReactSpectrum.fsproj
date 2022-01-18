@@ -8,12 +8,11 @@
     <PackageProjectUrl>https://github.com/geodanila/Feliz.ReactSpectrum</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/geodanila/Feliz.ReactSpectrum/blob/main/LICENSE</PackageLicenseUrl>
     <PackageReleaseNotes>https://github.com/geodanila/Feliz.ReactSpectrum/blob/main/RELEASE_NOTES.md</PackageReleaseNotes>
-    <PackageIconUrl>
-    </PackageIconUrl>
+    <PackageIconUrl></PackageIconUrl>
     <PackageTags>fsharp;fable;spectrum;feliz;react;html</PackageTags>
     <Description>Feliz-style Fable bindings for Adobe's React Spectrum components.</Description>
     <Authors>George Danila</Authors>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="*.fsproj; *.fs; *.js;" PackagePath="fable\" />

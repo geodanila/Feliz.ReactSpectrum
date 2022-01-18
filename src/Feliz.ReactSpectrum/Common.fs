@@ -868,12 +868,12 @@ type ResponsivePropOptions<'a> =
 
 [<Erase>]
 type ResponsiveProp =
-    static member inline make (?baseValue, ?smallValue, ?mediumValue, ?largeValue) =
+    static member inline make (?base', ?S, ?M, ?L) =
         { new ResponsivePropOptions<'a> with
-            member _.``base`` = baseValue
-            member _.S = smallValue
-            member _.M = mediumValue
-            member _.L = largeValue }
+            member _.``base`` = base'
+            member _.S = S
+            member _.M = M
+            member _.L = L }
     static member inline map (f: 'a -> 'b) (prop: ResponsivePropOptions<'a>) : ResponsivePropOptions<'b> =
         {  new ResponsivePropOptions<'b> with
             member _.``base`` = prop.``base`` |> Option.map f

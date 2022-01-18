@@ -17,8 +17,13 @@ module Libraries =
 
 [<AutoOpen>]
 module SharedModule =
+
+    type CodeType =
+        | FSharp
+        | Bash
+
     [<ReactComponent>]
-    let Code (text: string) =
+    let Code (lang: CodeType) (text: string) =
         let elementRef = React.useElementRef()
 
         React.useEffectOnce(fun () ->
@@ -26,9 +31,14 @@ module SharedModule =
             | Some element -> Libraries.Prism.highlightAllUnder(element)
             | None -> Browser.Dom.console.warn("Failed to find element"))
 
+        let className =
+            match lang with
+            | FSharp -> "language-fsharp"
+            | Bash -> "language-bash"
+
         Html.pre [
             prop.ref elementRef
-            prop.className "language-fsharp"
+            prop.className className
             prop.children [
                 Html.code text
             ]
@@ -41,31 +51,33 @@ module SharedModule =
         ]
 
     [<ReactComponent>]
-    let ExampleGroup (title: string) (description: string) (examples: ReactElement list) =
+    let ExampleGroup (title: string) (description: ReactElement list) (examples: ReactElement list) =
         React.fragment [
-            Html.h2 [
-                prop.className "example-group-title"
+            Html.h1 [
+                prop.className "title example-group-title"
                 prop.children [ Html.text title ]
             ]
             Html.p [
                 prop.className "example-group-description"
-                prop.children [ Html.text description ]
+                prop.children description
             ]
-            for example in examples do example
+            for example in examples do
+                example
+                Html.br []
         ]
 
     [<ReactComponent>]
     let Example (title: string) (code: string) (elements: ReactElement list) =
         React.fragment [
-            Html.h4 [
-                prop.className "example-title"
+            Html.h2 [
+                prop.className "subtitle"
                 prop.children [ Html.text title ]
             ]
             Spectrum.Flex [
                 Flex.direction FlexDirection.Column
                 Flex.gap (DimValue.Size Size100)
                 Flex.children [
-                    Code code
+                    Code FSharp code
                     CodeResult elements
                 ]
             ]

@@ -25,3 +25,4 @@ type Provider =
     static member inline validateState (value: ValidationState) = Interop.mkAttr "validationState" value
     static member inline locale (value: string) = Interop.mkAttr "locale" value
     static member inline scale (value: Scale) = Interop.mkAttr "scale" value
+    static member inline breakpoints (?S: int, ?M: int, ?L: int) = Interop.mkAttr "breakpoints" {| S = S; M = M; L = L |}

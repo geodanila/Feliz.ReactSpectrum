@@ -11,6 +11,7 @@ open Elmish.React
 [<StringEnum; RequireQualifiedAccess>]
 type SectionId =
     | General
+    | Application
     | Buttons
     | Content
     | Collections
@@ -19,7 +20,7 @@ type SectionId =
 type DocsId =
     | Overview
     | Installation
-    | APIDescription
+    | Provider
     | ActionButton
     | Button
     | ToggleButton
@@ -43,7 +44,9 @@ let buildNavSections () =
         makeNavSection SectionId.General "General" [
             makeNavItem DocsId.Overview "Overview"
             makeNavItem DocsId.Installation "Installation"
-            makeNavItem DocsId.APIDescription "API Description"
+        ]
+        makeNavSection SectionId.Application "Application" [
+            makeNavItem DocsId.Provider "Provider"
         ]
         makeNavSection SectionId.Buttons "Buttons" [
             makeNavItem DocsId.ActionButton "ActionButton"
@@ -55,10 +58,10 @@ let buildNavSections () =
 let getDocs = function
     | DocsId.Overview -> OverviewDocs ()
     | DocsId.Installation -> InstallationDocs ()
-    | DocsId.APIDescription -> APIDescriptionDocs ()
     | DocsId.Button -> ButtonDocs ()
     | DocsId.ActionButton -> ActionButtonDocs ()
     | DocsId.ToggleButton -> ToggleButtonDocs ()
+    | DocsId.Provider -> ProviderDocs ()
 
 type Model =
     { SelectedDoc: DocsId }
@@ -103,7 +106,9 @@ let view (model: Model) dispatch =
                                 View.backgroundColor (BackgroundColorValue.Color Gray200)
                                 View.children [
                                     Spectrum.ListBox [
+                                        ListBox.id "navigation-list"
                                         ListBox.children navSections
+                                        ListBox.ariaLabel "Navigation panel"
                                         ListBox.selectionMode SelectionMode.Single
                                         ListBox.disallowEmptySelection true
                                         ListBox.selectedKeys [ model.SelectedDoc ]
@@ -118,6 +123,7 @@ let view (model: Model) dispatch =
                             Spectrum.View [
                                 View.flexGrow 1
                                 View.paddingTop 20
+                                View.id "content-host"
                                 View.children [
                                     getDocs model.SelectedDoc
                                 ]

@@ -3,6 +3,12 @@
 html, body, #app-root, #spectrum-provider {
     width: 100%;
     height: 100%;
+    font-size: 16px;
+}
+
+#content-host {
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 body {
@@ -11,20 +17,44 @@ body {
     margin: 0;
 }
 
+code {
+    font-family: monospace;
+}
+
 pre.language-fsharp > code.language-fsharp,
 pre.language-fsharp::after,
-pre.language-fsharp::before {
+pre.language-fsharp::before,
+pre.language-bash > code.language-bash,
+pre.language-bash::after,
+pre.language-bash::before {
     box-shadow: none;
 }
 
-pre.language-fsharp > code.language-fsharp {
+pre.language-fsharp > code.language-fsharp,
+pre.language-bash > code.language-bash {
     border-top: 1px solid rgb(209, 209, 209);
     border-bottom: 1px solid rgb(209, 209, 209);
     border-right: 1px solid rgb(209, 209, 209);
+    font-size: 14px;
+}
+
+.title {
+    font-size: 26px;
+}
+
+.title > a {
+    margin-left: 8px;
+}
+
+.subtitle {
+    font-size: 20px;
+}
+
+.subtitle+p.paragraph {
+    margin-top: 12px;
 }
 
 .example-group-title {
-    font-size: 26px;
     margin-bottom: 10px;
 }
 
@@ -32,6 +62,12 @@ pre.language-fsharp > code.language-fsharp {
     margin-bottom: 20px;
 }
 
-.example-title {
-    font-size: 18px;
+.paragraph {
+    margin-top: 22px;
+    margin-bottom: 10px;
+}
+
+ul.bullet-list {
+    list-style-type: disc;
+    padding-left: 24px;
 }

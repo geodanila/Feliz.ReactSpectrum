@@ -5,12 +5,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Pages\Shared.fs" />
-    <Compile Include="Pages\OverviewDocs.fs" />
-    <Compile Include="Pages\InstallationDocs.fs" />
-    <Compile Include="Pages\APIDescriptionDocs.fs" />
-    <Compile Include="Pages\ActionButtonDocs.fs" />
-    <Compile Include="Pages\ButtonDocs.fs" />
-    <Compile Include="Pages\ToggleButtonDocs.fs" />
+    <Compile Include="Pages\GeneralDocs.fs" />
+    <Compile Include="Pages\ApplicationDocs.fs" />
+    <Compile Include="Pages\ButtonsDocs.fs" />
     <Compile Include="AppShell.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>

@@ -47,6 +47,7 @@ module SharedModule =
     [<ReactComponent>]
     let CodeResult (elements: ReactElement list) =
         Spectrum.Well [
+            Well.UNSAFE_className "example-result"
             Well.children elements
         ]
 

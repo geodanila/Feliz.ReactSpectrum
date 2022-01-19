@@ -9,6 +9,15 @@
     <Compile Include="Pages\ApplicationDocs.fs" />
     <Compile Include="Pages\LayoutDocs.fs" />
     <Compile Include="Pages\ButtonsDocs.fs" />
+    <Compile Include="Pages\CollectionsDocs.fs" />
+    <Compile Include="Pages\FormsDocs.fs" />
+    <Compile Include="Pages\IconsDocs.fs" />
+    <Compile Include="Pages\NavigationDocs.fs" />
+    <Compile Include="Pages\OverlaysDocs.fs" />
+    <Compile Include="Pages\PickersDocs.fs" />
+    <Compile Include="Pages\SlidersDocs.fs" />
+    <Compile Include="Pages\StatusDocs.fs" />
+    <Compile Include="Pages\ContentDocs.fs" />
     <Compile Include="AppShell.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>

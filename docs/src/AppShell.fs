@@ -15,8 +15,15 @@ type SectionId =
     | Application
     | Layout
     | Buttons
-    | Content
     | Collections
+    | Forms
+    | Icons
+    | Navigation
+    | Overlays
+    | Pickers
+    | Sliders
+    | Status
+    | Content'
 
 [<StringEnum; RequireQualifiedAccess>]
 type DocsId =
@@ -31,6 +38,47 @@ type DocsId =
     | ButtonGroup
     | LogicButton
     | ToggleButton
+    | ListBox
+    | Menu
+    | MenuTrigger
+    | TableView
+    | Checkbox
+    | CheckboxGroup
+    | Form
+    | NumberField
+    | RadioGroup
+    | SearchField
+    | Switch
+    | TextArea
+    | TextField
+    | WorkflowIcons
+    | Breadcrumbs
+    | Link
+    | Tabs
+    | AlertDialog
+    | Dialog
+    | DialogContainer
+    | DialogTrigger
+    | Tooltip
+    | ComboBox
+    | Picker
+    | RangeSlider
+    | Slider
+    | Meter
+    | ProgressBar
+    | ProgressCircle
+    | StatusLight
+    | Content
+    | Divider
+    | Footer
+    | Header
+    | Heading
+    | IllustratedMessage
+    | Image
+    | Keyboard
+    | Text
+    | View
+    | Well
 
 let makeNavSection (id: SectionId) title navItems =
     Spectrum.Section [
@@ -67,6 +115,65 @@ let buildNavSections () =
             makeNavItem DocsId.LogicButton "LogicButton"
             makeNavItem DocsId.ToggleButton "ToggleButton"
         ]
+        makeNavSection SectionId.Collections "Collections" [
+            makeNavItem DocsId.ListBox "ListBox"
+            makeNavItem DocsId.Menu "Menu"
+            makeNavItem DocsId.MenuTrigger "MenuTrigger"
+            makeNavItem DocsId.TableView "TableView"
+        ]
+        makeNavSection SectionId.Forms "Forms" [
+            makeNavItem DocsId.Checkbox "Checkbox"
+            makeNavItem DocsId.CheckboxGroup "CheckboxGroup"
+            makeNavItem DocsId.Form "Form"
+            makeNavItem DocsId.NumberField "NumberField"
+            makeNavItem DocsId.RadioGroup "RadioGroup"
+            makeNavItem DocsId.SearchField "SearchField"
+            makeNavItem DocsId.Switch "Switch"
+            makeNavItem DocsId.TextArea "TextArea"
+            makeNavItem DocsId.TextField "TextField"
+        ]
+        makeNavSection SectionId.Icons "Icons" [
+            makeNavItem DocsId.WorkflowIcons "Workflow Icons"
+        ]
+        makeNavSection SectionId.Navigation "Navigation" [
+            makeNavItem DocsId.Breadcrumbs "Breadcrumbs"
+            makeNavItem DocsId.Link "Link"
+            makeNavItem DocsId.Tabs "Tabs"
+        ]
+        makeNavSection SectionId.Overlays "Overlays" [
+            makeNavItem DocsId.AlertDialog "AlertDialog"
+            makeNavItem DocsId.Dialog "Dialog"
+            makeNavItem DocsId.DialogContainer "DialogContainer"
+            makeNavItem DocsId.DialogTrigger "DialogTrigger"
+            makeNavItem DocsId.Tooltip "Tooltip"
+        ]
+        makeNavSection SectionId.Pickers "Pickers" [
+            makeNavItem DocsId.ComboBox "ComboBox"
+            makeNavItem DocsId.Picker "Picker"
+        ]
+        makeNavSection SectionId.Sliders "Sliders" [
+            makeNavItem DocsId.RangeSlider "RangeSlider"
+            makeNavItem DocsId.Slider "Slider"
+        ]
+        makeNavSection SectionId.Status "Status" [
+            makeNavItem DocsId.Meter "Meter"
+            makeNavItem DocsId.ProgressBar "ProgressBar"
+            makeNavItem DocsId.ProgressCircle "ProgressCircle"
+            makeNavItem DocsId.StatusLight "StatusLight"
+        ]
+        makeNavSection SectionId.Content' "Content" [
+            makeNavItem DocsId.Content "Content"
+            makeNavItem DocsId.Divider "Divider"
+            makeNavItem DocsId.Footer "Footer"
+            makeNavItem DocsId.Header "Header"
+            makeNavItem DocsId.Heading "Heading"
+            makeNavItem DocsId.IllustratedMessage "IllustratedMessage"
+            makeNavItem DocsId.Image "Image"
+            makeNavItem DocsId.Keyboard "Keyboard"
+            makeNavItem DocsId.Text "Text"
+            makeNavItem DocsId.View "View"
+            makeNavItem DocsId.Well "Well"
+        ]
     ]
 
 let getDocs = function
@@ -81,33 +188,156 @@ let getDocs = function
     | DocsId.Flex -> FlexDocs ()
     | DocsId.Grid -> GridDocs ()
     | DocsId.LogicButton -> LogicButtonDocs ()
+    | DocsId.ListBox -> ListBoxDocs ()
+    | DocsId.Menu -> MenuDocs ()
+    | DocsId.MenuTrigger -> MenuTriggerDocs ()
+    | DocsId.TableView -> TableViewDocs ()
+    | DocsId.Checkbox -> CheckboxDocs ()
+    | DocsId.CheckboxGroup -> CheckboxGroupDocs ()
+    | DocsId.Form -> FormDocs ()
+    | DocsId.NumberField -> NumberFieldDocs ()
+    | DocsId.RadioGroup -> RadioGroupDocs ()
+    | DocsId.SearchField -> SearchFieldDocs ()
+    | DocsId.Switch -> SwitchDocs ()
+    | DocsId.TextArea -> TextAreaDocs ()
+    | DocsId.TextField -> TextFieldDocs ()
+    | DocsId.WorkflowIcons -> WorkflowIconsDocs ()
+    | DocsId.Breadcrumbs -> BreadcrumbsDocs ()
+    | DocsId.Link -> LinkDocs ()
+    | DocsId.Tabs -> TabsDocs ()
+    | DocsId.AlertDialog -> AlertDialogDocs ()
+    | DocsId.Dialog -> DialogDocs ()
+    | DocsId.DialogContainer -> DialogContainerDocs ()
+    | DocsId.DialogTrigger -> DialogTriggerDocs ()
+    | DocsId.Tooltip -> TooltipDocs ()
+    | DocsId.ComboBox -> ComboBoxDocs ()
+    | DocsId.Picker -> PickerDocs ()
+    | DocsId.RangeSlider -> RangeSliderDocs ()
+    | DocsId.Slider -> SliderDocs ()
+    | DocsId.Meter -> MeterDocs ()
+    | DocsId.ProgressBar -> ProgressBarDocs ()
+    | DocsId.ProgressCircle -> ProgressCircleDocs ()
+    | DocsId.StatusLight -> StatusLightDocs ()
+    | DocsId.Content -> ContentDocs ()
+    | DocsId.Divider -> DividerDocs ()
+    | DocsId.Footer -> FooterDocs ()
+    | DocsId.Header -> HeaderDocs ()
+    | DocsId.Heading -> HeadingDocs ()
+    | DocsId.IllustratedMessage -> IllustratedMessageDocs ()
+    | DocsId.Image -> ImageDocs ()
+    | DocsId.Keyboard -> KeyboardDocs ()
+    | DocsId.Text -> TextDocs ()
+    | DocsId.View -> ViewDocs ()
+    | DocsId.Well -> WellDocs ()
 
 let parseUrl = function
     | [ "" ] -> DocsId.Overview
     | [ "installation" ] -> DocsId.Installation
-    | [ "application"; "provider" ] -> DocsId.Provider
-    | [ "layout"; "flex" ] -> DocsId.Flex
-    | [ "layout"; "grid" ] -> DocsId.Grid
-    | [ "buttons"; "actionbutton" ] -> DocsId.ActionButton
-    | [ "buttons"; "actiongroup" ] -> DocsId.ActionGroup
-    | [ "buttons"; "button" ] -> DocsId.Button
-    | [ "buttons"; "buttongroup" ] -> DocsId.ButtonGroup
-    | [ "buttons"; "logicbutton" ] -> DocsId.LogicButton
-    | [ "buttons"; "togglebutton" ] -> DocsId.ToggleButton
+    | [ "provider" ] -> DocsId.Provider
+    | [ "flex" ] -> DocsId.Flex
+    | [ "grid" ] -> DocsId.Grid
+    | [ "actionbutton" ] -> DocsId.ActionButton
+    | [ "actiongroup" ] -> DocsId.ActionGroup
+    | [ "button" ] -> DocsId.Button
+    | [ "buttongroup" ] -> DocsId.ButtonGroup
+    | [ "logicbutton" ] -> DocsId.LogicButton
+    | [ "togglebutton" ] -> DocsId.ToggleButton
+    | [ "listbox" ] -> DocsId.ListBox
+    | [ "menu" ] -> DocsId.Menu
+    | [ "menutrigger" ] -> DocsId.MenuTrigger
+    | [ "tableview" ] -> DocsId.TableView
+    | [ "checkbox" ] -> DocsId.Checkbox
+    | [ "checkboxgroup" ] -> DocsId.CheckboxGroup
+    | [ "form" ] -> DocsId.Form
+    | [ "numberfield" ] -> DocsId.NumberField
+    | [ "radiogroup" ] -> DocsId.RadioGroup
+    | [ "searchfield" ] -> DocsId.SearchField
+    | [ "switch" ] -> DocsId.Switch
+    | [ "textarea" ] -> DocsId.TextArea
+    | [ "textfield" ] -> DocsId.TextField
+    | [ "icons" ] -> DocsId.WorkflowIcons
+    | [ "breadcrumbs" ] -> DocsId.Breadcrumbs
+    | [ "link" ] -> DocsId.Link
+    | [ "tabs" ] -> DocsId.Tabs
+    | [ "alertdialog" ] -> DocsId.AlertDialog
+    | [ "dialog" ] -> DocsId.Dialog
+    | [ "dialogcontainer" ] -> DocsId.DialogContainer
+    | [ "dialogtrigger" ] -> DocsId.DialogTrigger
+    | [ "tooltip" ] -> DocsId.Tooltip
+    | [ "combobox" ] -> DocsId.ComboBox
+    | [ "picker" ] -> DocsId.Picker
+    | [ "rangeslider" ] -> DocsId.RangeSlider
+    | [ "slider" ] -> DocsId.Slider
+    | [ "meter" ] -> DocsId.Meter
+    | [ "progressbar" ] -> DocsId.ProgressBar
+    | [ "progresscircle" ] -> DocsId.ProgressCircle
+    | [ "statuslight" ] -> DocsId.StatusLight
+    | [ "content" ] -> DocsId.Content
+    | [ "divider" ] -> DocsId.Divider
+    | [ "footer" ] -> DocsId.Footer
+    | [ "header" ] -> DocsId.Header
+    | [ "heading" ] -> DocsId.Heading
+    | [ "illustratedmessage" ] -> DocsId.IllustratedMessage
+    | [ "image" ] -> DocsId.Image
+    | [ "keyboard" ] -> DocsId.Keyboard
+    | [ "text" ] -> DocsId.Text
+    | [ "view" ] -> DocsId.View
+    | [ "well" ] -> DocsId.Well
     | _ -> DocsId.Overview
 
 let makeUrl = function
     | DocsId.Overview -> Router.format ""
     | DocsId.Installation -> Router.format "installation"
-    | DocsId.Provider -> Router.format [ "application"; "provider" ]
-    | DocsId.Flex -> Router.format [ "layout"; "flex" ]
-    | DocsId.Grid -> Router.format [ "layout"; "grid" ]
-    | DocsId.ActionButton -> Router.format [ "buttons"; "actionbutton" ]
-    | DocsId.ActionGroup -> Router.format [ "buttons"; "actiongroup" ]
-    | DocsId.Button -> Router.format [ "buttons"; "button" ]
-    | DocsId.ButtonGroup -> Router.format [ "buttons"; "buttongroup" ]
-    | DocsId.LogicButton -> Router.format [ "buttons"; "logicbutton" ]
-    | DocsId.ToggleButton -> Router.format [ "buttons"; "togglebutton" ]
+    | DocsId.Provider -> Router.format "provider"
+    | DocsId.Flex -> Router.format "flex"
+    | DocsId.Grid -> Router.format "grid"
+    | DocsId.ActionButton -> Router.format "actionbutton"
+    | DocsId.ActionGroup -> Router.format "actiongroup"
+    | DocsId.Button -> Router.format "button"
+    | DocsId.ButtonGroup -> Router.format "buttongroup"
+    | DocsId.LogicButton -> Router.format "logicbutton"
+    | DocsId.ToggleButton -> Router.format "togglebutton"
+    | DocsId.ListBox -> Router.format "listbox"
+    | DocsId.Menu -> Router.format "menu"
+    | DocsId.MenuTrigger -> Router.format "menutrigger"
+    | DocsId.TableView -> Router.format "tableview"
+    | DocsId.Checkbox -> Router.format "checkbox"
+    | DocsId.CheckboxGroup -> Router.format "checkboxgroup"
+    | DocsId.Form -> Router.format "form"
+    | DocsId.NumberField -> Router.format "numberfield"
+    | DocsId.RadioGroup -> Router.format "radiogroup"
+    | DocsId.SearchField -> Router.format "searchfield"
+    | DocsId.Switch -> Router.format "switch"
+    | DocsId.TextArea -> Router.format "textarea"
+    | DocsId.TextField -> Router.format "textfield"
+    | DocsId.WorkflowIcons -> Router.format "icons"
+    | DocsId.Breadcrumbs -> Router.format "breadcrumbs"
+    | DocsId.Link -> Router.format "link"
+    | DocsId.Tabs -> Router.format "tabs"
+    | DocsId.AlertDialog -> Router.format "alertdialog"
+    | DocsId.Dialog -> Router.format "dialog"
+    | DocsId.DialogContainer -> Router.format "dialogcontainer"
+    | DocsId.DialogTrigger -> Router.format "dialogtrigger"
+    | DocsId.Tooltip -> Router.format "tooltip"
+    | DocsId.ComboBox -> Router.format "combobox"
+    | DocsId.Picker -> Router.format "picker"
+    | DocsId.RangeSlider -> Router.format "rangeslider"
+    | DocsId.Slider -> Router.format "slider"
+    | DocsId.Meter -> Router.format "meter"
+    | DocsId.ProgressBar -> Router.format "progressbar"
+    | DocsId.ProgressCircle -> Router.format "progresscircle"
+    | DocsId.StatusLight -> Router.format "statuslight"
+    | DocsId.Content -> Router.format "content"
+    | DocsId.Divider -> Router.format "divider"
+    | DocsId.Footer -> Router.format "footer"
+    | DocsId.Header -> Router.format "header"
+    | DocsId.Heading -> Router.format "heading"
+    | DocsId.IllustratedMessage -> Router.format "illustratedmessage"
+    | DocsId.Image -> Router.format "image"
+    | DocsId.Keyboard -> Router.format "keyboard"
+    | DocsId.Text -> Router.format "text"
+    | DocsId.View -> Router.format "view"
+    | DocsId.Well -> Router.format "well"
 
 type Model =
     {

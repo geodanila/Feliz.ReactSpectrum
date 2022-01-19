@@ -6,6 +6,10 @@ html, body, #app-root, #spectrum-provider {
     font-size: 16px;
 }
 
+#navigation-list {
+    height: 100%;
+}
+
 #content-host {
     overflow-x: hidden;
     overflow-y: auto;

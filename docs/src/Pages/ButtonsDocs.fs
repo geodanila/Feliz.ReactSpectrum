@@ -954,6 +954,144 @@ Spectrum.LogicButton [
         ]
 
     [<ReactComponent>]
+    let ToggleButtonExample1 () =
+        let code = """Spectrum.ToggleButton [
+    Spectrum.Text "Pin"
+]"""
+        let description = []
+
+        Example "Default example" code description [
+            Spectrum.ToggleButton [
+                Spectrum.Text "Pin"
+            ]
+        ]
+
+    [<ReactComponent>]
+    let ToggleButtonExample2 () =
+        let code = """Spectrum.ToggleButton [
+    ToggleButton.children [
+        Spectrum.Icon.PinOff []
+        Spectrum.Text "Pin"
+    ]
+]"""
+        let description = []
+
+        Example "Using icons" code description [
+            Spectrum.ToggleButton [
+                ToggleButton.children [
+                    Spectrum.Icon.PinOff []
+                    Spectrum.Text "Pin"
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let ToggleButtonExample3 () =
+        let code = """let isSelected, setSelected = React.useState(false)
+
+Spectrum.ToggleButton [
+    ToggleButton.isEmphasized true
+    ToggleButton.isSelected isSelected
+    ToggleButton.onChange setSelected
+    ToggleButton.ariaLabel "Pin"
+    ToggleButton.children [
+        Spectrum.Icon.PinOff []
+        Spectrum.Text $"Is selected: {isSelected}"
+    ]
+]"""
+        let description = []
+
+        Example "Events" code description [
+            let isSelected, setSelected = React.useState(false)
+
+            Spectrum.ToggleButton [
+                ToggleButton.isEmphasized true
+                ToggleButton.isSelected isSelected
+                ToggleButton.onChange setSelected
+                ToggleButton.ariaLabel "Pin"
+                ToggleButton.children [
+                    Spectrum.Icon.PinOff []
+                    Spectrum.Text $"Is selected: {isSelected}"
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let ToggleButtonExample4 () =
+        let code = """Spectrum.Flex [
+    Flex.wrap true
+    Flex.gap (DimValue.Size Size250)
+    Flex.children [
+        Spectrum.View [
+            View.backgroundColor (BackgroundColorValue.Color StaticSeafoam700)
+            View.padding 20
+            View.children [
+                Spectrum.ToggleButton [
+                    ToggleButton.staticColor StaticColorValue.White
+                    ToggleButton.children [
+                        Spectrum.Icon.PinOff []
+                        Spectrum.Text "Pin"
+                    ]
+                ]
+            ]
+        ]
+        Spectrum.View [
+            View.backgroundColor (BackgroundColorValue.Color StaticYellow400)
+            View.padding 20
+            View.children [
+                Spectrum.ToggleButton [
+                    ToggleButton.staticColor StaticColorValue.Black
+                    ToggleButton.isQuiet true
+                    ToggleButton.defaultSelected true
+                    ToggleButton.children [
+                        Spectrum.Icon.PinOff []
+                        Spectrum.Text "Pin"
+                    ]
+                ]
+            ]
+        ]
+    ]
+]"""
+        let description = []
+
+        Example "Static color" code description [
+            Spectrum.Flex [
+                Flex.wrap true
+                Flex.gap (DimValue.Size Size250)
+                Flex.children [
+                    Spectrum.View [
+                        View.backgroundColor (BackgroundColorValue.Color StaticSeafoam700)
+                        View.padding 20
+                        View.children [
+                            Spectrum.ToggleButton [
+                                ToggleButton.staticColor StaticColorValue.White
+                                ToggleButton.children [
+                                    Spectrum.Icon.PinOff []
+                                    Spectrum.Text "Pin"
+                                ]
+                            ]
+                        ]
+                    ]
+                    Spectrum.View [
+                        View.backgroundColor (BackgroundColorValue.Color StaticYellow400)
+                        View.padding 20
+                        View.children [
+                            Spectrum.ToggleButton [
+                                ToggleButton.staticColor StaticColorValue.Black
+                                ToggleButton.isQuiet true
+                                ToggleButton.defaultSelected true
+                                ToggleButton.children [
+                                    Spectrum.Icon.PinOff []
+                                    Spectrum.Text "Pin"
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
     let ToggleButtonDocs () =
         let description = [
             Html.text "ToggleButtons allow users to toggle a selection on or off, for example switching between two states or modes."
@@ -968,5 +1106,8 @@ Spectrum.LogicButton [
         ]
 
         ExampleGroup "ToggleButton" description [
-
+            ToggleButtonExample1 ()
+            ToggleButtonExample2 ()
+            ToggleButtonExample3 ()
+            ToggleButtonExample4 ()
         ]

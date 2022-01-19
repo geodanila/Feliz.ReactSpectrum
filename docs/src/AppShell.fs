@@ -26,7 +26,10 @@ type DocsId =
     | Flex
     | Grid
     | ActionButton
+    | ActionGroup
     | Button
+    | ButtonGroup
+    | LogicButton
     | ToggleButton
 
 let makeNavSection (id: SectionId) title navItems =
@@ -58,7 +61,10 @@ let buildNavSections () =
         ]
         makeNavSection SectionId.Buttons "Buttons" [
             makeNavItem DocsId.ActionButton "ActionButton"
+            makeNavItem DocsId.ActionGroup "ActionGroup"
             makeNavItem DocsId.Button "Button"
+            makeNavItem DocsId.ButtonGroup "ButtonGroup"
+            makeNavItem DocsId.LogicButton "LogicButton"
             makeNavItem DocsId.ToggleButton "ToggleButton"
         ]
     ]
@@ -66,12 +72,15 @@ let buildNavSections () =
 let getDocs = function
     | DocsId.Overview -> OverviewDocs ()
     | DocsId.Installation -> InstallationDocs ()
-    | DocsId.Button -> ButtonDocs ()
     | DocsId.ActionButton -> ActionButtonDocs ()
+    | DocsId.ActionGroup -> ActionGroupDocs ()
+    | DocsId.Button -> ButtonDocs ()
+    | DocsId.ButtonGroup -> ButtonGroupDocs ()
     | DocsId.ToggleButton -> ToggleButtonDocs ()
     | DocsId.Provider -> ProviderDocs ()
     | DocsId.Flex -> FlexDocs ()
     | DocsId.Grid -> GridDocs ()
+    | DocsId.LogicButton -> LogicButtonDocs ()
 
 let parseUrl = function
     | [ "" ] -> DocsId.Overview
@@ -80,7 +89,10 @@ let parseUrl = function
     | [ "layout"; "flex" ] -> DocsId.Flex
     | [ "layout"; "grid" ] -> DocsId.Grid
     | [ "buttons"; "actionbutton" ] -> DocsId.ActionButton
+    | [ "buttons"; "actiongroup" ] -> DocsId.ActionGroup
     | [ "buttons"; "button" ] -> DocsId.Button
+    | [ "buttons"; "buttongroup" ] -> DocsId.ButtonGroup
+    | [ "buttons"; "logicbutton" ] -> DocsId.LogicButton
     | [ "buttons"; "togglebutton" ] -> DocsId.ToggleButton
     | _ -> DocsId.Overview
 
@@ -91,7 +103,10 @@ let makeUrl = function
     | DocsId.Flex -> Router.format [ "layout"; "flex" ]
     | DocsId.Grid -> Router.format [ "layout"; "grid" ]
     | DocsId.ActionButton -> Router.format [ "buttons"; "actionbutton" ]
+    | DocsId.ActionGroup -> Router.format [ "buttons"; "actiongroup" ]
     | DocsId.Button -> Router.format [ "buttons"; "button" ]
+    | DocsId.ButtonGroup -> Router.format [ "buttons"; "buttongroup" ]
+    | DocsId.LogicButton -> Router.format [ "buttons"; "logicbutton" ]
     | DocsId.ToggleButton -> Router.format [ "buttons"; "togglebutton" ]
 
 type Model =

@@ -43,7 +43,7 @@ module ApplicationDocs =
     Provider.breakpoints(M = 640, L = 1024)
     Provider.children [
         Spectrum.View [
-            View.height (DimValue.Size Size1000)
+            View.height (DimValue.Size Size2000)
             View.backgroundColor (ResponsiveProp.make(
                 base' = (BackgroundColorValue.Color Celery600),
                 M = (BackgroundColorValue.Color Blue600),
@@ -55,7 +55,7 @@ module ApplicationDocs =
         let description = [
             Html.p [
                 prop.className "paragraph"
-                prop.children [ Html.text "You can override the default screen breakpoints as follows:" ]
+                prop.children [ Html.text "You can override the default screen breakpoints as follows. Resize the browser window to see the effects." ]
             ]
         ]
 
@@ -66,7 +66,7 @@ module ApplicationDocs =
                 Provider.breakpoints(M = 640, L = 1024)
                 Provider.children [
                     Spectrum.View [
-                        View.height (DimValue.Size Size1000)
+                        View.height (DimValue.Size Size2000)
                         View.backgroundColor (ResponsiveProp.make(
                             base' = (BackgroundColorValue.Color Celery600),
                             M = (BackgroundColorValue.Color Blue600),
@@ -112,6 +112,90 @@ module ApplicationDocs =
         ]
 
     [<ReactComponent>]
+    let ProviderExample4 () =
+        let code = """Spectrum.Flex [
+    Flex.direction FlexDirection.Column
+    Flex.gap (DimValue.Size Size100)
+    Flex.alignItems FlexAlignItems.Start
+    Flex.children [
+        Spectrum.Provider [
+            Provider.isDisabled true
+            Provider.children [
+                Spectrum.RadioGroup [
+                    RadioGroup.label "Favorite animal"
+                    RadioGroup.children [
+                        Spectrum.Radio [
+                            Radio.value "dogs"
+                            Radio.content "Dogs"
+                        ]
+                        Spectrum.Radio [
+                            Radio.value "cats"
+                            Radio.content "Cats"
+                        ]
+                        Spectrum.Radio [
+                            Radio.value "horses"
+                            Radio.content "Horses"
+                        ]
+                    ]
+                ]
+                Spectrum.Checkbox [
+                    Checkbox.content "I agree"
+                ]
+                Spectrum.Button [
+                    Button.variant ButtonVariant.Primary
+                    Button.content "Submit"
+                ]
+            ]
+        ]
+    ]
+]"""
+        let description = [
+            Html.p [
+                prop.className "paragraph"
+                prop.children [ Html.text "You can use a Provider component to define common properties for a group of components within. For example, you can disable multiple components as follows:" ]
+            ]
+        ]
+
+        Example "Property groups" code description [
+            Spectrum.Flex [
+                Flex.direction FlexDirection.Column
+                Flex.gap (DimValue.Size Size100)
+                Flex.alignItems FlexAlignItems.Start
+                Flex.children [
+                    Spectrum.Provider [
+                        Provider.isDisabled true
+                        Provider.children [
+                            Spectrum.RadioGroup [
+                                RadioGroup.label "Favorite animal"
+                                RadioGroup.children [
+                                    Spectrum.Radio [
+                                        Radio.value "dogs"
+                                        Radio.content "Dogs"
+                                    ]
+                                    Spectrum.Radio [
+                                        Radio.value "cats"
+                                        Radio.content "Cats"
+                                    ]
+                                    Spectrum.Radio [
+                                        Radio.value "horses"
+                                        Radio.content "Horses"
+                                    ]
+                                ]
+                            ]
+                            Spectrum.Checkbox [
+                                Checkbox.content "I agree"
+                            ]
+                            Spectrum.Button [
+                                Button.variant ButtonVariant.Primary
+                                Button.content "Submit"
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
     let ProviderDocs () =
         let description = [
             Html.text "Provider is the container for all React Spectrum applications. It defines the theme, locale, and other application level settings, and can also be used to provide common properties to a group of components."
@@ -129,4 +213,5 @@ module ApplicationDocs =
             ProviderExample1 ()
             ProviderExample2 ()
             ProviderExample3 ()
+            ProviderExample4 ()
         ]

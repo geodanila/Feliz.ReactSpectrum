@@ -89,3 +89,50 @@ module SharedModule =
                 ]
             ]
         ]
+
+    let colorsList = [
+        ColorValue.Blue400
+        ColorValue.Blue500
+        ColorValue.Blue600
+        ColorValue.Blue700
+        ColorValue.Celery400
+        ColorValue.Celery500
+        ColorValue.Celery600
+        ColorValue.Celery700
+        ColorValue.Chartreuse400
+        ColorValue.Chartreuse500
+        ColorValue.Chartreuse600
+        ColorValue.Chartreuse700
+        ColorValue.Fuchsia400
+        ColorValue.Fuchsia500
+        ColorValue.Fuchsia600
+        ColorValue.Fuchsia700
+        ColorValue.Gray50
+        ColorValue.Gray75
+        ColorValue.Gray100
+        ColorValue.Gray200
+        ColorValue.Gray300
+        ColorValue.Gray400
+        ColorValue.Gray500
+        ColorValue.Gray600
+        ColorValue.Gray700
+        ColorValue.Gray800
+        ColorValue.Gray900
+        ColorValue.Green400
+        ColorValue.Green500
+        ColorValue.Green600
+        ColorValue.Green700
+        ColorValue.Indigo400
+        ColorValue.Indigo500
+        ColorValue.Indigo600
+        ColorValue.Indigo700
+        ColorValue.Informative
+        ColorValue.Magenta400
+        ColorValue.Magenta500
+        ColorValue.Magenta600
+        ColorValue.Magenta700
+        ColorValue.Negative
+        ColorValue.Notice
+        ColorValue.Orange400
+        ColorValue.Orange500
+    ]

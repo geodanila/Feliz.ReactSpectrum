@@ -12,6 +12,7 @@ open Elmish.React
 type SectionId =
     | General
     | Application
+    | Layout
     | Buttons
     | Content
     | Collections
@@ -21,6 +22,8 @@ type DocsId =
     | Overview
     | Installation
     | Provider
+    | Flex
+    | Grid
     | ActionButton
     | Button
     | ToggleButton
@@ -48,6 +51,10 @@ let buildNavSections () =
         makeNavSection SectionId.Application "Application" [
             makeNavItem DocsId.Provider "Provider"
         ]
+        makeNavSection SectionId.Layout "Layout" [
+            makeNavItem DocsId.Flex "Flex"
+            makeNavItem DocsId.Grid "Grid"
+        ]
         makeNavSection SectionId.Buttons "Buttons" [
             makeNavItem DocsId.ActionButton "ActionButton"
             makeNavItem DocsId.Button "Button"
@@ -62,6 +69,8 @@ let getDocs = function
     | DocsId.ActionButton -> ActionButtonDocs ()
     | DocsId.ToggleButton -> ToggleButtonDocs ()
     | DocsId.Provider -> ProviderDocs ()
+    | DocsId.Flex -> FlexDocs ()
+    | DocsId.Grid -> GridDocs ()
 
 type Model =
     { SelectedDoc: DocsId }

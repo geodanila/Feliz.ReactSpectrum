@@ -7,6 +7,7 @@
     <Compile Include="Pages\Shared.fs" />
     <Compile Include="Pages\GeneralDocs.fs" />
     <Compile Include="Pages\ApplicationDocs.fs" />
+    <Compile Include="Pages\LayoutDocs.fs" />
     <Compile Include="Pages\ButtonsDocs.fs" />
     <Compile Include="AppShell.fs" />
     <Compile Include="Main.fs" />

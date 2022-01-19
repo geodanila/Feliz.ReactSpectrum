@@ -19,9 +19,7 @@ module CollectionsDocs =
         Spectrum.Item "Right"
     ]
 ]"""
-        let description = []
-
-        Example "Default example" code description [
+        Example "Default example" code [] [
             Spectrum.ListBox [
                 ListBox.width (DimValue.Size Size2400)
                 ListBox.ariaLabel "Alignment"
@@ -69,9 +67,8 @@ React.fragment [
         | None -> "None selected"
     Html.p text
 ]"""
-        let description = []
 
-        Example "Content example" code description [
+        Example "Content example" code [] [
             let options = [
                 {| id = 1; name = "Aardvark" |}
                 {| id = 2; name = "Cat" |}
@@ -160,9 +157,8 @@ Spectrum.Flex [
         ]
     ]
 ]"""
-        let description = []
 
-        Example "Selection example" code description [
+        Example "Selection example" code [] [
             let options = [
                 {| name = "Koala" |}
                 {| name = "Kangaroo" |}
@@ -247,9 +243,8 @@ Spectrum.Flex [
         ]
     ]
 ]"""
-        let description = []
 
-        Example "Sections" code description [
+        Example "Sections" code [] [
             Spectrum.ListBox [
                 ListBox.width (DimValue.Size Size2400)
                 ListBox.ariaLabel "Pick your favorite"
@@ -313,9 +308,8 @@ Spectrum.ListBox [
         ]
     )
 ]"""
-        let description = []
 
-        Example "Dynamic items" code description [
+        Example "Dynamic items" code [] [
             let options = [
                 {| name = "Australian"
                    animals = [|
@@ -378,9 +372,8 @@ React.fragment [
     ]
     Html.p $"You selected: {match frequency with | [ value ] -> value | _ -> System.String.Empty}"
 ]"""
-        let description = []
 
-        Example "Events" code description [
+        Example "Events" code [] [
             let frequency, setFrequency = React.useState<string list>([])
             let makeItem x =
                 Spectrum.Item [
@@ -458,9 +451,8 @@ React.fragment [
         ]
     ]
 ]"""
-        let description = []
 
-        Example "Complex items" code description [
+        Example "Complex items" code [] [
             Spectrum.ListBox [
                 ListBox.width (DimValue.Size Size2400)
                 ListBox.ariaLabel "Options"
@@ -516,117 +508,6 @@ React.fragment [
 
     [<ReactComponent>]
     let ListBoxExample8 () =
-        let code = """let makeItem x =
-    {| id = x; name = $"Item {x}" |}
-
-let loadItems page =
-    async {
-        do! Async.Sleep 2000
-        let items =
-            match page with
-            | i when i >= 1 && i <= 5 ->
-                [ (i - 1) * 20 + 1 .. i * 20 ] |> List.map makeItem
-            | _ -> []
-        return items
-    }
-
-let items, setItems = React.useState<{| id: int; name: string |} list>([])
-let isLoading, setIsLoading = React.useState(false)
-let page, setPage = React.useState(0)
-let loadMore () =
-    if not isLoading && page < 5 then
-        async {
-            setIsLoading true
-            let! newItems = loadItems (page + 1)
-            setIsLoading false
-            setPage (page + 1)
-            setItems (items @ newItems)
-        }
-        |> Async.StartAsPromise
-        |> unbox
-    else null
-
-// load the initial page
-React.useEffectOnce(loadMore >> ignore)
-
-Spectrum.Flex [
-    Flex.maxHeight (DimValue.Size Size2400)
-    Flex.children [
-        Spectrum.ListBox [
-            ListBox.ariaLabel "Pick an item"
-            ListBox.items items
-            ListBox.isLoading isLoading
-            ListBox.onLoadMore loadMore
-            ListBox.width (DimValue.Size Size2400)
-            ListBox.itemTemplate (fun (item: {| id: int; name: string |}) ->
-                Spectrum.Item [
-                    Item.key $"{item.id}"
-                    Item.textValue item.name
-                    Item.children [ Spectrum.Text item.name ]
-                ]
-            )
-        ]
-    ]
-]"""
-        let description = []
-
-        Example "Async loading more items" code description [
-            let makeItem x =
-                {| id = x; name = $"Item {x}" |}
-
-            let loadItems page =
-                async {
-                    do! Async.Sleep 2000
-                    let items =
-                        match page with
-                        | i when i >= 1 && i <= 5 ->
-                            [ (i - 1) * 20 + 1 .. i * 20 ] |> List.map makeItem
-                        | _ -> []
-                    return items
-                }
-
-            let items, setItems = React.useState<{| id: int; name: string |} list>([])
-            let isLoading, setIsLoading = React.useState(false)
-            let page, setPage = React.useState(0)
-            let loadMore () =
-                if not isLoading && page < 5 then
-                    async {
-                        setIsLoading true
-                        let! newItems = loadItems (page + 1)
-                        setIsLoading false
-                        setPage (page + 1)
-                        setItems (items @ newItems)
-                    }
-                    |> Async.StartAsPromise
-                    |> unbox
-                else null
-
-            // load the initial page
-            React.useEffectOnce(loadMore >> ignore)
-
-            Spectrum.Flex [
-                Flex.maxHeight (DimValue.Size Size2400)
-                Flex.children [
-                    Spectrum.ListBox [
-                        ListBox.ariaLabel "Pick an item"
-                        ListBox.items items
-                        ListBox.isLoading isLoading
-                        ListBox.onLoadMore loadMore
-                        ListBox.width (DimValue.Size Size2400)
-                        ListBox.itemTemplate (fun (item: {| id: int; name: string |}) ->
-                            Spectrum.Item [
-                                Item.key $"{item.id}"
-                                Item.textValue item.name
-                                Item.children [ Spectrum.Text item.name ]
-                            ]
-                        )
-                    ]
-                ]
-            ]
-        ]
-
-    [<ReactComponent>]
-    let ListBoxExample9 () =
         let code = """Spectrum.ListBox [
     ListBox.width (DimValue.Size Size2400)
     ListBox.ariaLabel "Pick your favorite"
@@ -651,9 +532,8 @@ Spectrum.Flex [
         ]
     ]
 ]"""
-        let description = []
 
-        Example "Disabled keys" code description [
+        Example "Disabled keys" code [] [
             Spectrum.ListBox [
                 ListBox.width (DimValue.Size Size2400)
                 ListBox.ariaLabel "Pick your favorite"
@@ -703,7 +583,6 @@ Spectrum.Flex [
             ListBoxExample6 ()
             ListBoxExample7 ()
             ListBoxExample8 ()
-            ListBoxExample9 ()
         ]
 
     [<ReactComponent>]
@@ -722,9 +601,9 @@ Spectrum.Flex [
         ]
     ]
 ]"""
-        let description = []
 
-        Example "Default example" code description [
+
+        Example "Default example" code [] [
             Spectrum.MenuTrigger [
                 Spectrum.ActionButton [
                     ActionButton.content "Edit"
@@ -759,9 +638,9 @@ Spectrum.MenuTrigger [
         )
     ]
 ]"""
-        let description = []
 
-        Example "Using an item template" code description [
+
+        Example "Using an item template" code [] [
             let menuItems = [
                 {| id = "cut"; name = "Cut" |}
                 {| id = "copy"; name = "Copy" |}
@@ -805,9 +684,9 @@ React.fragment [
     ]
     Html.p $"Action: {action}"
 ]"""
-        let description = []
 
-        Example "Events" code description [
+
+        Example "Events" code [] [
             let action, setAction = React.useState("")
 
             let makeItem key text =
@@ -835,23 +714,274 @@ React.fragment [
 
     [<ReactComponent>]
     let MenuExample4 () =
-        Html.none
+        let code = """let selected, setSelected = React.useState([ "middle" ])
+
+React.fragment [
+    Spectrum.MenuTrigger [
+        Spectrum.ActionButton [ Html.text "Align" ]
+        Spectrum.Menu [
+            Menu.selectionMode SelectionMode.Single
+            Menu.selectedKeys selected
+            Menu.onSelectionChange setSelected
+            Menu.children [
+                makeItem "left" "Left"
+                makeItem "middle" "Middle"
+                makeItem "right" "Right"
+            ]
+        ]
+    ]
+    match selected with
+    | [ selected' ] -> Html.p $"Current selection (controlled): {selected'}"
+    | _ -> Html.p $"No selection"
+]"""
+
+
+        Example "Selection" code [] [
+            let selected, setSelected = React.useState([ "middle" ])
+
+            React.fragment [
+                Spectrum.MenuTrigger [
+                    Spectrum.ActionButton [ Html.text "Align" ]
+                    Spectrum.Menu [
+                        Menu.selectionMode SelectionMode.Single
+                        Menu.selectedKeys selected
+                        Menu.onSelectionChange setSelected
+                        Menu.children [
+                            makeItem "left" "Left"
+                            makeItem "middle" "Middle"
+                            makeItem "right" "Right"
+                        ]
+                    ]
+                ]
+                match selected with
+                | [ selected' ] -> Html.p $"Current selection (controlled): {selected'}"
+                | _ -> Html.p $"No selection"
+            ]
+        ]
 
     [<ReactComponent>]
     let MenuExample5 () =
-        Html.none
+        let code = """let selected, setSelected = React.useState([ "Sidebar"; "Console" ])
+
+React.fragment [
+    Spectrum.MenuTrigger [
+        MenuTrigger.closeOnSelected false
+        MenuTrigger.children [
+            Spectrum.ActionButton [ Html.text "Show" ]
+            Spectrum.Menu [
+                Menu.selectionMode SelectionMode.Multiple
+                Menu.selectedKeys selected
+                Menu.onSelectionChange setSelected
+                Menu.children [
+                    makeItem "Sidebar" "Sidebar"
+                    makeItem "Searchbar" "Searchbar"
+                    makeItem "Tools" "Tools"
+                    makeItem "Console" "Console"
+                ]
+            ]
+        ]
+    ]
+    Html.p $"Current selection (controlled): {selected |> Array.ofList}"
+]"""
+
+
+        Example "Selection (multiple)" code [] [
+            let selected, setSelected = React.useState([ "Sidebar"; "Console" ])
+
+            React.fragment [
+                Spectrum.MenuTrigger [
+                    MenuTrigger.closeOnSelected false
+                    MenuTrigger.children [
+                        Spectrum.ActionButton [ Html.text "Show" ]
+                        Spectrum.Menu [
+                            Menu.selectionMode SelectionMode.Multiple
+                            Menu.selectedKeys selected
+                            Menu.onSelectionChange setSelected
+                            Menu.children [
+                                makeItem "Sidebar" "Sidebar"
+                                makeItem "Searchbar" "Searchbar"
+                                makeItem "Tools" "Tools"
+                                makeItem "Console" "Console"
+                            ]
+                        ]
+                    ]
+                ]
+                Html.p $"Current selection (controlled): {selected |> Array.ofList}"
+            ]
+        ]
 
     [<ReactComponent>]
     let MenuExample6 () =
-        Html.none
+        let code = """let selected, setSelected = React.useState([ "bold"; "left" ])
+
+Spectrum.MenuTrigger [
+    Spectrum.ActionButton [ Html.text "Edit" ]
+    Spectrum.Menu [
+        Menu.selectionMode SelectionMode.Multiple
+        Menu.selectedKeys selected
+        Menu.onSelectionChange setSelected
+        Menu.children [
+            Spectrum.Section [
+                Section.title "Styles"
+                Section.children [
+                    makeItem "bold" "Bold"
+                    makeItem "underline" "Underline"
+                ]
+            ]
+            Spectrum.Section [
+                Section.title "Align"
+                Section.children [
+                    makeItem "left" "Left"
+                    makeItem "middle" "Middle"
+                    makeItem "right" "Right"
+                ]
+            ]
+        ]
+    ]
+]"""
+
+
+        Example "Sections" code [] [
+            let selected, setSelected = React.useState([ "bold"; "left" ])
+
+            Spectrum.MenuTrigger [
+                Spectrum.ActionButton [ Html.text "Edit" ]
+                Spectrum.Menu [
+                    Menu.selectionMode SelectionMode.Multiple
+                    Menu.selectedKeys selected
+                    Menu.onSelectionChange setSelected
+                    Menu.children [
+                        Spectrum.Section [
+                            Section.title "Styles"
+                            Section.children [
+                                makeItem "bold" "Bold"
+                                makeItem "underline" "Underline"
+                            ]
+                        ]
+                        Spectrum.Section [
+                            Section.title "Align"
+                            Section.children [
+                                makeItem "left" "Left"
+                                makeItem "middle" "Middle"
+                                makeItem "right" "Right"
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
 
     [<ReactComponent>]
     let MenuExample7 () =
-        Html.none
+        let code = """Spectrum.MenuTrigger [
+    Spectrum.ActionButton [ Html.text "Edit" ]
+    Spectrum.Menu [
+        Spectrum.Item [
+            Item.key "cut"
+            Item.textValue "Cut"
+            Item.children [
+                Spectrum.Icon.Cut [ Icon.size IconSize.S ]
+                Spectrum.Text "Cut"
+                Spectrum.Keyboard "⌘X"
+            ]
+        ]
+        Spectrum.Item [
+            Item.key "copy"
+            Item.textValue "Copy"
+            Item.children [
+                Spectrum.Icon.Copy [ Icon.size IconSize.S ]
+                Spectrum.Text "Copy"
+                Spectrum.Keyboard "⌘C"
+            ]
+        ]
+        Spectrum.Item [
+            Item.key "paste"
+            Item.textValue "Paste"
+            Item.children [
+                Spectrum.Icon.Paste [ Icon.size IconSize.S ]
+                Spectrum.Text "Paste"
+                Spectrum.Keyboard "⌘V"
+            ]
+        ]
+    ]
+]"""
+
+
+        Example "Complex items" code [] [
+            Spectrum.MenuTrigger [
+                Spectrum.ActionButton [ Html.text "Edit" ]
+                Spectrum.Menu [
+                    Spectrum.Item [
+                        Item.key "cut"
+                        Item.textValue "Cut"
+                        Item.children [
+                            Spectrum.Icon.Cut [ Icon.size IconSize.S ]
+                            Spectrum.Text "Cut"
+                            Spectrum.Keyboard "⌘X"
+                        ]
+                    ]
+                    Spectrum.Item [
+                        Item.key "copy"
+                        Item.textValue "Copy"
+                        Item.children [
+                            Spectrum.Icon.Copy [ Icon.size IconSize.S ]
+                            Spectrum.Text "Copy"
+                            Spectrum.Keyboard "⌘C"
+                        ]
+                    ]
+                    Spectrum.Item [
+                        Item.key "paste"
+                        Item.textValue "Paste"
+                        Item.children [
+                            Spectrum.Icon.Paste [ Icon.size IconSize.S ]
+                            Spectrum.Text "Paste"
+                            Spectrum.Keyboard "⌘V"
+                        ]
+                    ]
+                ]
+            ]
+        ]
 
     [<ReactComponent>]
     let MenuExample8 () =
-        Html.none
+        let code = """let items = [
+    {| name = "tiff"; id = "a1b2c3" |}
+    {| name = "png"; id = "g5h1j9" |}
+    {| name = "jpg"; id = "p8k3i4" |}
+    {| name = "PDF"; id = "j7i3a0" |}
+]
+
+Spectrum.MenuTrigger [
+    Spectrum.ActionButton [ Html.text "Filter" ]
+    Spectrum.Menu [
+        Menu.items items
+        Menu.disabledKeys [ "a1b2c3"; "p8k3i4" ]
+        Menu.itemTemplate (fun (item: {| name: string; id: string |}) ->
+            Spectrum.Item item.name
+        )
+    ]
+]"""
+
+
+        Example "Disabled keys" code [] [
+            let items = [
+                {| name = "tiff"; id = "a1b2c3" |}
+                {| name = "png"; id = "g5h1j9" |}
+                {| name = "jpg"; id = "p8k3i4" |}
+                {| name = "PDF"; id = "j7i3a0" |}
+            ]
+
+            Spectrum.MenuTrigger [
+                Spectrum.ActionButton [ Html.text "Filter" ]
+                Spectrum.Menu [
+                    Menu.items items
+                    Menu.disabledKeys [ "a1b2c3"; "p8k3i4" ]
+                    Menu.itemTemplate (fun (item: {| name: string; id: string |}) ->
+                        Spectrum.Item item.name
+                    )
+                ]
+            ]
+        ]
 
     [<ReactComponent>]
     let MenuDocs () =
@@ -879,6 +1009,261 @@ React.fragment [
         ]
 
     [<ReactComponent>]
+    let MenuTriggerExample1 () =
+        let code = """let isOpen, setIsOpen = React.useState(false)
+
+Spectrum.Flex [
+    Flex.gap (DimValue.Size Size100)
+    Flex.alignItems FlexAlignItems.Center
+    Flex.children [
+        Spectrum.MenuTrigger [
+            MenuTrigger.onOpenChange setIsOpen
+            MenuTrigger.children [
+                Spectrum.ActionButton [ Html.text "Edit" ]
+                Spectrum.Menu [
+                    Spectrum.Item [
+                        Item.key "cut"
+                        Item.textValue "Cut"
+                        Item.children [ Spectrum.Text "Cut" ]
+                    ]
+                    Spectrum.Item [
+                        Item.key "copy"
+                        Item.textValue "Copy"
+                        Item.children [ Spectrum.Text "Copy" ]
+                    ]
+                    Spectrum.Item [
+                        Item.key "paste"
+                        Item.textValue "Paste"
+                        Item.children [ Spectrum.Text "Paste" ]
+                    ]
+                ]
+            ]
+        ]
+        Html.div $"Currently open: {isOpen}"
+    ]
+]"""
+
+
+        Example "Events" code [] [
+            let isOpen, setIsOpen = React.useState(false)
+
+            Spectrum.Flex [
+                Flex.gap (DimValue.Size Size100)
+                Flex.alignItems FlexAlignItems.Center
+                Flex.children [
+                    Spectrum.MenuTrigger [
+                        MenuTrigger.onOpenChange setIsOpen
+                        MenuTrigger.children [
+                            Spectrum.ActionButton [ Html.text "Edit" ]
+                            Spectrum.Menu [
+                                Spectrum.Item [
+                                    Item.key "cut"
+                                    Item.textValue "Cut"
+                                    Item.children [ Spectrum.Text "Cut" ]
+                                ]
+                                Spectrum.Item [
+                                    Item.key "copy"
+                                    Item.textValue "Copy"
+                                    Item.children [ Spectrum.Text "Copy" ]
+                                ]
+                                Spectrum.Item [
+                                    Item.key "paste"
+                                    Item.textValue "Paste"
+                                    Item.children [ Spectrum.Text "Paste" ]
+                                ]
+                            ]
+                        ]
+                    ]
+                    Html.div $"Currently open: {isOpen}"
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let MenuTriggerExample2 () =
+        let code = """Spectrum.Flex [
+    Flex.gap (DimValue.Size Size100)
+    Flex.children [
+        Spectrum.MenuTrigger [
+            MenuTrigger.align Alignment.Start
+            MenuTrigger.children [
+                Spectrum.ActionButton "Edit"
+                Spectrum.Menu [
+                    makeItem "cut" "Cut"
+                    makeItem "copy" "Copy"
+                    makeItem "paste" "Paste"
+                ]
+            ]
+        ]
+        Spectrum.MenuTrigger [
+            MenuTrigger.align Alignment.End
+            MenuTrigger.direction MenuDirection.Top
+            MenuTrigger.shouldFlip false
+            MenuTrigger.children [
+                Spectrum.ActionButton "View"
+                Spectrum.Menu [
+                    makeItem "sidebar" "Sidebar"
+                    makeItem "options" "Page options"
+                    makeItem "edit" "Edit panel"
+                ]
+            ]
+        ]
+        Spectrum.MenuTrigger [
+            MenuTrigger.align Alignment.Start
+            MenuTrigger.direction MenuDirection.Start
+            MenuTrigger.children [
+                Spectrum.ActionButton "Edit"
+                Spectrum.Menu [
+                    makeItem "cut" "Cut"
+                    makeItem "copy" "Copy"
+                    makeItem "paste" "Paste"
+                ]
+            ]
+        ]
+        Spectrum.MenuTrigger [
+            MenuTrigger.align Alignment.End
+            MenuTrigger.direction MenuDirection.End
+            MenuTrigger.children [
+                Spectrum.ActionButton "View"
+                Spectrum.Menu [
+                    makeItem "sidebar" "Sidebar"
+                    makeItem "options" "Page options"
+                    makeItem "edit" "Edit panel"
+                ]
+            ]
+        ]
+    ]
+]"""
+
+
+        Example "Alignment and direction" code [] [
+            Spectrum.Flex [
+                Flex.gap (DimValue.Size Size100)
+                Flex.children [
+                    Spectrum.MenuTrigger [
+                        MenuTrigger.align Alignment.Start
+                        MenuTrigger.children [
+                            Spectrum.ActionButton "Edit"
+                            Spectrum.Menu [
+                                makeItem "cut" "Cut"
+                                makeItem "copy" "Copy"
+                                makeItem "paste" "Paste"
+                            ]
+                        ]
+                    ]
+                    Spectrum.MenuTrigger [
+                        MenuTrigger.align Alignment.End
+                        MenuTrigger.direction MenuDirection.Top
+                        MenuTrigger.shouldFlip false
+                        MenuTrigger.children [
+                            Spectrum.ActionButton "View"
+                            Spectrum.Menu [
+                                makeItem "sidebar" "Sidebar"
+                                makeItem "options" "Page options"
+                                makeItem "edit" "Edit panel"
+                            ]
+                        ]
+                    ]
+                    Spectrum.MenuTrigger [
+                        MenuTrigger.align Alignment.Start
+                        MenuTrigger.direction MenuDirection.Start
+                        MenuTrigger.children [
+                            Spectrum.ActionButton "Edit"
+                            Spectrum.Menu [
+                                makeItem "cut" "Cut"
+                                makeItem "copy" "Copy"
+                                makeItem "paste" "Paste"
+                            ]
+                        ]
+                    ]
+                    Spectrum.MenuTrigger [
+                        MenuTrigger.align Alignment.End
+                        MenuTrigger.direction MenuDirection.End
+                        MenuTrigger.children [
+                            Spectrum.ActionButton "View"
+                            Spectrum.Menu [
+                                makeItem "sidebar" "Sidebar"
+                                makeItem "options" "Page options"
+                                makeItem "edit" "Edit panel"
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let MenuTriggerExample3 () =
+        let code = """let isOpen, setIsOpen = React.useState(false)
+let selection, setSelection = React.useState([])
+
+Spectrum.MenuTrigger [
+    MenuTrigger.isOpen isOpen
+    MenuTrigger.onOpenChange setIsOpen
+    MenuTrigger.children [
+        Spectrum.ActionButton [ Html.text "View" ]
+        Spectrum.Menu [
+            Menu.selectionMode SelectionMode.Multiple
+            Menu.selectedKeys selection
+            Menu.onSelectionChange setSelection
+            Menu.children [
+                Spectrum.Item [
+                    Item.key "side"
+                    Item.textValue "Sidebar"
+                    Item.children [ Spectrum.Text "Sidebar" ]
+                ]
+                Spectrum.Item [
+                    Item.key "options"
+                    Item.textValue "Page options"
+                    Item.children [ Spectrum.Text "Page options" ]
+                ]
+                Spectrum.Item [
+                    Item.key "edit"
+                    Item.textValue "Edit panel"
+                    Item.children [ Spectrum.Text "Edit panel" ]
+                ]
+            ]
+        ]
+    ]
+]"""
+
+
+        Example "Open and selection" code [] [
+            let isOpen, setIsOpen = React.useState(false)
+            let selection, setSelection = React.useState([])
+
+            Spectrum.MenuTrigger [
+                MenuTrigger.isOpen isOpen
+                MenuTrigger.onOpenChange setIsOpen
+                MenuTrigger.children [
+                    Spectrum.ActionButton [ Html.text "View" ]
+                    Spectrum.Menu [
+                        Menu.selectionMode SelectionMode.Multiple
+                        Menu.selectedKeys selection
+                        Menu.onSelectionChange setSelection
+                        Menu.children [
+                            Spectrum.Item [
+                                Item.key "side"
+                                Item.textValue "Sidebar"
+                                Item.children [ Spectrum.Text "Sidebar" ]
+                            ]
+                            Spectrum.Item [
+                                Item.key "options"
+                                Item.textValue "Page options"
+                                Item.children [ Spectrum.Text "Page options" ]
+                            ]
+                            Spectrum.Item [
+                                Item.key "edit"
+                                Item.textValue "Edit panel"
+                                Item.children [ Spectrum.Text "Edit panel" ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
     let MenuTriggerDocs () =
         let description = [
             Html.text "The MenuTrigger serves as a wrapper around a Menu and its associated trigger, linking the Menu's open state with the trigger's press state."
@@ -893,6 +1278,379 @@ React.fragment [
         ]
 
         ExampleGroup "MenuTrigger" description [
+            MenuTriggerExample1 ()
+            MenuTriggerExample2 ()
+            MenuTriggerExample3 ()
+        ]
+
+    [<ReactComponent>]
+    let TableViewExample1 () =
+        let code = """Spectrum.TableView [
+    TableView.ariaLabel "Example table with static contents"
+    TableView.selectionMode SelectionMode.Multiple
+    TableView.children [
+        Spectrum.TableHeader [
+            Spectrum.Column "Name"
+            Spectrum.Column "Type"
+            Spectrum.Column [
+                Column.align ColumnAlignment.End
+                Column.content "Date Modified"
+            ]
+        ]
+        Spectrum.TableBody [
+            Spectrum.Row [
+                Spectrum.Cell "Games"
+                Spectrum.Cell "File folder"
+                Spectrum.Cell "6/7/2020"
+            ]
+            Spectrum.Row [
+                Spectrum.Cell "Program Files"
+                Spectrum.Cell "File folder"
+                Spectrum.Cell "4/7/2021"
+            ]
+            Spectrum.Row [
+                Spectrum.Cell "bootmgr"
+                Spectrum.Cell "System file"
+                Spectrum.Cell "11/20/2010"
+            ]
+            Spectrum.Row [
+                Spectrum.Cell "log.txt"
+                Spectrum.Cell "Text Document"
+                Spectrum.Cell "1/18/2016"
+            ]
+        ]
+    ]
+]"""
+
+        Example "Default example" code [] [
+            Spectrum.TableView [
+                TableView.ariaLabel "Example table with static contents"
+                TableView.selectionMode SelectionMode.Multiple
+                TableView.children [
+                    Spectrum.TableHeader [
+                        Spectrum.Column "Name"
+                        Spectrum.Column "Type"
+                        Spectrum.Column [
+                            Column.align ColumnAlignment.End
+                            Column.content "Date Modified"
+                        ]
+                    ]
+                    Spectrum.TableBody [
+                        Spectrum.Row [
+                            Spectrum.Cell "Games"
+                            Spectrum.Cell "File folder"
+                            Spectrum.Cell "6/7/2020"
+                        ]
+                        Spectrum.Row [
+                            Spectrum.Cell "Program Files"
+                            Spectrum.Cell "File folder"
+                            Spectrum.Cell "4/7/2021"
+                        ]
+                        Spectrum.Row [
+                            Spectrum.Cell "bootmgr"
+                            Spectrum.Cell "System file"
+                            Spectrum.Cell "11/20/2010"
+                        ]
+                        Spectrum.Row [
+                            Spectrum.Cell "log.txt"
+                            Spectrum.Cell "Text Document"
+                            Spectrum.Cell "1/18/2016"
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let TableViewExample2 () =
+        let code = """let columns = [
+    {| name = "Name"; uid = "name" |}
+    {| name = "Type"; uid = "entryType" |}
+    {| name = "Date Modified"; uid = "date" |}
+]
+
+let rows = [
+    {| id = 1; name = "Games"; date = "6/7/2020"; entryType = "File folder" |}
+    {| id = 2; name = "Program Files"; date = "4/7/2021"; entryType = "File folder" |}
+    {| id = 3; name = "bootmgr"; date = "11/20/2010"; entryType = "System file" |}
+    {| id = 4; name = "log.txt"; date = "1/18/2016"; entryType = "Text Document" |}
+]
+
+Spectrum.TableView [
+    TableView.ariaLabel "Example table with dynamic content"
+    TableView.maxWidth (DimValue.Size Size6000)
+    TableView.selectionMode SelectionMode.Multiple
+    TableView.disabledKeys [ 3 ]
+    TableView.children [
+        Spectrum.TableHeader [
+            TableHeader.columns columns
+            TableHeader.columnTemplate (fun (col: {| name: string; uid: string |}) ->
+                Spectrum.Column [
+                    Column.key col.uid
+                    Column.align (if col.uid = "date" then ColumnAlignment.End else ColumnAlignment.Start)
+                    Column.content col.name
+                ]
+            )
+        ]
+        Spectrum.TableBody [
+            TableBody.items rows
+            TableBody.itemTemplate (fun (item: {| id: int; name: string; date: string; entryType: string |}) ->
+                Spectrum.Row [
+                    Row.cellTemplate (fun columnKey ->
+                        let entry: string = item?(columnKey)
+                        Spectrum.Cell entry
+                    )
+                ]
+            )
+        ]
+    ]
+]"""
+
+        Example "More complex example" code [] [
+            let columns = [
+                {| name = "Name"; uid = "name" |}
+                {| name = "Type"; uid = "entryType" |}
+                {| name = "Date Modified"; uid = "date" |}
+            ]
+
+            let rows = [
+                {| id = 1; name = "Games"; date = "6/7/2020"; entryType = "File folder" |}
+                {| id = 2; name = "Program Files"; date = "4/7/2021"; entryType = "File folder" |}
+                {| id = 3; name = "bootmgr"; date = "11/20/2010"; entryType = "System file" |}
+                {| id = 4; name = "log.txt"; date = "1/18/2016"; entryType = "Text Document" |}
+            ]
+
+            Spectrum.TableView [
+                TableView.ariaLabel "Example table with dynamic content"
+                TableView.maxWidth (DimValue.Size Size6000)
+                TableView.selectionMode SelectionMode.Multiple
+                TableView.disabledKeys [ 3 ]
+                TableView.children [
+                    Spectrum.TableHeader [
+                        TableHeader.columns columns
+                        TableHeader.columnTemplate (fun (col: {| name: string; uid: string |}) ->
+                            Spectrum.Column [
+                                Column.key col.uid
+                                Column.align (if col.uid = "date" then ColumnAlignment.End else ColumnAlignment.Start)
+                                Column.content col.name
+                            ]
+                        )
+                    ]
+                    Spectrum.TableBody [
+                        TableBody.items rows
+                        TableBody.itemTemplate (fun (item: {| id: int; name: string; date: string; entryType: string |}) ->
+                            Spectrum.Row [
+                                Row.cellTemplate (fun columnKey ->
+                                    let entry: string = item?(columnKey)
+                                    Spectrum.Cell entry
+                                )
+                            ]
+                        )
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let TableViewExample3 () =
+        let code = """let columns = [
+    {| id = "firstName"; name = "First Name" |}
+    {| id = "lastName"; name = "Last Name" |}
+    {| id = "city"; name = "City" |}
+]
+
+let rows = [
+    {| id = 1; firstName = "George"; lastName = "Danila"; city = "Sibiu" |}
+    {| id = 2; firstName = "Andras"; lastName = "Rodmell"; city = "Tilburg" |}
+    {| id = 3; firstName = "Hansiain"; lastName = "Muino"; city = "Hollola" |}
+    {| id = 4; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+    {| id = 5; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+    {| id = 6; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+    {| id = 7; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+    {| id = 8; firstName = "Andras"; lastName = "Rodmell"; city = "Tilburg" |}
+    {| id = 9; firstName = "Hansiain"; lastName = "Muino"; city = "Hollola" |}
+    {| id = 10; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+    {| id = 11; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+    {| id = 12; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+    {| id = 13; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+    {| id = 14; firstName = "Andras"; lastName = "Rodmell"; city = "Tilburg" |}
+    {| id = 15; firstName = "Hansiain"; lastName = "Muino"; city = "Hollola" |}
+    {| id = 16; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+    {| id = 17; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+    {| id = 18; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+    {| id = 19; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+    {| id = 20; firstName = "Andras"; lastName = "Rodmell"; city = "Tilburg" |}
+    {| id = 21; firstName = "Hansiain"; lastName = "Muino"; city = "Hollola" |}
+    {| id = 22; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+    {| id = 23; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+    {| id = 24; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+    {| id = 25; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+    {| id = 26; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+    {| id = 27; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+    {| id = 28; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+    {| id = 29; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+    {| id = 30; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+    {| id = 31; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+    {| id = 32; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+    {| id = 33; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+    {| id = 34; firstName = "Andras"; lastName = "Rodmell"; city = "Tilburg" |}
+    {| id = 35; firstName = "Hansiain"; lastName = "Muino"; city = "Hollola" |}
+    {| id = 36; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+    {| id = 37; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+    {| id = 38; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+    {| id = 39; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+    {| id = 40; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+    {| id = 41; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+    {| id = 42; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+    {| id = 43; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+    {| id = 44; firstName = "Andras"; lastName = "Rodmell"; city = "Tilburg" |}
+    {| id = 45; firstName = "Hansiain"; lastName = "Muino"; city = "Hollola" |}
+    {| id = 46; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+    {| id = 47; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+    {| id = 48; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+    {| id = 49; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+]
+
+Spectrum.Flex [
+    Flex.height (DimValue.Size Size5000)
+    Flex.width "100%"
+    Flex.direction FlexDirection.Column
+    Flex.gap (DimValue.Size Size150)
+    Flex.children [
+        Spectrum.ActionButton [
+            ActionButton.alignSelf FlexAlignSelf.Start
+            ActionButton.content "Add"
+        ]
+        Spectrum.TableView [
+            TableView.flex true
+            TableView.ariaLabel "Example table with dynamic content"
+            TableView.selectionMode SelectionMode.Single
+            TableView.selectionStyle TableViewSelectionStyle.Highlight
+            TableView.onAction (fun x -> Browser.Dom.window.alert(x))
+            TableView.children [
+                Spectrum.TableHeader [
+                    TableHeader.columns columns
+                    TableHeader.columnTemplate (fun (col: {| id: string; name: string |} ) ->
+                        Spectrum.Column [
+                            Column.key col.id
+                            Column.content col.name
+                        ]
+                    )
+                ]
+                Spectrum.TableBody [
+                    TableBody.items rows
+                    TableBody.itemTemplate (fun (item: {| firstName: string; lastName: string; city: string |}) ->
+                        Spectrum.Row [
+                            Row.cellTemplate (fun columnKey ->
+                                Spectrum.Cell (item?(columnKey) |> string)
+                            )
+                        ]
+                    )
+                ]
+            ]
+        ]
+    ]
+]"""
+
+        Example "Layout + highlight selection + action" code [] [
+            let columns = [
+                {| id = "firstName"; name = "First Name" |}
+                {| id = "lastName"; name = "Last Name" |}
+                {| id = "city"; name = "City" |}
+            ]
+
+            let rows = [
+                {| id = 1; firstName = "George"; lastName = "Danila"; city = "Sibiu" |}
+                {| id = 2; firstName = "Andras"; lastName = "Rodmell"; city = "Tilburg" |}
+                {| id = 3; firstName = "Hansiain"; lastName = "Muino"; city = "Hollola" |}
+                {| id = 4; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+                {| id = 5; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+                {| id = 6; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+                {| id = 7; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+                {| id = 8; firstName = "Andras"; lastName = "Rodmell"; city = "Tilburg" |}
+                {| id = 9; firstName = "Hansiain"; lastName = "Muino"; city = "Hollola" |}
+                {| id = 10; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+                {| id = 11; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+                {| id = 12; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+                {| id = 13; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+                {| id = 14; firstName = "Andras"; lastName = "Rodmell"; city = "Tilburg" |}
+                {| id = 15; firstName = "Hansiain"; lastName = "Muino"; city = "Hollola" |}
+                {| id = 16; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+                {| id = 17; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+                {| id = 18; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+                {| id = 19; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+                {| id = 20; firstName = "Andras"; lastName = "Rodmell"; city = "Tilburg" |}
+                {| id = 21; firstName = "Hansiain"; lastName = "Muino"; city = "Hollola" |}
+                {| id = 22; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+                {| id = 23; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+                {| id = 24; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+                {| id = 25; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+                {| id = 26; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+                {| id = 27; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+                {| id = 28; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+                {| id = 29; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+                {| id = 30; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+                {| id = 31; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+                {| id = 32; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+                {| id = 33; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+                {| id = 34; firstName = "Andras"; lastName = "Rodmell"; city = "Tilburg" |}
+                {| id = 35; firstName = "Hansiain"; lastName = "Muino"; city = "Hollola" |}
+                {| id = 36; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+                {| id = 37; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+                {| id = 38; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+                {| id = 39; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+                {| id = 40; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+                {| id = 41; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+                {| id = 42; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+                {| id = 43; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+                {| id = 44; firstName = "Andras"; lastName = "Rodmell"; city = "Tilburg" |}
+                {| id = 45; firstName = "Hansiain"; lastName = "Muino"; city = "Hollola" |}
+                {| id = 46; firstName = "Northrop"; lastName = "Adnet"; city = "Lai Cach" |}
+                {| id = 47; firstName = "Giana"; lastName = "Phython"; city = "Laspezia" |}
+                {| id = 48; firstName = "Maud"; lastName = "Jaram"; city = "Tipaz" |}
+                {| id = 49; firstName = "Maud"; lastName = "Jaram"; city = "Testing" |}
+            ]
+
+            Spectrum.Flex [
+                Flex.height (DimValue.Size Size5000)
+                Flex.width "100%"
+                Flex.direction FlexDirection.Column
+                Flex.gap (DimValue.Size Size150)
+                Flex.children [
+                    Spectrum.ActionButton [
+                        ActionButton.alignSelf FlexAlignSelf.Start
+                        ActionButton.content "Add"
+                    ]
+                    Spectrum.TableView [
+                        TableView.flex true
+                        TableView.ariaLabel "Example table with dynamic content"
+                        TableView.selectionMode SelectionMode.Single
+                        TableView.selectionStyle TableViewSelectionStyle.Highlight
+                        TableView.onAction (fun x -> Browser.Dom.window.alert(x))
+                        TableView.children [
+                            Spectrum.TableHeader [
+                                TableHeader.columns columns
+                                TableHeader.columnTemplate (fun (col: {| id: string; name: string |} ) ->
+                                    Spectrum.Column [
+                                        Column.key col.id
+                                        Column.content col.name
+                                    ]
+                                )
+                            ]
+                            Spectrum.TableBody [
+                                TableBody.items rows
+                                TableBody.itemTemplate (fun (item: {| firstName: string; lastName: string; city: string |}) ->
+                                    Spectrum.Row [
+                                        Row.cellTemplate (fun columnKey ->
+                                            Spectrum.Cell (item?(columnKey) |> string)
+                                        )
+                                    ]
+                                )
+                            ]
+                        ]
+                    ]
+                ]
+            ]
         ]
 
     [<ReactComponent>]
@@ -910,4 +1668,7 @@ React.fragment [
         ]
 
         ExampleGroup "TableView" description [
+            TableViewExample1 ()
+            TableViewExample2 ()
+            TableViewExample3 ()
         ]

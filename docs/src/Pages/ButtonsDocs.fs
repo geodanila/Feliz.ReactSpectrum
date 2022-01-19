@@ -16,7 +16,9 @@ module GeneralDocs =
         Browser.Dom.window.alert("I was clicked!")
     )
 ]"""
-        Example "A simple button" code [] [
+        let description = []
+
+        Example "A simple button" code description [
             Spectrum.ActionButton [
                 ActionButton.content "Press me"
                 ActionButton.onPress (fun ev ->

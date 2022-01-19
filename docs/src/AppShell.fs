@@ -2,6 +2,7 @@ module AppShell
 
 open Feliz.ReactSpectrum
 open Feliz
+open Feliz.Router
 open Fable.Core
 open Fable.Core.JsInterop
 open Pages
@@ -72,15 +73,38 @@ let getDocs = function
     | DocsId.Flex -> FlexDocs ()
     | DocsId.Grid -> GridDocs ()
 
+let parseUrl = function
+    | [ "" ] -> DocsId.Overview
+    | [ "installation" ] -> DocsId.Installation
+    | [ "application"; "provider" ] -> DocsId.Provider
+    | [ "layout"; "flex" ] -> DocsId.Flex
+    | [ "layout"; "grid" ] -> DocsId.Grid
+    | [ "buttons"; "actionbutton" ] -> DocsId.ActionButton
+    | [ "buttons"; "button" ] -> DocsId.Button
+    | [ "buttons"; "togglebutton" ] -> DocsId.ToggleButton
+    | _ -> DocsId.Overview
+
+let makeUrl = function
+    | DocsId.Overview -> Router.format ""
+    | DocsId.Installation -> Router.format "installation"
+    | DocsId.Provider -> Router.format [ "application"; "provider" ]
+    | DocsId.Flex -> Router.format [ "layout"; "flex" ]
+    | DocsId.Grid -> Router.format [ "layout"; "grid" ]
+    | DocsId.ActionButton -> Router.format [ "buttons"; "actionbutton" ]
+    | DocsId.Button -> Router.format [ "buttons"; "button" ]
+    | DocsId.ToggleButton -> Router.format [ "buttons"; "togglebutton" ]
+
 type Model =
-    { SelectedDoc: DocsId }
+    {
+        SelectedDoc: DocsId
+    }
 
 type Msg =
     | SelectDocsId of DocsId
 
 let init () : Model * Cmd<Msg> =
     let cmd = Cmd<_>.Empty
-    let model = { SelectedDoc = DocsId.Overview }
+    let model = { SelectedDoc = Router.currentUrl () |> parseUrl }
     model, cmd
 
 let update (msg: Msg) (model: Model) : Model * Cmd<Msg> =
@@ -123,7 +147,7 @@ let view (model: Model) dispatch =
                                         ListBox.selectedKeys [ model.SelectedDoc ]
                                         ListBox.onSelectionChange (
                                             function
-                                            | [ newSelection ] -> (SelectDocsId(newSelection) |> dispatch)
+                                            | [ newSelection ] -> (makeUrl newSelection |> Router.navigate)
                                             | _ -> ()
                                         )
                                     ]
@@ -134,7 +158,12 @@ let view (model: Model) dispatch =
                                 View.paddingTop 20
                                 View.id "content-host"
                                 View.children [
-                                    getDocs model.SelectedDoc
+                                    React.router [
+                                        router.onUrlChanged (parseUrl >> SelectDocsId >> dispatch)
+                                        router.children [
+                                            getDocs model.SelectedDoc
+                                        ]
+                                    ]
                                 ]
                             ]
                         ]

@@ -381,6 +381,8 @@ let view (model: Model) dispatch =
                         Flex.children [
                             Spectrum.View [
                                 View.width 200
+                                View.maxWidth 200
+                                View.minWidth 200
                                 View.backgroundColor (BackgroundColorValue.Color Gray200)
                                 View.children [
                                     Spectrum.ListBox [

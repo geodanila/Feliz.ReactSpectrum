@@ -816,6 +816,262 @@ let EditDialog () =
         ]
 
     [<ReactComponent>]
+    let DialogTriggerExample1 () =
+        let code = """Spectrum.DialogTrigger [
+    DialogTrigger.type' DialogTriggerType.Popover
+    DialogTrigger.children [
+        Spectrum.ActionButton "Disk Status"
+        Spectrum.Dialog [
+            Spectrum.Heading "C://"
+            Spectrum.Divider ()
+            Spectrum.Content [
+                Spectrum.Text "50% disk space remaining."
+            ]
+        ]
+    ]
+]"""
+
+        Example "Default example" code [] [
+            Spectrum.DialogTrigger [
+                DialogTrigger.type' DialogTriggerType.Popover
+                DialogTrigger.children [
+                    Spectrum.ActionButton "Disk Status"
+                    Spectrum.Dialog [
+                        Spectrum.Heading "C://"
+                        Spectrum.Divider ()
+                        Spectrum.Content [
+                            Spectrum.Text "50% disk space remaining."
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let DialogTriggerExample2 () =
+        let code = """Spectrum.DialogTrigger [
+    DialogTrigger.type' DialogTriggerType.Tray
+    DialogTrigger.children [
+        Spectrum.ActionButton "Check messages"
+        Spectrum.Dialog [
+            Spectrum.Heading "New messages"
+            Spectrum.Divider ()
+            Spectrum.Content [
+                Spectrum.Text "You have 5 new messages."
+            ]
+        ]
+    ]
+]"""
+
+        Example "Tray dialog" code [] [
+            Spectrum.DialogTrigger [
+                DialogTrigger.type' DialogTriggerType.Tray
+                DialogTrigger.children [
+                    Spectrum.ActionButton "Check messages"
+                    Spectrum.Dialog [
+                        Spectrum.Heading "New messages"
+                        Spectrum.Divider ()
+                        Spectrum.Content [
+                            Spectrum.Text "You have 5 new messages."
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let DialogTriggerExample3 () =
+        let code = """let ref = React.useRef<Browser.Types.HTMLElement option>(None)
+
+Spectrum.Flex [
+    Flex.gap (DimValue.Size Size1000)
+    Flex.children [
+        Spectrum.DialogTrigger [
+            DialogTrigger.type' DialogTriggerType.Popover
+            DialogTrigger.targetRef ref
+            DialogTrigger.children [
+                Spectrum.ActionButton "Trigger"
+                Spectrum.Dialog [
+                    Spectrum.Heading "The heading"
+                    Spectrum.Divider ()
+                    Spectrum.Content [
+                        Spectrum.Text "This is a popover anchored to the span"
+                    ]
+                ]
+            ]
+        ]
+        Html.span [
+            prop.ref ref
+            prop.style [
+                style.width 140
+                style.textAlign.center
+            ]
+            prop.children [
+                Html.text "Popover appears over here"
+            ]
+        ]
+    ]
+]"""
+
+        Example "Dialog anchor" code [] [
+            let ref = React.useRef<Browser.Types.HTMLElement option>(None)
+
+            Spectrum.Flex [
+                Flex.gap (DimValue.Size Size1000)
+                Flex.children [
+                    Spectrum.DialogTrigger [
+                        DialogTrigger.type' DialogTriggerType.Popover
+                        DialogTrigger.targetRef ref
+                        DialogTrigger.children [
+                            Spectrum.ActionButton "Trigger"
+                            Spectrum.Dialog [
+                                Spectrum.Heading "The heading"
+                                Spectrum.Divider ()
+                                Spectrum.Content [
+                                    Spectrum.Text "This is a popover anchored to the span"
+                                ]
+                            ]
+                        ]
+                    ]
+                    Html.span [
+                        prop.ref ref
+                        prop.style [
+                            style.width 140
+                            style.textAlign.center
+                        ]
+                        prop.children [
+                            Html.text "Popover appears over here"
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let DialogTriggerExample4 () =
+        let code = """Spectrum.DialogTrigger [
+    DialogTrigger.type' DialogTriggerType.Popover
+    DialogTrigger.placement Placement.RightTop
+    DialogTrigger.children [
+        Spectrum.ActionButton "Trigger"
+        Spectrum.Dialog [
+            Spectrum.Heading "The Heading"
+            Spectrum.Divider ()
+            Spectrum.Content [
+                Spectrum.Text "This is a popover placed to the right of its trigger and offset so the arrow is at the top of the dialog."
+            ]
+        ]
+    ]
+]"""
+
+        Example "Placement" code [] [
+            Spectrum.DialogTrigger [
+                DialogTrigger.type' DialogTriggerType.Popover
+                DialogTrigger.placement Placement.RightTop
+                DialogTrigger.children [
+                    Spectrum.ActionButton "Trigger"
+                    Spectrum.Dialog [
+                        Spectrum.Heading "The Heading"
+                        Spectrum.Divider ()
+                        Spectrum.Content [
+                            Spectrum.Text "This is a popover placed to the right of its trigger and offset so the arrow is at the top of the dialog."
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let DialogTriggerExample5 () =
+        let code = """Spectrum.DialogTrigger [
+    DialogTrigger.type' DialogTriggerType.Popover
+    DialogTrigger.placement Placement.Top
+    DialogTrigger.offset 50
+    DialogTrigger.children [
+        Spectrum.ActionButton "Trigger"
+        Spectrum.Dialog [
+            Spectrum.Heading "Offset"
+            Spectrum.Divider ()
+            Spectrum.Content [
+                Spectrum.Text "Offset by an additional 50px."
+            ]
+        ]
+    ]
+]"""
+
+        Example "Offset and cross offset" code [] [
+            Spectrum.DialogTrigger [
+                DialogTrigger.type' DialogTriggerType.Popover
+                DialogTrigger.placement Placement.Top
+                DialogTrigger.offset 50
+                DialogTrigger.children [
+                    Spectrum.ActionButton "Trigger"
+                    Spectrum.Dialog [
+                        Spectrum.Heading "Offset"
+                        Spectrum.Divider ()
+                        Spectrum.Content [
+                            Spectrum.Text "Offset by an additional 50px."
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let DialogTriggerExample6 () =
+        let code = """let isOpen, setIsOpen = React.useState(false)
+
+Spectrum.Flex [
+    Flex.alignItems FlexAlignItems.Center
+    Flex.gap (DimValue.Size Size100)
+    Flex.children [
+        Spectrum.DialogTrigger [
+            DialogTrigger.type' DialogTriggerType.Popover
+            DialogTrigger.placement Placement.Top
+            DialogTrigger.onOpenChange setIsOpen
+            DialogTrigger.children [
+                Spectrum.ActionButton "Whispers"
+                Spectrum.Dialog [
+                    Spectrum.Heading "Whispers and DMs"
+                    Spectrum.Divider ()
+                    Spectrum.Content [
+                        Spectrum.Text "You have 0 new messages."
+                    ]
+                ]
+            ]
+        ]
+        Spectrum.Text $"Current open state: {isOpen}"
+    ]
+]"""
+
+        Example "Events" code [] [
+            let isOpen, setIsOpen = React.useState(false)
+
+            Spectrum.Flex [
+                Flex.alignItems FlexAlignItems.Center
+                Flex.gap (DimValue.Size Size100)
+                Flex.children [
+                    Spectrum.DialogTrigger [
+                        DialogTrigger.type' DialogTriggerType.Popover
+                        DialogTrigger.placement Placement.Top
+                        DialogTrigger.onOpenChange setIsOpen
+                        DialogTrigger.children [
+                            Spectrum.ActionButton "Whispers"
+                            Spectrum.Dialog [
+                                Spectrum.Heading "Whispers and DMs"
+                                Spectrum.Divider ()
+                                Spectrum.Content [
+                                    Spectrum.Text "You have 0 new messages."
+                                ]
+                            ]
+                        ]
+                    ]
+                    Spectrum.Text $"Current open state: {isOpen}"
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
     let DialogTriggerDocs () =
         let description = [
             Html.text "DialogTrigger serves as a wrapper around a Dialog and its associated trigger, linking the Dialog's open state with the trigger's press state. Additionally, it allows you to customize the type and positioning of the Dialog."
@@ -830,6 +1086,12 @@ let EditDialog () =
         ]
 
         ExampleGroup "DialogTrigger" description [
+            DialogTriggerExample1 ()
+            DialogTriggerExample2 ()
+            DialogTriggerExample3 ()
+            DialogTriggerExample4 ()
+            DialogTriggerExample5 ()
+            DialogTriggerExample6 ()
         ]
 
     [<ReactComponent>]

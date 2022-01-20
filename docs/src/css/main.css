@@ -109,4 +109,8 @@ ul.bullet-list {
         min-width: 170px;
         max-width: 170px;
     }
+
+    body {
+        -webkit-text-size-adjust: none;
+    }
 }

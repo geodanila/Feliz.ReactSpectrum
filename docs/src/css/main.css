@@ -6,6 +6,22 @@ html, body, #app-root, #spectrum-provider {
     font-size: 16px;
 }
 
+#main {
+    width: 100%;
+    height: 100%;
+}
+
+#main-content {
+    width: 70%;
+    height: 100%;
+}
+
+#navigation-list-host {
+    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
+}
+
 #navigation-list {
     height: 100%;
 }
@@ -81,4 +97,16 @@ ul.bullet-list {
 
 .example-result {
     background-color: #e9e8e8;
+}
+
+@media screen and (max-width: 1024px) {
+    #main-content {
+        width: 100%;
+    }
+
+    #navigation-list-host {
+        width: 170px;
+        min-width: 170px;
+        max-width: 170px;
+    }
 }

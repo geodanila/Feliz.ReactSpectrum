@@ -368,21 +368,17 @@ let view (model: Model) dispatch =
         Provider.id "spectrum-provider"
         Provider.children [
             Spectrum.Flex [
-                Flex.width "100%"
-                Flex.height "100%"
+                Flex.id "main"
                 Flex.direction FlexDirection.Column
                 Flex.alignItems FlexAlignItems.Center
                 Flex.children [
                     Spectrum.Flex [
+                        Flex.id "main-content"
                         Flex.columnGap (DimValue.Size Size300)
                         Flex.direction FlexDirection.Row
-                        Flex.height "100%"
-                        Flex.width "70%"
                         Flex.children [
                             Spectrum.View [
-                                View.width 200
-                                View.maxWidth 200
-                                View.minWidth 200
+                                View.id "navigation-list-host"
                                 View.backgroundColor (BackgroundColorValue.Color Gray200)
                                 View.children [
                                     Spectrum.ListBox [

@@ -9,6 +9,118 @@ open Fable.Core.JsInterop
 module FormsDocs =
 
     [<ReactComponent>]
+    let CheckboxExample1 () =
+        let code = """Spectrum.Checkbox [
+    Checkbox.content "Unsubscribe"
+]"""
+
+        Example "Default example" code [] [
+            Spectrum.Checkbox [
+                Checkbox.content "Unsubscribe"
+            ]
+        ]
+
+    [<ReactComponent>]
+    let CheckboxExample2 () =
+        let code = """let selected, setSelected = React.useState(true)
+Spectrum.Flex [
+    Flex.direction FlexDirection.Row
+    Flex.children [
+        Spectrum.Checkbox [
+            Checkbox.defaultSelected true
+            Checkbox.content "Subscribe (uncontrolled)"
+        ]
+        Spectrum.Checkbox [
+            Checkbox.isSelected selected
+            Checkbox.onChange setSelected
+            Checkbox.content "Subscribe (controlled)"
+        ]
+    ]
+]"""
+
+        Example "Value" code [] [
+            let selected, setSelected = React.useState(true)
+            Spectrum.Flex [
+                Flex.direction FlexDirection.Row
+                Flex.children [
+                    Spectrum.Checkbox [
+                        Checkbox.defaultSelected true
+                        Checkbox.content "Subscribe (uncontrolled)"
+                    ]
+                    Spectrum.Checkbox [
+                        Checkbox.isSelected selected
+                        Checkbox.onChange setSelected
+                        Checkbox.content "Subscribe (controlled)"
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let CheckboxExample3 () =
+        let code = """Spectrum.Checkbox [
+    Checkbox.isIndeterminate true
+    Checkbox.content "Subscribe"
+]"""
+
+        Example "Indeterminate" code [] [
+            Spectrum.Checkbox [
+                Checkbox.isIndeterminate true
+                Checkbox.content "Subscribe"
+            ]
+        ]
+
+    [<ReactComponent>]
+    let CheckboxExample4 () =
+        let code = """let selected, setSelected = React.useState(false)
+    Spectrum.Flex [
+        Flex.direction FlexDirection.Column
+        Flex.children [
+            Spectrum.Checkbox [
+                Checkbox.isSelected selected
+                Checkbox.onChange setSelected
+                Checkbox.content "Subscribe"
+            ]
+            Spectrum.View [
+                let status = if selected then "subscribed" else "unsubscribed"
+                Html.text $"You are {status}"
+            ]
+        ]
+    ]"""
+
+        Example "Events" code [] [
+            let selected, setSelected = React.useState(false)
+            Spectrum.Flex [
+                Flex.direction FlexDirection.Column
+                Flex.children [
+                    Spectrum.Checkbox [
+                        Checkbox.isSelected selected
+                        Checkbox.onChange setSelected
+                        Checkbox.content "Subscribe"
+                    ]
+                    Spectrum.View [
+                        let status = if selected then "subscribed" else "unsubscribed"
+                        Html.text $"You are {status}"
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let CheckboxExample5 () =
+        let code = """Spectrum.Checkbox [
+        Checkbox.validationState ValidationState.Invalid
+        Checkbox.content "I accept the terms and conditions"
+    ]"""
+
+        Example "Validation" code [] [
+            Spectrum.Checkbox [
+                Checkbox.validationState ValidationState.Invalid
+                Checkbox.content "I accept the terms and conditions"
+            ]
+        ]
+
+    [<ReactComponent>]
     let CheckboxDocs () =
         let description = [
             Html.text "Checkboxes allow users to select multiple items from a list of individual items, or to mark one individual item as selected."
@@ -23,6 +135,11 @@ module FormsDocs =
         ]
 
         ExampleGroup "Checkbox" description [
+            CheckboxExample1 ()
+            CheckboxExample2 ()
+            CheckboxExample3 ()
+            CheckboxExample4 ()
+            CheckboxExample5 ()
         ]
 
     [<ReactComponent>]

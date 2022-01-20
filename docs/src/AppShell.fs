@@ -394,7 +394,10 @@ let view (model: Model) dispatch =
                                         ListBox.selectedKeys [ model.SelectedDoc ]
                                         ListBox.onSelectionChange (
                                             function
-                                            | [ newSelection ] -> (makeUrl newSelection |> Router.navigate)
+                                            | [ newSelection ] ->
+                                                (makeUrl newSelection |> Router.navigate)
+                                                Browser.Dom.document.getElementById("content-host")
+                                                |> (fun x -> x.scrollTo(0, 0))
                                             | _ -> ()
                                         )
                                     ]

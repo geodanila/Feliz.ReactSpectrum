@@ -1,7 +1,7 @@
 # Feliz.ReactSpectrum
 Feliz-style Fable bindings for Adobe's [React Spectrum components](https://react-spectrum.adobe.com/react-spectrum/getting-started.html)
 
-# Documentation
+# Documentation (not optimised for mobile yet)
 - See it in action here: https://geodanila.github.io/Feliz.ReactSpectrum/
 
 # Running the docs locally

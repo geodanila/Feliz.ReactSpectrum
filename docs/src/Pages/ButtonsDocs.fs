@@ -6,7 +6,7 @@ open Fable.Core
 open Fable.Core.JsInterop
 
 [<AutoOpen>]
-module GeneralDocs =
+module ButtonsDocs =
 
     [<ReactComponent>]
     let ActionButtonExample1 () =

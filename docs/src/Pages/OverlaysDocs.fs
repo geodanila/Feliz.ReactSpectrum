@@ -656,7 +656,6 @@ React.fragment [
             Spectrum.Divider ()
             Spectrum.Content [
                 Spectrum.Form [
-                    //Form.width "100%"
                     Form.children [
                         Spectrum.TextField [
                             TextField.autoFocus true
@@ -730,7 +729,6 @@ let EditDialog () =
         Spectrum.Divider ()
         Spectrum.Content [
             Spectrum.Form [
-                //Form.width "100%"
                 Form.children [
                     Spectrum.TextField [
                         TextField.autoFocus true

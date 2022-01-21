@@ -4,6 +4,7 @@ html, body, #app-root, #spectrum-provider {
     width: 100%;
     height: 100%;
     font-size: 16px;
+    overflow-y: hidden;
 }
 
 #main {
@@ -14,6 +15,7 @@ html, body, #app-root, #spectrum-provider {
 #main-content {
     width: 70%;
     height: 100%;
+    overflow-y: hidden
 }
 
 #navigation-list-host {
@@ -27,10 +29,18 @@ html, body, #app-root, #spectrum-provider {
 }
 
 #content-host {
+    width: 100%;
+    height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    padding-right: 20px;
-    padding-bottom: 20px;
+}
+
+#content-host > div {
+    padding: 20px 20px 20px 0;
+}
+
+#toggle-host {
+    display: none;
 }
 
 body {
@@ -104,10 +114,28 @@ ul.bullet-list {
         width: 100%;
     }
 
+    #toggle-host {
+        display: inherit;
+        padding-left: 4px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
     #navigation-list-host {
-        width: 170px;
-        min-width: 170px;
-        max-width: 170px;
+        width: 200px;
+        min-width: 200px;
+        max-width: 200px;
+        position: absolute;
+        height: calc(100vh - 41px);
+        z-index: 2;
+    }
+
+    #navigation-list-host.collapsed {
+        visibility: collapse;
+    }
+
+    #content-host > div {
+        padding: 20px;
     }
 
     body {

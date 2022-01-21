@@ -348,67 +348,78 @@ type Msg =
     | SelectDocsId of DocsId
 
 let init () : Model * Cmd<Msg> =
-    let cmd = Cmd<_>.Empty
     let model = { SelectedDoc = Router.currentUrl () |> parseUrl }
-    model, cmd
+    model, Cmd.Empty
 
 let update (msg: Msg) (model: Model) : Model * Cmd<Msg> =
-    let cmd = Cmd<_>.Empty
     match msg with
-    | SelectDocsId id -> { model with SelectedDoc = id }, cmd
+    | SelectDocsId id -> { model with SelectedDoc = id }, Cmd.Empty
 
-let view (model: Model) dispatch =
+[<ReactComponent>]
+let Shell model dispatch =
     let navSections = buildNavSections()
+    let isToggled, setIsToggled = React.useState(false)
 
-    Spectrum.Provider [
-        Provider.defaultTheme
-        Provider.colorScheme ColorScheme.Light
-        Provider.locale "en-US"
-        Provider.scale Scale.Medium
-        Provider.id "spectrum-provider"
-        Provider.children [
+    Spectrum.Flex [
+        Flex.id "main"
+        Flex.direction FlexDirection.Column
+        Flex.alignItems FlexAlignItems.Center
+        Flex.children [
+            Spectrum.View [
+                View.id "toggle-host"
+                View.borderBottomColor BorderColorValue.Dark
+                View.borderBottomWidth BorderSizeValue.Thin
+                View.alignSelf FlexAlignSelf.Stretch
+                View.children [
+                    Spectrum.ToggleButton [
+                        ToggleButton.isSelected isToggled
+                        ToggleButton.onChange setIsToggled
+                        ToggleButton.children [
+                            if isToggled then Spectrum.Icon.Menu []
+                            else Spectrum.Icon.ShowMenu []
+                        ]
+                        View.alignSelf FlexAlignSelf.Start
+                    ]
+                ]
+            ]
             Spectrum.Flex [
-                Flex.id "main"
-                Flex.direction FlexDirection.Column
-                Flex.alignItems FlexAlignItems.Center
+                Flex.id "main-content"
+                Flex.flex 1
+                Flex.columnGap (DimValue.Size Size300)
+                Flex.direction FlexDirection.Row
                 Flex.children [
-                    Spectrum.Flex [
-                        Flex.id "main-content"
-                        Flex.columnGap (DimValue.Size Size300)
-                        Flex.direction FlexDirection.Row
-                        Flex.children [
-                            Spectrum.View [
-                                View.id "navigation-list-host"
-                                View.backgroundColor (BackgroundColorValue.Color Gray200)
-                                View.children [
-                                    Spectrum.ListBox [
-                                        ListBox.id "navigation-list"
-                                        ListBox.children navSections
-                                        ListBox.ariaLabel "Navigation panel"
-                                        ListBox.selectionMode SelectionMode.Single
-                                        ListBox.disallowEmptySelection true
-                                        ListBox.selectedKeys [ model.SelectedDoc ]
-                                        ListBox.onSelectionChange (
-                                            function
-                                            | [ newSelection ] ->
-                                                (makeUrl newSelection |> Router.navigate)
-                                                Browser.Dom.document.getElementById("content-host")
-                                                |> (fun x -> x.scrollTo(0, 0))
-                                            | _ -> ()
-                                        )
-                                    ]
-                                ]
+                    Spectrum.View [
+                        View.id "navigation-list-host"
+                        if not isToggled then View.UNSAFE_className "collapsed"
+                        View.backgroundColor (BackgroundColorValue.Color Gray200)
+                        View.children [
+                            Spectrum.ListBox [
+                                ListBox.id "navigation-list"
+                                ListBox.children navSections
+                                ListBox.ariaLabel "Navigation panel"
+                                ListBox.selectionMode SelectionMode.Single
+                                ListBox.disallowEmptySelection true
+                                ListBox.selectedKeys [ model.SelectedDoc ]
+                                ListBox.onSelectionChange (
+                                    function
+                                    | [ newSelection ] ->
+                                        (makeUrl newSelection |> Router.navigate)
+                                        setIsToggled(false)
+                                        Browser.Dom.document.getElementById("content-host")
+                                        |> (fun x -> x.scrollTo(0, 0))
+                                    | _ -> ()
+                                )
                             ]
-                            Spectrum.View [
-                                View.flexGrow 1
-                                View.paddingTop 20
-                                View.id "content-host"
-                                View.children [
-                                    React.router [
-                                        router.onUrlChanged (parseUrl >> SelectDocsId >> dispatch)
-                                        router.children [
-                                            getDocs model.SelectedDoc
-                                        ]
+                        ]
+                    ]
+                    Spectrum.View [
+                        View.id "content-host"
+                        View.children [
+                            Html.div [
+                                React.router [
+                                    router.onUrlChanged (parseUrl >> SelectDocsId >> dispatch)
+                                    router.children [
+                                        getDocs model.SelectedDoc
                                     ]
                                 ]
                             ]
@@ -416,5 +427,17 @@ let view (model: Model) dispatch =
                     ]
                 ]
             ]
+        ]
+    ]
+
+let view (model: Model) dispatch =
+    Spectrum.Provider [
+        Provider.defaultTheme
+        Provider.colorScheme ColorScheme.Light
+        Provider.locale "en-US"
+        Provider.scale Scale.Medium
+        Provider.id "spectrum-provider"
+        Provider.children [
+            Shell model dispatch
         ]
     ]

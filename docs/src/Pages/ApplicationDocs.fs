@@ -113,7 +113,8 @@ module ApplicationDocs =
 
     [<ReactComponent>]
     let ProviderExample4 () =
-        let code = """Spectrum.Flex [
+        let code = """// Note: You still need to define an app-level Provider for themeing.
+Spectrum.Flex [
     Flex.direction FlexDirection.Column
     Flex.gap (DimValue.Size Size100)
     Flex.alignItems FlexAlignItems.Start
@@ -157,6 +158,7 @@ module ApplicationDocs =
         ]
 
         Example "Property groups" code description [
+            // Note: You still need to define an app-level Provider for themeing.
             Spectrum.Flex [
                 Flex.direction FlexDirection.Column
                 Flex.gap (DimValue.Size Size100)

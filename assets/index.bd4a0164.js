@@ -431,7 +431,8 @@ Spectrum.ToggleButton [
         ]
     ]
 ]
-`,description:o(),elements:u(n.createElement(Ht,me(f([(e=pn,["theme",e]),["colorScheme","dark"],["children",n.Children.toArray([n.createElement(R,{padding:20,children:n.Children.toArray([n.createElement(N,{children:"Dark mode!"})])})])]]))))})}function zc(){const e=u(r.exports.createElement("p",{className:"paragraph",children:n.Children.toArray(["You can use a Provider component to define common properties for a group of components within. For example, you can disable multiple components as follows:"])}));return r.exports.createElement(m,{title:"Property groups",code:`Spectrum.Flex [
+`,description:o(),elements:u(n.createElement(Ht,me(f([(e=pn,["theme",e]),["colorScheme","dark"],["children",n.Children.toArray([n.createElement(R,{padding:20,children:n.Children.toArray([n.createElement(N,{children:"Dark mode!"})])})])]]))))})}function zc(){const e=u(r.exports.createElement("p",{className:"paragraph",children:n.Children.toArray(["You can use a Provider component to define common properties for a group of components within. For example, you can disable multiple components as follows:"])}));return r.exports.createElement(m,{title:"Property groups",code:`// Note: You still need to define an app-level Provider for themeing.
+Spectrum.Flex [
     Flex.direction FlexDirection.Column
     Flex.gap (DimValue.Size Size100)
     Flex.alignItems FlexAlignItems.Start

@@ -211,13 +211,6 @@ Spectrum.Flex [
             ]
         ]
 
-    let makeItem key text =
-        Spectrum.Item [
-            Item.key key
-            Item.textValue text
-            Item.content text
-        ]
-
     [<ReactComponent>]
     let ListBoxExample4 () =
         let code = """Spectrum.ListBox [
@@ -228,17 +221,35 @@ Spectrum.Flex [
         Spectrum.Section [
             Section.title "Animals"
             Section.children [
-                makeItem "Aardvark" "Aardvark"
-                makeItem "Kangaroo" "Kangaroo"
-                makeItem "Snake" "Snake"
+                Spectrum.Item [
+                    Item.key "Aardvark"
+                    Item.content "Aardvark"
+                ]
+                Spectrum.Item [
+                    Item.key "Kangaroo"
+                    Item.content "Kangaroo"
+                ]
+                Spectrum.Item [
+                    Item.key "Snake"
+                    Item.content "Snake"
+                ]
             ]
         ]
         Spectrum.Section [
             Section.title "People"
             Section.children [
-                makeItem "Danni" "Danni"
-                makeItem "Devon" "Devon"
-                makeItem "Ross" "Ross"
+                Spectrum.Item [
+                    Item.key "Danni"
+                    Item.content "Danni"
+                ]
+                Spectrum.Item [
+                    Item.key "Devon"
+                    Item.content "Devon"
+                ]
+                Spectrum.Item [
+                    Item.key "Ross"
+                    Item.content "Ross"
+                ]
             ]
         ]
     ]
@@ -253,17 +264,35 @@ Spectrum.Flex [
                     Spectrum.Section [
                         Section.title "Animals"
                         Section.children [
-                            makeItem "Aardvark" "Aardvark"
-                            makeItem "Kangaroo" "Kangaroo"
-                            makeItem "Snake" "Snake"
+                            Spectrum.Item [
+                                Item.key "Aardvark"
+                                Item.content "Aardvark"
+                            ]
+                            Spectrum.Item [
+                                Item.key "Kangaroo"
+                                Item.content "Kangaroo"
+                            ]
+                            Spectrum.Item [
+                                Item.key "Snake"
+                                Item.content "Snake"
+                            ]
                         ]
                     ]
                     Spectrum.Section [
                         Section.title "People"
                         Section.children [
-                            makeItem "Danni" "Danni"
-                            makeItem "Devon" "Devon"
-                            makeItem "Ross" "Ross"
+                            Spectrum.Item [
+                                Item.key "Danni"
+                                Item.content "Danni"
+                            ]
+                            Spectrum.Item [
+                                Item.key "Devon"
+                                Item.content "Devon"
+                            ]
+                            Spectrum.Item [
+                                Item.key "Ross"
+                                Item.content "Ross"
+                            ]
                         ]
                     ]
                 ]
@@ -351,12 +380,6 @@ Spectrum.ListBox [
     [<ReactComponent>]
     let ListBoxExample6 () =
         let code = """let frequency, setFrequency = React.useState<string list>([])
-let makeItem x =
-    Spectrum.Item [
-        Item.key x
-        Item.textValue x
-        Item.children [ Spectrum.Text x ]
-    ]
 
 React.fragment [
     Spectrum.ListBox [
@@ -365,9 +388,18 @@ React.fragment [
         ListBox.onSelectionChange setFrequency
         ListBox.width (DimValue.Size Size2400)
         ListBox.children [
-            makeItem "Rarely"
-            makeItem "Sometimes"
-            makeItem "Always"
+            Spectrum.Item [
+                Item.key "Rarely"
+                Item.content "Rarely"
+            ]
+            Spectrum.Item [
+                Item.key "Sometimes"
+                Item.content "Sometimes"
+            ]
+            Spectrum.Item [
+                Item.key "Always"
+                Item.content "Always"
+            ]
         ]
     ]
     Html.p $"You selected: {match frequency with | [ value ] -> value | _ -> System.String.Empty}"
@@ -375,12 +407,6 @@ React.fragment [
 
         Example "Events" code [] [
             let frequency, setFrequency = React.useState<string list>([])
-            let makeItem x =
-                Spectrum.Item [
-                    Item.key x
-                    Item.textValue x
-                    Item.children [ Spectrum.Text x ]
-                ]
 
             React.fragment [
                 Spectrum.ListBox [
@@ -389,9 +415,18 @@ React.fragment [
                     ListBox.onSelectionChange setFrequency
                     ListBox.width (DimValue.Size Size2400)
                     ListBox.children [
-                        makeItem "Rarely"
-                        makeItem "Sometimes"
-                        makeItem "Always"
+                        Spectrum.Item [
+                            Item.key "Rarely"
+                            Item.content "Rarely"
+                        ]
+                        Spectrum.Item [
+                            Item.key "Sometimes"
+                            Item.content "Sometimes"
+                        ]
+                        Spectrum.Item [
+                            Item.key "Always"
+                            Item.content "Always"
+                        ]
                     ]
                 ]
                 Html.p $"You selected: {match frequency with | [ value ] -> value | _ -> System.String.Empty}"
@@ -517,17 +552,35 @@ React.fragment [
         Spectrum.Section [
             Section.title "Animals"
             Section.children [
-                makeItem "Aardvark" "Aardvark"
-                makeItem "Kangaroo" "Kangaroo"
-                makeItem "Snake" "Snake"
+                Spectrum.Item [
+                    Item.key "Aardvark"
+                    Item.content "Aardvark"
+                ]
+                Spectrum.Item [
+                    Item.key "Kangaroo"
+                    Item.content "Kangaroo"
+                ]
+                Spectrum.Item [
+                    Item.key "Snake"
+                    Item.content "Snake"
+                ]
             ]
         ]
         Spectrum.Section [
             Section.title "People"
             Section.children [
-                makeItem "Danni" "Danni"
-                makeItem "Devon" "Devon"
-                makeItem "Ross" "Ross"
+                Spectrum.Item [
+                    Item.key "Danni"
+                    Item.content "Danni"
+                ]
+                Spectrum.Item [
+                    Item.key "Devon"
+                    Item.content "Devon"
+                ]
+                Spectrum.Item [
+                    Item.key "Ross"
+                    Item.content "Ross"
+                ]
             ]
         ]
     ]
@@ -543,17 +596,35 @@ React.fragment [
                     Spectrum.Section [
                         Section.title "Animals"
                         Section.children [
-                            makeItem "Aardvark" "Aardvark"
-                            makeItem "Kangaroo" "Kangaroo"
-                            makeItem "Snake" "Snake"
+                            Spectrum.Item [
+                                Item.key "Aardvark"
+                                Item.content "Aardvark"
+                            ]
+                            Spectrum.Item [
+                                Item.key "Kangaroo"
+                                Item.content "Kangaroo"
+                            ]
+                            Spectrum.Item [
+                                Item.key "Snake"
+                                Item.content "Snake"
+                            ]
                         ]
                     ]
                     Spectrum.Section [
                         Section.title "People"
                         Section.children [
-                            makeItem "Danni" "Danni"
-                            makeItem "Devon" "Devon"
-                            makeItem "Ross" "Ross"
+                            Spectrum.Item [
+                                Item.key "Danni"
+                                Item.content "Danni"
+                            ]
+                            Spectrum.Item [
+                                Item.key "Devon"
+                                Item.content "Devon"
+                            ]
+                            Spectrum.Item [
+                                Item.key "Ross"
+                                Item.content "Ross"
+                            ]
                         ]
                     ]
                 ]
@@ -594,10 +665,22 @@ React.fragment [
     Spectrum.Menu [
         Menu.onAction (fun x -> Browser.Dom.window.alert(x))
         Menu.children [
-            makeItem "cut" "Cut"
-            makeItem "copy" "Copy"
-            makeItem "paste" "Paste"
-            makeItem "replace" "Replace"
+            Spectrum.Item [
+                Item.key "cut"
+                Item.content "Cut"
+            ]
+            Spectrum.Item [
+                Item.key "copy"
+                Item.content "Copy"
+            ]
+            Spectrum.Item [
+                Item.key "paste"
+                Item.content "Paste"
+            ]
+            Spectrum.Item [
+                Item.key "replace"
+                Item.content "Replace"
+            ]
         ]
     ]
 ]"""
@@ -611,10 +694,22 @@ React.fragment [
                 Spectrum.Menu [
                     Menu.onAction (fun x -> Browser.Dom.window.alert(x))
                     Menu.children [
-                        makeItem "cut" "Cut"
-                        makeItem "copy" "Copy"
-                        makeItem "paste" "Paste"
-                        makeItem "replace" "Replace"
+                        Spectrum.Item [
+                            Item.key "cut"
+                            Item.content "Cut"
+                        ]
+                        Spectrum.Item [
+                            Item.key "copy"
+                            Item.content "Copy"
+                        ]
+                        Spectrum.Item [
+                            Item.key "paste"
+                            Item.content "Paste"
+                        ]
+                        Spectrum.Item [
+                            Item.key "replace"
+                            Item.content "Replace"
+                        ]
                     ]
                 ]
             ]
@@ -634,7 +729,10 @@ Spectrum.MenuTrigger [
     Spectrum.Menu [
         Menu.items menuItems
         Menu.itemTemplate (fun (item: {| id: string; name: string |}) ->
-            makeItem item.id item.name
+            Spectrum.Item [
+                Item.key item.id
+                Item.content item.name
+            ]
         )
     ]
 ]"""
@@ -653,7 +751,10 @@ Spectrum.MenuTrigger [
                 Spectrum.Menu [
                     Menu.items menuItems
                     Menu.itemTemplate (fun (item: {| id: string; name: string |}) ->
-                        makeItem item.id item.name
+                        Spectrum.Item [
+                            Item.key item.id
+                            Item.content item.name
+                        ]
                     )
                 ]
             ]
@@ -663,22 +764,24 @@ Spectrum.MenuTrigger [
     let MenuExample3 () =
         let code = """let action, setAction = React.useState("")
 
-let makeItem key text =
-    Spectrum.Item [
-        Item.key key
-        Item.textValue text
-        Item.children [ Spectrum.Text text ]
-    ]
-
 React.fragment [
     Spectrum.MenuTrigger [
         Spectrum.ActionButton [ Html.text "Edit" ]
         Spectrum.Menu [
             Menu.onAction setAction
             Menu.children [
-                makeItem "cut" "Cut"
-                makeItem "copy" "Copy"
-                makeItem "paste" "Paste"
+                Spectrum.Item [
+                    Item.key "cut"
+                    Item.content "Cut"
+                ]
+                Spectrum.Item [
+                    Item.key "copy"
+                    Item.content "Copy"
+                ]
+                Spectrum.Item [
+                    Item.key "paste"
+                    Item.content "Paste"
+                ]
             ]
         ]
     ]
@@ -689,22 +792,24 @@ React.fragment [
         Example "Events" code [] [
             let action, setAction = React.useState("")
 
-            let makeItem key text =
-                Spectrum.Item [
-                    Item.key key
-                    Item.textValue text
-                    Item.children [ Spectrum.Text text ]
-                ]
-
             React.fragment [
                 Spectrum.MenuTrigger [
                     Spectrum.ActionButton [ Html.text "Edit" ]
                     Spectrum.Menu [
                         Menu.onAction setAction
                         Menu.children [
-                            makeItem "cut" "Cut"
-                            makeItem "copy" "Copy"
-                            makeItem "paste" "Paste"
+                            Spectrum.Item [
+                                Item.key "cut"
+                                Item.content "Cut"
+                            ]
+                            Spectrum.Item [
+                                Item.key "copy"
+                                Item.content "Copy"
+                            ]
+                            Spectrum.Item [
+                                Item.key "paste"
+                                Item.content "Paste"
+                            ]
                         ]
                     ]
                 ]
@@ -724,9 +829,18 @@ React.fragment [
             Menu.selectedKeys selected
             Menu.onSelectionChange setSelected
             Menu.children [
-                makeItem "left" "Left"
-                makeItem "middle" "Middle"
-                makeItem "right" "Right"
+                Spectrum.Item [
+                    Item.key "left"
+                    Item.content "Left"
+                ]
+                Spectrum.Item [
+                    Item.key "middle"
+                    Item.content "Middle"
+                ]
+                Spectrum.Item [
+                    Item.key "right"
+                    Item.content "Right"
+                ]
             ]
         ]
     ]
@@ -747,9 +861,18 @@ React.fragment [
                         Menu.selectedKeys selected
                         Menu.onSelectionChange setSelected
                         Menu.children [
-                            makeItem "left" "Left"
-                            makeItem "middle" "Middle"
-                            makeItem "right" "Right"
+                            Spectrum.Item [
+                                Item.key "left"
+                                Item.content "Left"
+                            ]
+                            Spectrum.Item [
+                                Item.key "middle"
+                                Item.content "Middle"
+                            ]
+                            Spectrum.Item [
+                                Item.key "right"
+                                Item.content "Right"
+                            ]
                         ]
                     ]
                 ]
@@ -773,10 +896,22 @@ React.fragment [
                 Menu.selectedKeys selected
                 Menu.onSelectionChange setSelected
                 Menu.children [
-                    makeItem "Sidebar" "Sidebar"
-                    makeItem "Searchbar" "Searchbar"
-                    makeItem "Tools" "Tools"
-                    makeItem "Console" "Console"
+                    Spectrum.Item [
+                        Item.key "Sidebar"
+                        Item.content "Sidebar"
+                    ]
+                    Spectrum.Item [
+                        Item.key "Searchbar"
+                        Item.content "Searchbar"
+                    ]
+                    Spectrum.Item [
+                        Item.key "Tools"
+                        Item.content "Tools"
+                    ]
+                    Spectrum.Item [
+                        Item.key "Console"
+                        Item.content "Console"
+                    ]
                 ]
             ]
         ]
@@ -798,10 +933,22 @@ React.fragment [
                             Menu.selectedKeys selected
                             Menu.onSelectionChange setSelected
                             Menu.children [
-                                makeItem "Sidebar" "Sidebar"
-                                makeItem "Searchbar" "Searchbar"
-                                makeItem "Tools" "Tools"
-                                makeItem "Console" "Console"
+                                Spectrum.Item [
+                                    Item.key "Sidebar"
+                                    Item.content "Sidebar"
+                                ]
+                                Spectrum.Item [
+                                    Item.key "Searchbar"
+                                    Item.content "Searchbar"
+                                ]
+                                Spectrum.Item [
+                                    Item.key "Tools"
+                                    Item.content "Tools"
+                                ]
+                                Spectrum.Item [
+                                    Item.key "Console"
+                                    Item.content "Console"
+                                ]
                             ]
                         ]
                     ]
@@ -824,16 +971,31 @@ Spectrum.MenuTrigger [
             Spectrum.Section [
                 Section.title "Styles"
                 Section.children [
-                    makeItem "bold" "Bold"
-                    makeItem "underline" "Underline"
+                    Spectrum.Item [
+                        Item.key "bold"
+                        Item.content "Bold"
+                    ]
+                    Spectrum.Item [
+                        Item.key "underline"
+                        Item.content "Underline"
+                    ]
                 ]
             ]
             Spectrum.Section [
                 Section.title "Align"
                 Section.children [
-                    makeItem "left" "Left"
-                    makeItem "middle" "Middle"
-                    makeItem "right" "Right"
+                    Spectrum.Item [
+                        Item.key "left"
+                        Item.content "Left"
+                    ]
+                    Spectrum.Item [
+                        Item.key "middle"
+                        Item.content "Middle"
+                    ]
+                    Spectrum.Item [
+                        Item.key "right"
+                        Item.content "Right"
+                    ]
                 ]
             ]
         ]
@@ -854,16 +1016,31 @@ Spectrum.MenuTrigger [
                         Spectrum.Section [
                             Section.title "Styles"
                             Section.children [
-                                makeItem "bold" "Bold"
-                                makeItem "underline" "Underline"
+                                Spectrum.Item [
+                                    Item.key "bold"
+                                    Item.content "Bold"
+                                ]
+                                Spectrum.Item [
+                                    Item.key "underline"
+                                    Item.content "Underline"
+                                ]
                             ]
                         ]
                         Spectrum.Section [
                             Section.title "Align"
                             Section.children [
-                                makeItem "left" "Left"
-                                makeItem "middle" "Middle"
-                                makeItem "right" "Right"
+                                Spectrum.Item [
+                                    Item.key "left"
+                                    Item.content "Left"
+                                ]
+                                Spectrum.Item [
+                                    Item.key "middle"
+                                    Item.content "Middle"
+                                ]
+                                Spectrum.Item [
+                                    Item.key "right"
+                                    Item.content "Right"
+                                ]
                             ]
                         ]
                     ]
@@ -1089,9 +1266,18 @@ Spectrum.Flex [
             MenuTrigger.children [
                 Spectrum.ActionButton "Edit"
                 Spectrum.Menu [
-                    makeItem "cut" "Cut"
-                    makeItem "copy" "Copy"
-                    makeItem "paste" "Paste"
+                    Spectrum.Item [
+                        Item.key "cut"
+                        Item.content "Cut"
+                    ]
+                    Spectrum.Item [
+                        Item.key "copy"
+                        Item.content "Copy"
+                    ]
+                    Spectrum.Item [
+                        Item.key "paste"
+                        Item.content "Paste"
+                    ]
                 ]
             ]
         ]
@@ -1102,9 +1288,18 @@ Spectrum.Flex [
             MenuTrigger.children [
                 Spectrum.ActionButton "View"
                 Spectrum.Menu [
-                    makeItem "sidebar" "Sidebar"
-                    makeItem "options" "Page options"
-                    makeItem "edit" "Edit panel"
+                    Spectrum.Item [
+                        Item.key "sidebar"
+                        Item.content "Sidebar"
+                    ]
+                    Spectrum.Item [
+                        Item.key "options"
+                        Item.content "Page options"
+                    ]
+                    Spectrum.Item [
+                        Item.key "edit"
+                        Item.content "Edit panel"
+                    ]
                 ]
             ]
         ]
@@ -1114,9 +1309,18 @@ Spectrum.Flex [
             MenuTrigger.children [
                 Spectrum.ActionButton "Edit"
                 Spectrum.Menu [
-                    makeItem "cut" "Cut"
-                    makeItem "copy" "Copy"
-                    makeItem "paste" "Paste"
+                    Spectrum.Item [
+                        Item.key "cut"
+                        Item.content "Cut"
+                    ]
+                    Spectrum.Item [
+                        Item.key "copy"
+                        Item.content "Copy"
+                    ]
+                    Spectrum.Item [
+                        Item.key "paste"
+                        Item.content "Paste"
+                    ]
                 ]
             ]
         ]
@@ -1126,9 +1330,18 @@ Spectrum.Flex [
             MenuTrigger.children [
                 Spectrum.ActionButton "View"
                 Spectrum.Menu [
-                    makeItem "sidebar" "Sidebar"
-                    makeItem "options" "Page options"
-                    makeItem "edit" "Edit panel"
+                    Spectrum.Item [
+                        Item.key "sidebar"
+                        Item.content "Sidebar"
+                    ]
+                    Spectrum.Item [
+                        Item.key "options"
+                        Item.content "Page options"
+                    ]
+                    Spectrum.Item [
+                        Item.key "edit"
+                        Item.content "Edit panel"
+                    ]
                 ]
             ]
         ]
@@ -1145,9 +1358,18 @@ Spectrum.Flex [
                         MenuTrigger.children [
                             Spectrum.ActionButton "Edit"
                             Spectrum.Menu [
-                                makeItem "cut" "Cut"
-                                makeItem "copy" "Copy"
-                                makeItem "paste" "Paste"
+                                Spectrum.Item [
+                                    Item.key "cut"
+                                    Item.content "Cut"
+                                ]
+                                Spectrum.Item [
+                                    Item.key "copy"
+                                    Item.content "Copy"
+                                ]
+                                Spectrum.Item [
+                                    Item.key "paste"
+                                    Item.content "Paste"
+                                ]
                             ]
                         ]
                     ]
@@ -1158,9 +1380,18 @@ Spectrum.Flex [
                         MenuTrigger.children [
                             Spectrum.ActionButton "View"
                             Spectrum.Menu [
-                                makeItem "sidebar" "Sidebar"
-                                makeItem "options" "Page options"
-                                makeItem "edit" "Edit panel"
+                                Spectrum.Item [
+                                    Item.key "sidebar"
+                                    Item.content "Sidebar"
+                                ]
+                                Spectrum.Item [
+                                    Item.key "options"
+                                    Item.content "Page options"
+                                ]
+                                Spectrum.Item [
+                                    Item.key "edit"
+                                    Item.content "Edit panel"
+                                ]
                             ]
                         ]
                     ]
@@ -1170,9 +1401,18 @@ Spectrum.Flex [
                         MenuTrigger.children [
                             Spectrum.ActionButton "Edit"
                             Spectrum.Menu [
-                                makeItem "cut" "Cut"
-                                makeItem "copy" "Copy"
-                                makeItem "paste" "Paste"
+                                Spectrum.Item [
+                                    Item.key "cut"
+                                    Item.content "Cut"
+                                ]
+                                Spectrum.Item [
+                                    Item.key "copy"
+                                    Item.content "Copy"
+                                ]
+                                Spectrum.Item [
+                                    Item.key "paste"
+                                    Item.content "Paste"
+                                ]
                             ]
                         ]
                     ]
@@ -1182,9 +1422,18 @@ Spectrum.Flex [
                         MenuTrigger.children [
                             Spectrum.ActionButton "View"
                             Spectrum.Menu [
-                                makeItem "sidebar" "Sidebar"
-                                makeItem "options" "Page options"
-                                makeItem "edit" "Edit panel"
+                                Spectrum.Item [
+                                    Item.key "sidebar"
+                                    Item.content "Sidebar"
+                                ]
+                                Spectrum.Item [
+                                    Item.key "options"
+                                    Item.content "Page options"
+                                ]
+                                Spectrum.Item [
+                                    Item.key "edit"
+                                    Item.content "Edit panel"
+                                ]
                             ]
                         ]
                     ]
@@ -1665,6 +1914,11 @@ Spectrum.Flex [
                 prop.href "https://react-spectrum.adobe.com/react-spectrum/TableView.html"
             ]
             Html.text " for more details."
+            Html.br []
+            Html.br []
+            Html.text "Please note that the following examples require the you to open "
+            Html.em "Fable.Core.JsInterop"
+            Html.text " in order to access the dynamic operator (?)."
         ]
 
         ExampleGroup "TableView" description [

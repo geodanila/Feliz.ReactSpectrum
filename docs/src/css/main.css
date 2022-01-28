@@ -109,6 +109,11 @@ ul.bullet-list {
     background-color: #e9e8e8;
 }
 
+em {
+    font-weight: 600;
+    font-family: monospace;
+}
+
 @media screen and (max-width: 1024px) {
     #main-content {
         width: 100%;

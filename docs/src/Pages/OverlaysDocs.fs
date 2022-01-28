@@ -697,8 +697,14 @@ React.fragment [
         Spectrum.Menu [
             Menu.onAction setDialog
             Menu.children [
-                makeItem "edit" "Edit..."
-                makeItem "delete" "Delete..."
+                Spectrum.Item [
+                    Item.key "edit"
+                    Item.content "Edit"
+                ]
+                Spectrum.Item [
+                    Item.key "delete"
+                    Item.content "Delete..."
+                ]
             ]
         ]
     ]
@@ -770,8 +776,14 @@ let EditDialog () =
                     Spectrum.Menu [
                         Menu.onAction setDialog
                         Menu.children [
-                            makeItem "edit" "Edit..."
-                            makeItem "delete" "Delete..."
+                            Spectrum.Item [
+                                Item.key "edit"
+                                Item.content "Edit"
+                            ]
+                            Spectrum.Item [
+                                Item.key "delete"
+                                Item.content "Delete..."
+                            ]
                         ]
                     ]
                 ]

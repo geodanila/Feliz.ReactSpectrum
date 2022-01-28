@@ -11,16 +11,34 @@ module NavigationDocs =
     [<ReactComponent>]
     let BreadcrumbsExample1 () =
         let code = """Spectrum.Breadcrumbs [
-    makeItem "home" "Home"
-    makeItem "trendy" "Trendy"
-    makeItem "march 2020 assets" "March 2020 Assets"
+    Spectrum.Item [
+        Item.key "home"
+        Item.content "Home"
+    ]
+    Spectrum.Item [
+        Item.key "trendy"
+        Item.content "Trendy"
+    ]
+    Spectrum.Item [
+        Item.key "march 2020 assets"
+        Item.content "March 2020 Assets"
+    ]
 ]"""
 
         Example "Default example" code [] [
             Spectrum.Breadcrumbs [
-                makeItem "home" "Home"
-                makeItem "trendy" "Trendy"
-                makeItem "march 2020 assets" "March 2020 Assets"
+                Spectrum.Item [
+                    Item.key "home"
+                    Item.content "Home"
+                ]
+                Spectrum.Item [
+                    Item.key "trendy"
+                    Item.content "Trendy"
+                ]
+                Spectrum.Item [
+                    Item.key "march 2020 assets"
+                    Item.content "March 2020 Assets"
+                ]
             ]
         ]
 
@@ -77,22 +95,40 @@ Html.div [
         Spectrum.Breadcrumbs [
             Breadcrumbs.size BreadcrumbsSize.S
             Breadcrumbs.children [
-                makeItem "home" "Home"
-                makeItem "trendy" "Trendy"
+                Spectrum.Item [
+                    Item.key "home"
+                    Item.content "Home"
+                ]
+                Spectrum.Item [
+                    Item.key "trendy"
+                    Item.content "Trendy"
+                ]
             ]
         ]
         Spectrum.Breadcrumbs [
             Breadcrumbs.size BreadcrumbsSize.M
             Breadcrumbs.children [
-                makeItem "home" "Home"
-                makeItem "trendy" "Trendy"
+                Spectrum.Item [
+                    Item.key "home"
+                    Item.content "Home"
+                ]
+                Spectrum.Item [
+                    Item.key "trendy"
+                    Item.content "Trendy"
+                ]
             ]
         ]
         Spectrum.Breadcrumbs [
             Breadcrumbs.size BreadcrumbsSize.L
             Breadcrumbs.children [
-                makeItem "home" "Home"
-                makeItem "trendy" "Trendy"
+                Spectrum.Item [
+                    Item.key "home"
+                    Item.content "Home"
+                ]
+                Spectrum.Item [
+                    Item.key "trendy"
+                    Item.content "Trendy"
+                ]
             ]
         ]
     ]
@@ -106,22 +142,40 @@ Html.div [
                     Spectrum.Breadcrumbs [
                         Breadcrumbs.size BreadcrumbsSize.S
                         Breadcrumbs.children [
-                            makeItem "home" "Home"
-                            makeItem "trendy" "Trendy"
+                            Spectrum.Item [
+                                Item.key "home"
+                                Item.content "Home"
+                            ]
+                            Spectrum.Item [
+                                Item.key "trendy"
+                                Item.content "Trendy"
+                            ]
                         ]
                     ]
                     Spectrum.Breadcrumbs [
                         Breadcrumbs.size BreadcrumbsSize.M
                         Breadcrumbs.children [
-                            makeItem "home" "Home"
-                            makeItem "trendy" "Trendy"
+                            Spectrum.Item [
+                                Item.key "home"
+                                Item.content "Home"
+                            ]
+                            Spectrum.Item [
+                                Item.key "trendy"
+                                Item.content "Trendy"
+                            ]
                         ]
                     ]
                     Spectrum.Breadcrumbs [
                         Breadcrumbs.size BreadcrumbsSize.L
                         Breadcrumbs.children [
-                            makeItem "home" "Home"
-                            makeItem "trendy" "Trendy"
+                            Spectrum.Item [
+                                Item.key "home"
+                                Item.content "Home"
+                            ]
+                            Spectrum.Item [
+                                Item.key "trendy"
+                                Item.content "Trendy"
+                            ]
                         ]
                     ]
                 ]
@@ -133,9 +187,18 @@ Html.div [
         let code = """Spectrum.Breadcrumbs [
     Breadcrumbs.isMultiline true
     Breadcrumbs.children [
-        makeItem "home" "Home"
-        makeItem "trendy" "Trendy"
-        makeItem "march 2020 assets" "March 2020 Assets"
+        Spectrum.Item [
+            Item.key "home"
+            Item.content "Home"
+        ]
+        Spectrum.Item [
+            Item.key "trendy"
+            Item.content "Trendy"
+        ]
+        Spectrum.Item [
+            Item.key "march 2020 assets"
+            Item.content "March 2020 Assets"
+        ]
     ]
 ]"""
 
@@ -143,9 +206,18 @@ Html.div [
             Spectrum.Breadcrumbs [
                 Breadcrumbs.isMultiline true
                 Breadcrumbs.children [
-                    makeItem "home" "Home"
-                    makeItem "trendy" "Trendy"
-                    makeItem "march 2020 assets" "March 2020 Assets"
+                    Spectrum.Item [
+                        Item.key "home"
+                        Item.content "Home"
+                    ]
+                    Spectrum.Item [
+                        Item.key "trendy"
+                        Item.content "Trendy"
+                    ]
+                    Spectrum.Item [
+                        Item.key "march 2020 assets"
+                        Item.content "March 2020 Assets"
+                    ]
                 ]
             ]
         ]
@@ -159,11 +231,26 @@ Html.div [
         Spectrum.Breadcrumbs [
             Breadcrumbs.showRoot true
             Breadcrumbs.children [
-                makeItem "home" "Home"
-                makeItem "trendy" "Trendy"
-                makeItem "march 2020 assets" "March 2020 Assets"
-                makeItem "winter" "Winter"
-                makeItem "holiday" "Holiday"
+                Spectrum.Item [
+                    Item.key "home"
+                    Item.content "Home"
+                ]
+                Spectrum.Item [
+                    Item.key "trendy"
+                    Item.content "Trendy"
+                ]
+                Spectrum.Item [
+                    Item.key "march 2020 assets"
+                    Item.content "March 2020 Assets"
+                ]
+                Spectrum.Item [
+                    Item.key "winter"
+                    Item.content "Winter"
+                ]
+                Spectrum.Item [
+                    Item.key "holiday"
+                    Item.content "Holiday"
+                ]
             ]
         ]
     ]
@@ -177,11 +264,26 @@ Html.div [
                     Spectrum.Breadcrumbs [
                         Breadcrumbs.showRoot true
                         Breadcrumbs.children [
-                            makeItem "home" "Home"
-                            makeItem "trendy" "Trendy"
-                            makeItem "march 2020 assets" "March 2020 Assets"
-                            makeItem "winter" "Winter"
-                            makeItem "holiday" "Holiday"
+                            Spectrum.Item [
+                                Item.key "home"
+                                Item.content "Home"
+                            ]
+                            Spectrum.Item [
+                                Item.key "trendy"
+                                Item.content "Trendy"
+                            ]
+                            Spectrum.Item [
+                                Item.key "march 2020 assets"
+                                Item.content "March 2020 Assets"
+                            ]
+                            Spectrum.Item [
+                                Item.key "winter"
+                                Item.content "Winter"
+                            ]
+                            Spectrum.Item [
+                                Item.key "holiday"
+                                Item.content "Holiday"
+                            ]
                         ]
                     ]
                 ]
@@ -436,14 +538,14 @@ Html.div [
     let TabsExample2 () =
         let code = """let tabs = [
     {| id = 1
-        name = "Founding of Rome"
-        children = "Arma virumque cano, Troiae qui primus ab oris." |}
+       name = "Founding of Rome"
+       children = "Arma virumque cano, Troiae qui primus ab oris." |}
     {| id = 2
-        name = "Monarchy and Republic"
-        children = "Senatus Populusque Romanus." |}
+       name = "Monarchy and Republic"
+       children = "Senatus Populusque Romanus." |}
     {| id = 3
-        name = "Empire"
-        children = "Alea jacta est." |}
+       name = "Empire"
+       children = "Alea jacta est." |}
 ]
 let tabId, setTabId = React.useState(1)
 
@@ -746,6 +848,11 @@ Spectrum.Flex [
                 prop.href "https://react-spectrum.adobe.com/react-spectrum/Tabs.html"
             ]
             Html.text " for more details."
+            Html.br []
+            Html.br []
+            Html.text "Please note that the following examples require the you to open "
+            Html.em "Fable.Core.JsInterop"
+            Html.text " in order to access the dynamic operator (?)."
         ]
 
         ExampleGroup "Tabs" description [

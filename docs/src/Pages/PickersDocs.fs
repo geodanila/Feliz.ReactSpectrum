@@ -13,12 +13,30 @@ module PickersDocs =
         let code = """Spectrum.ComboBox [
     ComboBox.label "Favorite animal"
     ComboBox.children [
-        makeItem "red panda" "Red Panda"
-        makeItem "cat" "Cat"
-        makeItem "dog" "Dog"
-        makeItem "aardvark" "Aardvark"
-        makeItem "kangaroo" "Kangaroo"
-        makeItem "snake" "Snake"
+        Spectrum.Item [
+            Item.key "red panda"
+            Item.content "Red Panda"
+        ]
+        Spectrum.Item [
+            Item.key "cat"
+            Item.content "Cat"
+        ]
+        Spectrum.Item [
+            Item.key "dog"
+            Item.content "Dog"
+        ]
+        Spectrum.Item [
+            Item.key "aardvark"
+            Item.content "Aardvark"
+        ]
+        Spectrum.Item [
+            Item.key "kangaroo"
+            Item.content "Kangaroo"
+        ]
+        Spectrum.Item [
+            Item.key "snake"
+            Item.content "Snake"
+        ]
     ]
 ]"""
 
@@ -26,12 +44,30 @@ module PickersDocs =
             Spectrum.ComboBox [
                 ComboBox.label "Favorite animal"
                 ComboBox.children [
-                    makeItem "red panda" "Red Panda"
-                    makeItem "cat" "Cat"
-                    makeItem "dog" "Dog"
-                    makeItem "aardvark" "Aardvark"
-                    makeItem "kangaroo" "Kangaroo"
-                    makeItem "snake" "Snake"
+                    Spectrum.Item [
+                        Item.key "red panda"
+                        Item.content "Red Panda"
+                    ]
+                    Spectrum.Item [
+                        Item.key "cat"
+                        Item.content "Cat"
+                    ]
+                    Spectrum.Item [
+                        Item.key "dog"
+                        Item.content "Dog"
+                    ]
+                    Spectrum.Item [
+                        Item.key "aardvark"
+                        Item.content "Aardvark"
+                    ]
+                    Spectrum.Item [
+                        Item.key "kangaroo"
+                        Item.content "Kangaroo"
+                    ]
+                    Spectrum.Item [
+                        Item.key "snake"
+                        Item.content "Snake"
+                    ]
                 ]
             ]
         ]
@@ -94,13 +130,17 @@ React.fragment [
 
     [<ReactComponent>]
     let ComboBoxExample3 () =
-        let code = """let names = [
-    "Adobe Photoshop"; "Adobe XD"; "Adobe InDesign";
-    "Adobe AfterEffects"; "Adobe Illustrator";
-    "Adobe Lightroom"; "Adobe Premiere Pro";
-    "Adobe Fresco"; "Adobe Dreamweaver"
+        let code = """let options = [
+    {| id = 1; name = "Adobe Photoshop" |}
+    {| id = 2; name = "Adobe XD" |}
+    {| id = 3; name = "Adobe InDesign" |}
+    {| id = 4; name = "Adobe AfterEffects" |}
+    {| id = 5; name = "Adobe Illustrator" |}
+    {| id = 6; name = "Adobe Lightroom" |}
+    {| id = 7; name = "Adobe Premiere Pro" |}
+    {| id = 8; name = "Adobe Fresco" |}
+    {| id = 9; name = "Adobe Dreamweaver" |}
 ]
-let options = names |> List.mapi (fun idx name -> {| id = idx + 1; name = name |})
 let value, setValue = React.useState("Adobe XD")
 Spectrum.Flex [
     Flex.gap (DimValue.Size Size150)
@@ -129,13 +169,17 @@ Spectrum.Flex [
 ]"""
 
         Example "Value" code [] [
-            let names = [
-                "Adobe Photoshop"; "Adobe XD"; "Adobe InDesign";
-                "Adobe AfterEffects"; "Adobe Illustrator";
-                "Adobe Lightroom"; "Adobe Premiere Pro";
-                "Adobe Fresco"; "Adobe Dreamweaver"
+            let options = [
+                {| id = 1; name = "Adobe Photoshop" |}
+                {| id = 2; name = "Adobe XD" |}
+                {| id = 3; name = "Adobe InDesign" |}
+                {| id = 4; name = "Adobe AfterEffects" |}
+                {| id = 5; name = "Adobe Illustrator" |}
+                {| id = 6; name = "Adobe Lightroom" |}
+                {| id = 7; name = "Adobe Premiere Pro" |}
+                {| id = 8; name = "Adobe Fresco" |}
+                {| id = 9; name = "Adobe Dreamweaver" |}
             ]
-            let options = names |> List.mapi (fun idx name -> {| id = idx + 1; name = name |})
             let value, setValue = React.useState("Adobe XD")
             Spectrum.Flex [
                 Flex.gap (DimValue.Size Size150)
@@ -182,7 +226,10 @@ React.fragment [
         ComboBox.allowsCustomValue true
         ComboBox.itemTemplate (fun item ->
             let name: string = item?name
-            makeItem name name
+            Spectrum.Item [
+                Item.key name
+                Item.content name
+            ]
         )
     ]
 ]"""
@@ -204,7 +251,10 @@ React.fragment [
                     ComboBox.allowsCustomValue true
                     ComboBox.itemTemplate (fun item ->
                         let name: string = item?name
-                        makeItem name name
+                        Spectrum.Item [
+                            Item.key name
+                            Item.content name
+                        ]
                     )
                 ]
             ]
@@ -218,17 +268,35 @@ React.fragment [
         Spectrum.Section [
             Section.title "Fruit"
             Section.children [
-                makeItem "Apple" "Apple"
-                makeItem "Banana" "Banana"
-                makeItem "Orange" "Orange"
+                Spectrum.Item [
+                    Item.key "Apple"
+                    Item.content "Apple"
+                ]
+                Spectrum.Item [
+                    Item.key "Banana"
+                    Item.content "Banana"
+                ]
+                Spectrum.Item [
+                    Item.key "Orange"
+                    Item.content "Orange"
+                ]
             ]
         ]
         Spectrum.Section [
             Section.title "Vegetables"
             Section.children [
-                makeItem "Cabbage" "Cabbage"
-                makeItem "Lettuce" "Lettuce"
-                makeItem "Carrots" "Carrots"
+                Spectrum.Item [
+                    Item.key "Cabbage"
+                    Item.content "Cabbage"
+                ]
+                Spectrum.Item [
+                    Item.key "Lettuce"
+                    Item.content "Lettuce"
+                ]
+                Spectrum.Item [
+                    Item.key "Carrots"
+                    Item.content "Carrots"
+                ]
             ]
         ]
     ]
@@ -241,17 +309,35 @@ React.fragment [
                     Spectrum.Section [
                         Section.title "Fruit"
                         Section.children [
-                            makeItem "Apple" "Apple"
-                            makeItem "Banana" "Banana"
-                            makeItem "Orange" "Orange"
+                            Spectrum.Item [
+                                Item.key "Apple"
+                                Item.content "Apple"
+                            ]
+                            Spectrum.Item [
+                                Item.key "Banana"
+                                Item.content "Banana"
+                            ]
+                            Spectrum.Item [
+                                Item.key "Orange"
+                                Item.content "Orange"
+                            ]
                         ]
                     ]
                     Spectrum.Section [
                         Section.title "Vegetables"
                         Section.children [
-                            makeItem "Cabbage" "Cabbage"
-                            makeItem "Lettuce" "Lettuce"
-                            makeItem "Carrots" "Carrots"
+                            Spectrum.Item [
+                                Item.key "Cabbage"
+                                Item.content "Cabbage"
+                            ]
+                            Spectrum.Item [
+                                Item.key "Lettuce"
+                                Item.content "Lettuce"
+                            ]
+                            Spectrum.Item [
+                                Item.key "Carrots"
+                                Item.content "Carrots"
+                            ]
                         ]
                     ]
                 ]
@@ -260,10 +346,18 @@ React.fragment [
 
     [<ReactComponent>]
     let ComboBoxExample6 () =
-        let code = """let options =
-    [ "Aerospace"; "Mechanical"; "Civil"; "Biomedical"; "Nuclear";
-    "Industrial"; "Chemical"; "Agricultural"; "Electrical" ]
-    |> List.mapi (fun idx name -> {| id = idx + 1; name = name |})
+        let code = """let options = [
+    {| id = 1; name = "Aerospace" |}
+    {| id = 2; name = "Mechanical" |}
+    {| id = 3; name = "Civil" |}
+    {| id = 4; name = "Biomedical" |}
+    {| id = 5; name = "Nuclear" |}
+    {| id = 6; name = "Industrial" |}
+    {| id = 7; name = "Chemical" |}
+    {| id = 8; name = "Chemical" |}
+    {| id = 9; name = "Electrical" |}
+]
+
 let value, setValue = React.useState("")
 let majorId, setMajorId = React.useState(0)
 
@@ -287,10 +381,18 @@ React.fragment [
 ]"""
 
         Example "Events" code [] [
-            let options =
-                [ "Aerospace"; "Mechanical"; "Civil"; "Biomedical"; "Nuclear";
-                "Industrial"; "Chemical"; "Agricultural"; "Electrical" ]
-                |> List.mapi (fun idx name -> {| id = idx + 1; name = name |})
+            let options = [
+                {| id = 1; name = "Aerospace" |}
+                {| id = 2; name = "Mechanical" |}
+                {| id = 3; name = "Civil" |}
+                {| id = 4; name = "Biomedical" |}
+                {| id = 5; name = "Nuclear" |}
+                {| id = 6; name = "Industrial" |}
+                {| id = 7; name = "Chemical" |}
+                {| id = 8; name = "Chemical" |}
+                {| id = 9; name = "Electrical" |}
+            ]
+
             let value, setValue = React.useState("")
             let majorId, setMajorId = React.useState(0)
 
@@ -430,6 +532,11 @@ React.fragment [
                 prop.href "https://react-spectrum.adobe.com/react-spectrum/ComboBox.html"
             ]
             Html.text " for more details."
+            Html.br []
+            Html.br []
+            Html.text "Please note that the following examples require the you to open "
+            Html.em "Fable.Core.JsInterop"
+            Html.text " in order to access the dynamic operator (?)."
         ]
 
         ExampleGroup "ComboBox" description [
@@ -447,9 +554,18 @@ React.fragment [
         let code = """Spectrum.Picker [
     Picker.label "Choose frequency"
     Picker.children [
-        makeItem "rarely" "Rarely"
-        makeItem "sometimes" "Sometimes"
-        makeItem "always" "Always"
+        Spectrum.Item [
+            Item.key "rarely"
+            Item.content "Rarely"
+        ]
+        Spectrum.Item [
+            Item.key "sometimes"
+            Item.content "Sometimes"
+        ]
+        Spectrum.Item [
+            Item.key "always"
+            Item.content "Always"
+        ]
     ]
 ]"""
 
@@ -457,19 +573,36 @@ React.fragment [
             Spectrum.Picker [
                 Picker.label "Choose frequency"
                 Picker.children [
-                    makeItem "rarely" "Rarely"
-                    makeItem "sometimes" "Sometimes"
-                    makeItem "always" "Always"
+                    Spectrum.Item [
+                        Item.key "rarely"
+                        Item.content "Rarely"
+                    ]
+                    Spectrum.Item [
+                        Item.key "sometimes"
+                        Item.content "Sometimes"
+                    ]
+                    Spectrum.Item [
+                        Item.key "always"
+                        Item.content "Always"
+                    ]
                 ]
             ]
         ]
 
     [<ReactComponent>]
     let PickerExample2 () =
-        let code = """let options =
-    [ "Aardvark"; "Cat"; "Dog"; "Kangaroo";
-    "Koala"; "Penguin"; "Snake"; "Turtle"; "Wombat" ]
-    |> List.mapi (fun idx animal -> {| id = idx + 1; name = animal |})
+        let code = """let options = [
+    {| id = 1; name = "Aardvark" |}
+    {| id = 2; name = "Cat" |}
+    {| id = 3; name = "Dog" |}
+    {| id = 4; name = "Kangaroo" |}
+    {| id = 5; name = "Koala" |}
+    {| id = 6; name = "Penguin" |}
+    {| id = 7; name = "Snake" |}
+    {| id = 8; name = "Turtle" |}
+    {| id = 9; name = "Wombat" |}
+]
+
 let animalId, setAnimalId = React.useState<int option>(None)
 React.fragment [
     Spectrum.Picker [
@@ -485,10 +618,18 @@ React.fragment [
 ]"""
 
         Example "Content" code [] [
-            let options =
-                [ "Aardvark"; "Cat"; "Dog"; "Kangaroo";
-                "Koala"; "Penguin"; "Snake"; "Turtle"; "Wombat" ]
-                |> List.mapi (fun idx animal -> {| id = idx + 1; name = animal |})
+            let options = [
+                {| id = 1; name = "Aardvark" |}
+                {| id = 2; name = "Cat" |}
+                {| id = 3; name = "Dog" |}
+                {| id = 4; name = "Kangaroo" |}
+                {| id = 5; name = "Koala" |}
+                {| id = 6; name = "Penguin" |}
+                {| id = 7; name = "Snake" |}
+                {| id = 8; name = "Turtle" |}
+                {| id = 9; name = "Wombat" |}
+            ]
+
             let animalId, setAnimalId = React.useState<int option>(None)
             React.fragment [
                 Spectrum.Picker [
@@ -525,7 +666,10 @@ Spectrum.Flex [
             Picker.defaultSelectedKey "Bison"
             Picker.itemTemplate (fun item ->
                 let name: string = item?name
-                makeItem name name
+                Spectrum.Item [
+                    Item.key name
+                    Item.content name
+                ]
             )
         ]
         Spectrum.Picker [
@@ -535,7 +679,10 @@ Spectrum.Flex [
             Picker.onSelectionChange setAnimal
             Picker.itemTemplate (fun item ->
                 let name: string = item?name
-                makeItem name name
+                Spectrum.Item [
+                    Item.key name
+                    Item.content name
+                ]
             )
         ]
     ]
@@ -561,7 +708,10 @@ Spectrum.Flex [
                         Picker.defaultSelectedKey "Bison"
                         Picker.itemTemplate (fun item ->
                             let name: string = item?name
-                            makeItem name name
+                            Spectrum.Item [
+                                Item.key name
+                                Item.content name
+                            ]
                         )
                     ]
                     Spectrum.Picker [
@@ -571,7 +721,10 @@ Spectrum.Flex [
                         Picker.onSelectionChange setAnimal
                         Picker.itemTemplate (fun item ->
                             let name: string = item?name
-                            makeItem name name
+                            Spectrum.Item [
+                                Item.key name
+                                Item.content name
+                            ]
                         )
                     ]
                 ]
@@ -590,6 +743,11 @@ Spectrum.Flex [
                 prop.href "https://react-spectrum.adobe.com/react-spectrum/Picker.html"
             ]
             Html.text " for more details."
+            Html.br []
+            Html.br []
+            Html.text "Please note that the following examples require the you to open "
+            Html.em "Fable.Core.JsInterop"
+            Html.text " in order to access the dynamic operator (?)."
         ]
 
         ExampleGroup "Picker" description [

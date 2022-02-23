@@ -65,11 +65,7 @@ type ToggleButton =
     static member inline isSelected (value: bool) = Interop.mkAttr "isSelected" value
     static member inline defaultSelected (value: bool) = Interop.mkAttr "defaultSelected" value
     static member inline staticColor (value: StaticColorValue) = Interop.mkAttr "staticColor" value
-    // HACK: current version of ReactSpectrum is bugged when dealing with toggle button state and throws an error
-    static member inline onChange (handler: bool -> unit) =
-        let handler' v =
-            Fable.Core.JS.setTimeout (fun () -> handler v) 0 |> ignore
-        Interop.mkAttr "onChange" handler'
+    static member inline onChange (handler: bool -> unit) = Interop.mkAttr "onChange" handler
 
 [<Erase>]
 type ActionGroup =

@@ -140,11 +140,7 @@ type NumberField =
     static member inline value (value: float) = Interop.mkAttr "value" value
     static member inline step (value: int) = Interop.mkAttr "step" value
     static member inline step (value: float) = Interop.mkAttr "step" value
-    // HACK: current version of ReactSpectrum is bugged when dealing with number field state and throws an error
-    static member inline onChange (handler: 'a -> unit) =
-        let handler' v =
-            Fable.Core.JS.setTimeout (fun () -> handler v) 0 |> ignore
-        Interop.mkAttr "onChange" handler'
+    static member inline onChange (handler: 'a -> unit) = Interop.mkAttr "onChange" handler
 
 [<Erase>]
 type Radio =

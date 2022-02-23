@@ -12,7 +12,7 @@
     <PackageTags>fsharp;fable;spectrum;feliz;react;html</PackageTags>
     <Description>Feliz-style Fable bindings for Adobe's React Spectrum components.</Description>
     <Authors>George Danila</Authors>
-    <Version>0.1.1</Version>
+    <Version>0.2.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="*.fsproj; *.fs; *.js;" PackagePath="fable\" />
@@ -41,9 +41,9 @@
   </ItemGroup>
   <PropertyGroup>
     <NpmDependencies>
-      <NpmPackage Name="@adobe/react-spectrum" Version="gte 3.15.1 lt 4" ResolutionStrategy="max" />
-      <NpmPackage Name="@spectrum-icons/illustrations" Version="gte 3.2.2 lt 4" ResolutionStrategy="max" />
-      <NpmPackage Name="@spectrum-icons/workflow" Version="gte 3.2.1 lt 4" ResolutionStrategy="max" />
+      <NpmPackage Name="@adobe/react-spectrum" Version="gte 3.16.3 lt 4" ResolutionStrategy="max" />
+      <NpmPackage Name="@spectrum-icons/illustrations" Version="gte 3.2.4 lt 4" ResolutionStrategy="max" />
+      <NpmPackage Name="@spectrum-icons/workflow" Version="gte 3.2.3 lt 4" ResolutionStrategy="max" />
     </NpmDependencies>
   </PropertyGroup>
 </Project>

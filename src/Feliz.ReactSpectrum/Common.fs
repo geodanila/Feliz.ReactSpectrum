@@ -711,6 +711,11 @@ type MenuDirection =
     | End
 
 [<StringEnum; RequireQualifiedAccess>]
+type MenuTriggerType =
+    | Press
+    | LongPress
+
+[<StringEnum; RequireQualifiedAccess>]
 type NecessityIndicator = Icon | Label
 
 [<StringEnum; RequireQualifiedAccess>]

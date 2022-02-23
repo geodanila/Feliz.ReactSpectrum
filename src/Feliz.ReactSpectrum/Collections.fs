@@ -49,6 +49,7 @@ type Menu =
 [<Erase>]
 type MenuTrigger =
     static member inline children (xs: seq<ReactElement>) = Interop.mkAttr "children" (xs |> Array.ofSeq)
+    static member inline trigger (value: MenuTriggerType) = Interop.mkAttr "trigger" value
     static member inline closeOnSelected (value: bool) = Interop.mkAttr "closeOnSelect" value
     static member inline shouldFlip (value: bool) = Interop.mkAttr "shouldFlip" value
     static member inline align (value: Alignment) = Interop.mkAttr "align" value

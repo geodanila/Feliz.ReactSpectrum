@@ -1476,7 +1476,6 @@ Spectrum.MenuTrigger [
     ]
 ]"""
 
-
         Example "Open and selection" code [] [
             let isOpen, setIsOpen = React.useState(false)
             let selection, setSelection = React.useState([])
@@ -1513,6 +1512,82 @@ Spectrum.MenuTrigger [
         ]
 
     [<ReactComponent>]
+    let MenuTriggerExample4 () =
+        let code = """Spectrum.MenuTrigger [
+    MenuTrigger.trigger MenuTriggerType.LongPress
+    MenuTrigger.children [
+        Spectrum.ActionButton [
+            ActionButton.ariaLabel "Crop tool"
+            ActionButton.onPress (fun _ -> Browser.Dom.window.alert("Cropping!"))
+            ActionButton.children [
+                Spectrum.Icon.Crop []
+            ]
+        ]
+        Spectrum.Menu [
+            Spectrum.Item [
+                Item.textValue "Crop rotate"
+                Item.children [
+                    Spectrum.Icon.CropRotate []
+                    Spectrum.Text "Crop rotate"
+                ]
+            ]
+            Spectrum.Item [
+                Item.textValue "Slice"
+                Item.children [
+                    Spectrum.Icon.Slice []
+                    Spectrum.Text "Slice"
+                ]
+            ]
+            Spectrum.Item [
+                Item.textValue "Clone stamp"
+                Item.children [
+                    Spectrum.Icon.CloneStamp []
+                    Spectrum.Text "Clone stamp"
+                ]
+            ]
+        ]
+    ]
+]"""
+
+        Example "Long press" code [] [
+            Spectrum.MenuTrigger [
+                MenuTrigger.trigger MenuTriggerType.LongPress
+                MenuTrigger.children [
+                    Spectrum.ActionButton [
+                        ActionButton.ariaLabel "Crop tool"
+                        ActionButton.onPress (fun _ -> Browser.Dom.window.alert("Cropping!"))
+                        ActionButton.children [
+                            Spectrum.Icon.Crop []
+                        ]
+                    ]
+                    Spectrum.Menu [
+                        Spectrum.Item [
+                            Item.textValue "Crop rotate"
+                            Item.children [
+                                Spectrum.Icon.CropRotate []
+                                Spectrum.Text "Crop rotate"
+                            ]
+                        ]
+                        Spectrum.Item [
+                            Item.textValue "Slice"
+                            Item.children [
+                                Spectrum.Icon.Slice []
+                                Spectrum.Text "Slice"
+                            ]
+                        ]
+                        Spectrum.Item [
+                            Item.textValue "Clone stamp"
+                            Item.children [
+                                Spectrum.Icon.CloneStamp []
+                                Spectrum.Text "Clone stamp"
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
     let MenuTriggerDocs () =
         let description = [
             Html.text "The MenuTrigger serves as a wrapper around a Menu and its associated trigger, linking the Menu's open state with the trigger's press state."
@@ -1530,6 +1605,7 @@ Spectrum.MenuTrigger [
             MenuTriggerExample1 ()
             MenuTriggerExample2 ()
             MenuTriggerExample3 ()
+            MenuTriggerExample4 ()
         ]
 
     [<ReactComponent>]

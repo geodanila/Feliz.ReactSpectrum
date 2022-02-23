@@ -1,5 +1,9 @@
 ### 0.2.0 - Wednesday, February 23, 2022
 - Updated to the latest React Spectrum release ([15 February 2022](https://react-spectrum.adobe.com/releases/2022-02-15.html))
+- Ensure you're using the following npm package versions:
+  - @adobe/react-spectrum: 3.16.3
+  - @spectrum-icons/illustrations: 3.2.4
+  - @spectrum-icons/workflow: 3.2.3
 - Added support for the ContextualHelp and ActionMenu components
 - Added support for the 'useProvider' hook
 - Removed hacks from the ToggleButton and NumberField components that are no longer needed

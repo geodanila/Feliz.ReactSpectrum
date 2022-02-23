@@ -4,7 +4,7 @@
         "postinstall": "dotnet tool restore",
         "build": "dotnet fable src --run vite build",
         "publish-docs": "node publish.js",
-        "start": "dotnet fable watch src --run vite --open",
+        "start": "dotnet fable watch src --run vite --open --host",
         "serve": "vite preview"
     },
     "devDependencies": {

@@ -435,7 +435,6 @@ let view (model: Model) dispatch =
         Provider.defaultTheme
         Provider.colorScheme ColorScheme.Light
         Provider.locale "en-US"
-        Provider.scale Scale.Medium
         Provider.id "spectrum-provider"
         Provider.children [
             Shell model dispatch

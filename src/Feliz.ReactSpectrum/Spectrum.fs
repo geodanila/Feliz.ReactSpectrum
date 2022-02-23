@@ -399,6 +399,13 @@ type Spectrum =
 
     static member inline useDialogContainer : (unit -> IDialog) = import "useDialogContainer" "@adobe/react-spectrum"
 
+    /// Contextual help shows a user extra information about the state of an adjacent component, or a total view.
+    static member inline ContextualHelp (children: #seq<ReactElement>) =
+        ofImport "ContextualHelp" "@adobe/react-spectrum" [] children
+    /// Contextual help shows a user extra information about the state of an adjacent component, or a total view.
+    static member inline ContextualHelp (properties: IReactProperty list) =
+        Interop.reactApi.createElement (import "ContextualHelp" "@adobe/react-spectrum", createObj !!properties)
+
     // ----------- Pickers -----------
     /// Pickers allow users to choose a single option from a collapsible list of options when space is limited.
     static member inline Picker (children: #seq<ReactElement>) =

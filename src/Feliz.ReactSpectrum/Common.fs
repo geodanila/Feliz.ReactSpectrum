@@ -929,6 +929,11 @@ type TooltipPlacement =
     | Bottom
 
 [<StringEnum; RequireQualifiedAccess>]
+type ContextualHelpVariant =
+    | Help
+    | Info
+
+[<StringEnum; RequireQualifiedAccess>]
 type MenuTriggerAction =
     | Focus
     | Input

@@ -60,6 +60,7 @@ type DocsId =
     | DialogContainer
     | DialogTrigger
     | Tooltip
+    | ContextualHelp
     | ComboBox
     | Picker
     | RangeSlider
@@ -146,6 +147,7 @@ let buildNavSections () =
             makeNavItem DocsId.DialogContainer "DialogContainer"
             makeNavItem DocsId.DialogTrigger "DialogTrigger"
             makeNavItem DocsId.Tooltip "Tooltip"
+            makeNavItem DocsId.ContextualHelp "ContextualHelp"
         ]
         makeNavSection SectionId.Pickers "Pickers" [
             makeNavItem DocsId.ComboBox "ComboBox"
@@ -210,6 +212,7 @@ let getDocs = function
     | DocsId.DialogContainer -> DialogContainerDocs ()
     | DocsId.DialogTrigger -> DialogTriggerDocs ()
     | DocsId.Tooltip -> TooltipDocs ()
+    | DocsId.ContextualHelp -> ContextualHelpDocs ()
     | DocsId.ComboBox -> ComboBoxDocs ()
     | DocsId.Picker -> PickerDocs ()
     | DocsId.RangeSlider -> RangeSliderDocs ()
@@ -264,6 +267,7 @@ let parseUrl = function
     | [ "dialogcontainer" ] -> DocsId.DialogContainer
     | [ "dialogtrigger" ] -> DocsId.DialogTrigger
     | [ "tooltip" ] -> DocsId.Tooltip
+    | [ "contextualhelp" ] -> DocsId.ContextualHelp
     | [ "combobox" ] -> DocsId.ComboBox
     | [ "picker" ] -> DocsId.Picker
     | [ "rangeslider" ] -> DocsId.RangeSlider
@@ -319,6 +323,7 @@ let makeUrl = function
     | DocsId.DialogContainer -> Router.format "dialogcontainer"
     | DocsId.DialogTrigger -> Router.format "dialogtrigger"
     | DocsId.Tooltip -> Router.format "tooltip"
+    | DocsId.ContextualHelp -> Router.format "contextualhelp"
     | DocsId.ComboBox -> Router.format "combobox"
     | DocsId.Picker -> Router.format "picker"
     | DocsId.RangeSlider -> Router.format "rangeslider"

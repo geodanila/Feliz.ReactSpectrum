@@ -12,9 +12,9 @@
         "vite": "^2.7.10"
     },
     "dependencies": {
-        "@adobe/react-spectrum": "^3.15.1",
-        "@spectrum-icons/illustrations": "^3.2.2",
-        "@spectrum-icons/workflow": "^3.2.1",
+        "@adobe/react-spectrum": "^3.16.3",
+        "@spectrum-icons/illustrations": "^3.2.4",
+        "@spectrum-icons/workflow": "^3.2.3",
         "react": "^17.0.2",
         "react-dom": "^17.0.2"
     }

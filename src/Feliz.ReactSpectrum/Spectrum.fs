@@ -111,6 +111,14 @@ type Spectrum =
         Interop.reactApi.createElement (import "ButtonGroup" "@adobe/react-spectrum", createObj !!properties)
 
     // ----------- Collections -----------
+    // HACK: importing ActionMenu from @react-spectrum/menu instead of @adobe/react-spectrum
+    /// ActionMenu combines an ActionButton with a Menu for simple "more actions" use cases.
+    static member inline ActionMenu (children: #seq<ReactElement>) =
+        ofImport "ActionMenu" "@react-spectrum/menu" [] children
+    /// ActionMenu combines an ActionButton with a Menu for simple "more actions" use cases.
+    static member inline ActionMenu (properties: IReactProperty list) =
+        Interop.reactApi.createElement (import "ActionMenu" "@react-spectrum/menu", createObj !!properties)
+
     /// A list of options that can allow selection of one or more.
     static member inline ListBox (children: #seq<ReactElement>) =
         ofImport "ListBox" "@adobe/react-spectrum" [] children

@@ -576,6 +576,15 @@ type SelectionMode =
     | Multiple
 
 [<StringEnum; RequireQualifiedAccess>]
+type ActionMenuDirection =
+    | Bottom
+    | Top
+    | Left
+    | Right
+    | Start
+    | End
+
+[<StringEnum; RequireQualifiedAccess>]
 type ButtonGroupAlignment =
     | Start
     | Center

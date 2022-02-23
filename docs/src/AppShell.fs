@@ -32,6 +32,7 @@ type DocsId =
     | Provider
     | Flex
     | Grid
+    | ActionMenu
     | ActionButton
     | ActionGroup
     | Button
@@ -117,6 +118,7 @@ let buildNavSections () =
             makeNavItem DocsId.ToggleButton "ToggleButton"
         ]
         makeNavSection SectionId.Collections "Collections" [
+            makeNavItem DocsId.ActionMenu "ActionMenu"
             makeNavItem DocsId.ListBox "ListBox"
             makeNavItem DocsId.Menu "Menu"
             makeNavItem DocsId.MenuTrigger "MenuTrigger"
@@ -190,6 +192,7 @@ let getDocs = function
     | DocsId.Flex -> FlexDocs ()
     | DocsId.Grid -> GridDocs ()
     | DocsId.LogicButton -> LogicButtonDocs ()
+    | DocsId.ActionMenu -> ActionMenuDocs ()
     | DocsId.ListBox -> ListBoxDocs ()
     | DocsId.Menu -> MenuDocs ()
     | DocsId.MenuTrigger -> MenuTriggerDocs ()
@@ -245,6 +248,7 @@ let parseUrl = function
     | [ "buttongroup" ] -> DocsId.ButtonGroup
     | [ "logicbutton" ] -> DocsId.LogicButton
     | [ "togglebutton" ] -> DocsId.ToggleButton
+    | [ "actionmenu" ] -> DocsId.ActionMenu
     | [ "listbox" ] -> DocsId.ListBox
     | [ "menu" ] -> DocsId.Menu
     | [ "menutrigger" ] -> DocsId.MenuTrigger
@@ -301,6 +305,7 @@ let makeUrl = function
     | DocsId.ButtonGroup -> Router.format "buttongroup"
     | DocsId.LogicButton -> Router.format "logicbutton"
     | DocsId.ToggleButton -> Router.format "togglebutton"
+    | DocsId.ActionMenu -> Router.format "actionmenu"
     | DocsId.ListBox -> Router.format "listbox"
     | DocsId.Menu -> Router.format "menu"
     | DocsId.MenuTrigger -> Router.format "menutrigger"

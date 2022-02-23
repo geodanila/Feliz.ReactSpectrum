@@ -657,6 +657,211 @@ React.fragment [
         ]
 
     [<ReactComponent>]
+    let ActionMenuExample1 () =
+        let code = """Spectrum.ActionMenu [
+    Spectrum.Item "Cut"
+    Spectrum.Item "Copy"
+    Spectrum.Item "Paste"
+]"""
+
+        Example "Default example" code [] [
+            Spectrum.ActionMenu [
+                Spectrum.Item "Cut"
+                Spectrum.Item "Copy"
+                Spectrum.Item "Paste"
+            ]
+        ]
+
+    [<ReactComponent>]
+    let ActionMenuExample2 () =
+        let code = """let actionMenuItems = [
+    {| name = "Cut" |}
+    {| name = "Copy" |}
+    {| name = "Paste" |}
+    {| name = "Select All" |}
+]
+
+Spectrum.ActionMenu [
+    ActionMenu.items actionMenuItems
+    ActionMenu.itemTemplate (fun (item: {| name: string |}) ->
+        Spectrum.Item [
+            Item.key item.name
+            Item.content item.name
+        ]
+    )
+]"""
+
+        Example "Content" code [] [
+            let actionMenuItems = [
+                {| name = "Cut" |}
+                {| name = "Copy" |}
+                {| name = "Paste" |}
+                {| name = "Select All" |}
+            ]
+
+            Spectrum.ActionMenu [
+                ActionMenu.items actionMenuItems
+                ActionMenu.itemTemplate (fun (item: {| name: string |}) ->
+                    Spectrum.Item [
+                        Item.key item.name
+                        Item.content item.name
+                    ]
+                )
+            ]
+        ]
+
+    [<ReactComponent>]
+    let ActionMenuExample3 () =
+        let code = """let action, setAction = React.useState("")
+
+Spectrum.Flex [
+    Flex.direction FlexDirection.Row
+    Flex.gap (DimValue.Size Size100)
+    Flex.alignItems FlexAlignItems.Center
+    Flex.children [
+        Spectrum.ActionMenu [
+            ActionMenu.onAction setAction
+            ActionMenu.children [
+                Spectrum.Item [
+                    Item.key "cut"
+                    Item.content "Cut"
+                ]
+                Spectrum.Item [
+                    Item.key "copy"
+                    Item.content "Copy"
+                ]
+                Spectrum.Item [
+                    Item.key "paste"
+                    Item.content "Paste"
+                ]
+            ]
+        ]
+        Html.p $"Action: {action}"
+    ]
+]"""
+
+        Example "Events" code [] [
+            let action, setAction = React.useState("")
+
+            Spectrum.Flex [
+                Flex.direction FlexDirection.Row
+                Flex.gap (DimValue.Size Size100)
+                Flex.alignItems FlexAlignItems.Center
+                Flex.children [
+                    Spectrum.ActionMenu [
+                        ActionMenu.onAction setAction
+                        ActionMenu.children [
+                            Spectrum.Item [
+                                Item.key "cut"
+                                Item.content "Cut"
+                            ]
+                            Spectrum.Item [
+                                Item.key "copy"
+                                Item.content "Copy"
+                            ]
+                            Spectrum.Item [
+                                Item.key "paste"
+                                Item.content "Paste"
+                            ]
+                        ]
+                    ]
+                    Html.p $"Action: {action}"
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let ActionMenuExample4 () =
+        let code = """Spectrum.ActionMenu [
+    Spectrum.Section [
+        Section.title "File"
+        Section.children [
+            Spectrum.Item [
+                Item.key "new"
+                Item.content "New"
+            ]
+            Spectrum.Item [
+                Item.key "open"
+                Item.content "Open"
+            ]
+        ]
+    ]
+    Spectrum.Section [
+        Section.title "Save"
+        Section.children [
+            Spectrum.Item [
+                Item.key "save"
+                Item.content "Save"
+            ]
+            Spectrum.Item [
+                Item.key "saveAs"
+                Item.content "Save As..."
+            ]
+            Spectrum.Item [
+                Item.key "saveAll"
+                Item.content "Save All"
+            ]
+        ]
+    ]
+]"""
+
+        Example "Sections" code [] [
+            Spectrum.ActionMenu [
+                Spectrum.Section [
+                    Section.title "File"
+                    Section.children [
+                        Spectrum.Item [
+                            Item.key "new"
+                            Item.content "New"
+                        ]
+                        Spectrum.Item [
+                            Item.key "open"
+                            Item.content "Open"
+                        ]
+                    ]
+                ]
+                Spectrum.Section [
+                    Section.title "Save"
+                    Section.children [
+                        Spectrum.Item [
+                            Item.key "save"
+                            Item.content "Save"
+                        ]
+                        Spectrum.Item [
+                            Item.key "saveAs"
+                            Item.content "Save As..."
+                        ]
+                        Spectrum.Item [
+                            Item.key "saveAll"
+                            Item.content "Save All"
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let ActionMenuDocs () =
+        let description = [
+            Html.text "ActionMenu combines an ActionButton with a Menu for simple \"more actions\" use cases."
+            Html.br []
+            Html.br []
+            Html.text " Check the official "
+            Html.a [
+                prop.children [ Html.text "documentation" ]
+                prop.href "https://react-spectrum.adobe.com/react-spectrum/ActionMenu.html"
+            ]
+            Html.text " for more details."
+        ]
+
+        ExampleGroup "ActionMenu" description [
+            ActionMenuExample1 ()
+            ActionMenuExample2 ()
+            ActionMenuExample3 ()
+            ActionMenuExample4 ()
+        ]
+
+    [<ReactComponent>]
     let MenuExample1 () =
         let code = """Spectrum.MenuTrigger [
     Spectrum.ActionButton [

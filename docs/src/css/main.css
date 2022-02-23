@@ -119,6 +119,8 @@ em {
 @media screen and (max-width: 1024px) {
     #main-content {
         width: 100%;
+        min-width: auto;
+        max-width: auto;
     }
 
     #toggle-host {

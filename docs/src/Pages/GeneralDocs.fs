@@ -63,7 +63,13 @@ module GeneralDocs =
             Html.ul [
                 prop.className "bullet-list"
                 prop.children [
-                    Html.li "Covers all React Spectrum components as of version 3.15.1"
+                    Html.li [
+                        Html.text "Covers React Spectrum components featured in the "
+                        Html.a [
+                            prop.href "https://react-spectrum.adobe.com/react-spectrum/index.html"
+                            prop.text "official documentation"
+                        ]
+                    ]
                     Html.li "Fully erased - the generated JS is zero size"
                     Html.li [
                         prop.children [

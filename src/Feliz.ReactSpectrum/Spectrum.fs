@@ -12,6 +12,8 @@ type Spectrum =
     static member inline Provider (properties: IReactProperty list) =
         Interop.reactApi.createElement (import "Provider" "@adobe/react-spectrum", createObj !!properties)
 
+    static member inline useProvider : (unit -> IProviderContext) = import "useProvider" "@adobe/react-spectrum"
+
     // ----------- Layout -----------
     /// The Flex component can be used to layout its children in one dimension with flexbox. Any React Spectrum component can be used as a child, and Flex components can be nested to create more complex layouts.
     /// In addition to the properties widely supported by CSS, React Spectrum also shims the gap property, along with rowGap and columnGap. These properties make it much easier to build layouts with consistent space between each item. The gap can be defined with Spectrum dimension variables to ensure consistency across applications, and allow the layout to adapt to different devices automatically. In addition, these values can be autocompleted in many IDEs for convenience.

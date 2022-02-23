@@ -198,6 +198,75 @@ Spectrum.Flex [
         ]
 
     [<ReactComponent>]
+    let DynamicIcon () =
+        let providerContext = Spectrum.useProvider()
+        let colorScheme = providerContext.colorScheme
+        if colorScheme = ColorScheme.Dark
+            then Spectrum.Icon.Moon [ prop.ariaLabel "In dark theme" ]
+            else Spectrum.Icon.Light [ prop.ariaLabel "In light theme" ]
+
+    [<ReactComponent>]
+    let ProviderExample5 () =
+        let code = """// DynamicIcon defined as a separate ReactComponent
+// Adjusts automatically based on the colorScheme of its' parent Provider
+[<ReactComponent>]
+let DynamicIcon () =
+    let providerContext = Spectrum.useProvider()
+    let colorScheme = providerContext.colorScheme
+    if colorScheme = ColorScheme.Dark
+        then Spectrum.Icon.Moon [ prop.ariaLabel "In dark theme" ]
+        else Spectrum.Icon.Light [ prop.ariaLabel "In light theme" ]
+
+// ...
+Spectrum.Flex [
+    Flex.direction FlexDirection.Row
+    Flex.gap (DimValue.Size Size200)
+    Flex.children [
+        Spectrum.Provider [
+            Provider.defaultTheme
+            Provider.colorScheme ColorScheme.Light
+            Provider.locale "en-US"
+            Provider.children [
+                DynamicIcon ()
+            ]
+        ]
+        Spectrum.Provider [
+            Provider.defaultTheme
+            Provider.colorScheme ColorScheme.Dark
+            Provider.locale "en-US"
+            Provider.children [
+                DynamicIcon ()
+            ]
+        ]
+    ]
+]
+"""
+        Example "Using the useProvider hook" code [] [
+            Spectrum.Flex [
+                Flex.direction FlexDirection.Row
+                Flex.gap (DimValue.Size Size200)
+                Flex.children [
+                    Spectrum.Provider [
+                        Provider.defaultTheme
+                        Provider.colorScheme ColorScheme.Light
+                        Provider.locale "en-US"
+                        Provider.children [
+                            DynamicIcon ()
+                        ]
+                    ]
+                    Spectrum.Provider [
+                        Provider.defaultTheme
+                        Provider.colorScheme ColorScheme.Dark
+                        Provider.locale "en-US"
+                        Provider.children [
+                            DynamicIcon ()
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
     let ProviderDocs () =
         let description = [
             Html.text "Provider is the container for all React Spectrum applications. It defines the theme, locale, and other application level settings, and can also be used to provide common properties to a group of components."
@@ -216,4 +285,5 @@ Spectrum.Flex [
             ProviderExample2 ()
             ProviderExample3 ()
             ProviderExample4 ()
+            ProviderExample5 ()
         ]

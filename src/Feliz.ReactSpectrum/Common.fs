@@ -948,6 +948,56 @@ type PickerMenuDirection =
 type IDialog =
     abstract member dismiss: unit -> unit
 
+[<Erase>]
+type CSSModule =
+    abstract member Item: string -> string
+
+[<Erase>]
+type ITheme =
+    abstract member ``global``: CSSModule option
+    abstract member light: CSSModule option
+    abstract member dark: CSSModule option
+    abstract member medium: CSSModule option
+    abstract member large: CSSModule option
+
+(*/** Whether descendants should be displayed with the quiet style. */
+  isQuiet?: boolean,
+  /** Whether descendants should be displayed with the emphasized style. */
+  isEmphasized?: boolean,
+  /** Whether descendants should be disabled. */
+  isDisabled?: boolean,
+  /** Whether descendants should be displayed with the required style. */
+  isRequired?: boolean,
+  /** Whether descendants should be read only. */
+  isReadOnly?: boolean,
+  /** Whether descendants should be displayed with the validation state style. */
+  validationState?: ValidationState*)
+
+[<Erase>]
+type ContextProps =
+    abstract member isQuiet: bool option
+    abstract member isEmphasized: bool option
+    abstract member isDisabled: bool option
+    abstract member isRequired: bool option
+    abstract member isReadOnly: bool option
+    abstract member validationState: ValidationState option
+
+[<Erase>]
+type Breakpoints =
+    abstract member S: int option
+    abstract member M: int option
+    abstract member L: int option
+    abstract member Item: string -> int
+
+[<Erase>]
+type IProviderContext =
+    inherit ContextProps
+    abstract member version: string
+    abstract member theme: ITheme
+    abstract member colorScheme: ColorScheme
+    abstract member scale: Scale
+    abstract member breakpoints: Breakpoints
+
 [<Erase; RequireQualifiedAccess>]
 type MeterVariant =
     | Positive

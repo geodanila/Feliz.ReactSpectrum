@@ -12,6 +12,8 @@ type Spectrum =
     static member inline Provider (properties: IReactProperty list) =
         Interop.reactApi.createElement (import "Provider" "@adobe/react-spectrum", createObj !!properties)
 
+    static member inline useProvider : (unit -> IProviderContext) = import "useProvider" "@adobe/react-spectrum"
+
     // ----------- Layout -----------
     /// The Flex component can be used to layout its children in one dimension with flexbox. Any React Spectrum component can be used as a child, and Flex components can be nested to create more complex layouts.
     /// In addition to the properties widely supported by CSS, React Spectrum also shims the gap property, along with rowGap and columnGap. These properties make it much easier to build layouts with consistent space between each item. The gap can be defined with Spectrum dimension variables to ensure consistency across applications, and allow the layout to adapt to different devices automatically. In addition, these values can be autocompleted in many IDEs for convenience.
@@ -109,6 +111,14 @@ type Spectrum =
         Interop.reactApi.createElement (import "ButtonGroup" "@adobe/react-spectrum", createObj !!properties)
 
     // ----------- Collections -----------
+    // HACK: importing ActionMenu from @react-spectrum/menu instead of @adobe/react-spectrum
+    /// ActionMenu combines an ActionButton with a Menu for simple "more actions" use cases.
+    static member inline ActionMenu (children: #seq<ReactElement>) =
+        ofImport "ActionMenu" "@react-spectrum/menu" [] children
+    /// ActionMenu combines an ActionButton with a Menu for simple "more actions" use cases.
+    static member inline ActionMenu (properties: IReactProperty list) =
+        Interop.reactApi.createElement (import "ActionMenu" "@react-spectrum/menu", createObj !!properties)
+
     /// A list of options that can allow selection of one or more.
     static member inline ListBox (children: #seq<ReactElement>) =
         ofImport "ListBox" "@adobe/react-spectrum" [] children
@@ -398,6 +408,13 @@ type Spectrum =
         Interop.reactApi.createElement (import "Tooltip" "@adobe/react-spectrum", createObj !!properties)
 
     static member inline useDialogContainer : (unit -> IDialog) = import "useDialogContainer" "@adobe/react-spectrum"
+
+    /// Contextual help shows a user extra information about the state of an adjacent component, or a total view.
+    static member inline ContextualHelp (children: #seq<ReactElement>) =
+        ofImport "ContextualHelp" "@adobe/react-spectrum" [] children
+    /// Contextual help shows a user extra information about the state of an adjacent component, or a total view.
+    static member inline ContextualHelp (properties: IReactProperty list) =
+        Interop.reactApi.createElement (import "ContextualHelp" "@adobe/react-spectrum", createObj !!properties)
 
     // ----------- Pickers -----------
     /// Pickers allow users to choose a single option from a collapsible list of options when space is limited.

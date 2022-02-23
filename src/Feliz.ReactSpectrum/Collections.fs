@@ -33,6 +33,26 @@ type ListBox =
     static member inline onLoadMore (handler: unit -> 'a) = Interop.mkAttr "onLoadMore" handler
 
 [<Erase>]
+type ActionMenu =
+    inherit BaseComponent
+    static member inline children (xs: seq<ReactElement>) = Interop.mkAttr "children" (xs |> Array.ofSeq)
+    static member inline align (value: Alignment) = Interop.mkAttr "align" value
+    static member inline direction (value: ActionMenuDirection) = Interop.mkAttr "direction" value
+    static member inline shouldFlip (value: bool) = Interop.mkAttr "shouldFlip" value
+    static member inline isDisabled (value: bool) = Interop.mkAttr "isDisabled" value
+    static member inline isQuiet (value: bool) = Interop.mkAttr "isQuiet" value
+    static member inline autoFocus (value: bool) = Interop.mkAttr "autoFocus" value
+    static member inline items (xs: seq<'a>) = Interop.mkAttr "items" (xs |> Array.ofSeq)
+    static member inline itemTemplate (template: 'a -> ReactElement) = Interop.mkAttr "children" template
+    static member inline disabledKeys (value: seq<'a>) = Interop.mkAttr "disabledKeys" value
+    static member inline trigger (value: MenuTriggerType) = Interop.mkAttr "trigger" value
+    static member inline closeOnSelect (value: bool) = Interop.mkAttr "closeOnSelect" value
+    static member inline isOpen (value: bool) = Interop.mkAttr "isOpen" value
+    static member inline defaultOpen (value: bool) = Interop.mkAttr "defaultOpen" value
+    static member inline onAction (handler: 'a -> unit) = Interop.mkAttr "onAction" handler
+    static member inline onOpenChange (handler: bool -> unit) = Interop.mkAttr "onOpenChange" handler
+
+[<Erase>]
 type Section =
     static member inline children (xs: seq<ReactElement>) = Interop.mkAttr "children" (xs |> Array.ofSeq)
     static member inline items (xs: seq<'a>) = Interop.mkAttr "items" (xs |> Array.ofSeq)
@@ -49,6 +69,7 @@ type Menu =
 [<Erase>]
 type MenuTrigger =
     static member inline children (xs: seq<ReactElement>) = Interop.mkAttr "children" (xs |> Array.ofSeq)
+    static member inline trigger (value: MenuTriggerType) = Interop.mkAttr "trigger" value
     static member inline closeOnSelected (value: bool) = Interop.mkAttr "closeOnSelect" value
     static member inline shouldFlip (value: bool) = Interop.mkAttr "shouldFlip" value
     static member inline align (value: Alignment) = Interop.mkAttr "align" value

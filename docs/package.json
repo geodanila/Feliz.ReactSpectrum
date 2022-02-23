@@ -4,17 +4,17 @@
         "postinstall": "dotnet tool restore",
         "build": "dotnet fable src --run vite build",
         "publish-docs": "node publish.js",
-        "start": "dotnet fable watch src --run vite --open",
+        "start": "dotnet fable watch src --run vite --open --host",
         "serve": "vite preview"
     },
     "devDependencies": {
         "gh-pages": "^3.2.3",
-        "vite": "^2.7.10"
+        "vite": "^2.8.4"
     },
     "dependencies": {
-        "@adobe/react-spectrum": "^3.15.1",
-        "@spectrum-icons/illustrations": "^3.2.2",
-        "@spectrum-icons/workflow": "^3.2.1",
+        "@adobe/react-spectrum": "^3.16.3",
+        "@spectrum-icons/illustrations": "^3.2.4",
+        "@spectrum-icons/workflow": "^3.2.3",
         "react": "^17.0.2",
         "react-dom": "^17.0.2"
     }

@@ -1333,3 +1333,156 @@ Spectrum.Flex [
             TooltipExample4 ()
             TooltipExample5 ()
         ]
+
+    [<ReactComponent>]
+    let ContextualHelpExample1 () =
+        let code = """Spectrum.ContextualHelp [
+    ContextualHelp.variant ContextualHelpVariant.Info
+    ContextualHelp.children [
+        Spectrum.Heading "Need help?"
+        Spectrum.Content [
+            Spectrum.Text "If you're having issues accessing your account, contact our customer
+support team for help."
+        ]
+    ]
+]"""
+
+        Example "Default example" code [] [
+            Spectrum.ContextualHelp [
+                ContextualHelp.variant ContextualHelpVariant.Info
+                ContextualHelp.children [
+                    Spectrum.Heading "Need help?"
+                    Spectrum.Content [
+                        Spectrum.Text "If you're having issues accessing your account, contact our customer
+      support team for help."
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let ContextualHelpExample2 () =
+        let code = """Spectrum.ContextualHelp [
+    ContextualHelp.variant ContextualHelpVariant.Help
+    ContextualHelp.children [
+        Spectrum.Heading "What is a segment?"
+        Spectrum.Content [
+            Spectrum.Text "Segments identify who your visitors are, what devices and services they
+use, where they navigated from, and much more."
+        ]
+        Spectrum.Footer [
+            Spectrum.Link [
+                Link.content "Learn more about segments"
+            ]
+        ]
+    ]
+]"""
+
+        Example "Content" code [] [
+            Spectrum.ContextualHelp [
+                ContextualHelp.variant ContextualHelpVariant.Help
+                ContextualHelp.children [
+                    Spectrum.Heading "What is a segment?"
+                    Spectrum.Content [
+                        Spectrum.Text "Segments identify who your visitors are, what devices and services they
+      use, where they navigated from, and much more."
+                    ]
+                    Spectrum.Footer [
+                        Spectrum.Link [
+                            Link.content "Learn more about segments"
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let ContextualHelpExample3 () =
+        let code = """Spectrum.ContextualHelp [
+    ContextualHelp.variant ContextualHelpVariant.Info
+    ContextualHelp.placement Placement.TopStart
+    ContextualHelp.children [
+        Spectrum.Content [
+            Spectrum.Text "The placement of this contextual help popover has been customized to use
+top start."
+        ]
+    ]
+]"""
+
+        Example "Placement" code [] [
+            Spectrum.ContextualHelp [
+                ContextualHelp.variant ContextualHelpVariant.Info
+                ContextualHelp.placement Placement.TopStart
+                ContextualHelp.children [
+                    Spectrum.Content [
+                        Spectrum.Text "The placement of this contextual help popover has been customized to use
+      top start."
+                    ]
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let ContextualHelpExample4 () =
+        let code = """let state, setState = React.useState(false)
+
+Spectrum.Flex [
+    Flex.alignItems FlexAlignItems.Center
+    Flex.gap (DimValue.Size Size100)
+    Flex.children [
+        Spectrum.ContextualHelp [
+            ContextualHelp.variant ContextualHelpVariant.Info
+            ContextualHelp.onOpenChange setState
+            ContextualHelp.children [
+                Spectrum.Heading "Permission required"
+                Spectrum.Content [
+                    Spectrum.Text "Your admin must grant you permission before you can create a segment."
+                ]
+            ]
+        ]
+        Spectrum.Text $"Current open state: {state}"
+    ]
+]"""
+
+        Example "Events" code [] [
+            let state, setState = React.useState(false)
+
+            Spectrum.Flex [
+                Flex.alignItems FlexAlignItems.Center
+                Flex.gap (DimValue.Size Size100)
+                Flex.children [
+                    Spectrum.ContextualHelp [
+                        ContextualHelp.variant ContextualHelpVariant.Info
+                        ContextualHelp.onOpenChange setState
+                        ContextualHelp.children [
+                            Spectrum.Heading "Permission required"
+                            Spectrum.Content [
+                                Spectrum.Text "Your admin must grant you permission before you can create a segment."
+                            ]
+                        ]
+                    ]
+                    Spectrum.Text $"Current open state: {state}"
+                ]
+            ]
+        ]
+
+    [<ReactComponent>]
+    let ContextualHelpDocs () =
+        let description = [
+            Html.text "Contextual help shows a user extra information about the state of an adjacent component, or a total view."
+            Html.br []
+            Html.br []
+            Html.text " Check the official "
+            Html.a [
+                prop.children [ Html.text "documentation" ]
+                prop.href "https://react-spectrum.adobe.com/react-spectrum/ContextualHelp.html"
+            ]
+            Html.text " for more details."
+        ]
+
+        ExampleGroup "ContextualHelp" description [
+            ContextualHelpExample1 ()
+            ContextualHelpExample2 ()
+            ContextualHelpExample3 ()
+            ContextualHelpExample4 ()
+        ]

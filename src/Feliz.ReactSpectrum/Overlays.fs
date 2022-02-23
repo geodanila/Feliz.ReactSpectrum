@@ -73,6 +73,23 @@ type Tooltip =
     static member inline showIcon (value: bool) = Interop.mkAttr "showIcon" value
 
 [<Erase>]
+type ContextualHelp =
+    inherit BaseComponent
+    static member inline children (xs: seq<ReactElement>) = prop.children(xs)
+    static member inline variant (value: ContextualHelpVariant) = Interop.mkAttr "variant" value
+    static member inline isOpen (value: bool) = Interop.mkAttr "isOpen" value
+    static member inline defaultOpen (value: bool) = Interop.mkAttr "defaultOpen" value
+    static member inline placement (value: Placement) = Interop.mkAttr "placement" value
+    static member inline containerPadding (value: int) = Interop.mkAttr "containerPadding" value
+    static member inline containerPadding (value: float) = Interop.mkAttr "containerPadding" value
+    static member inline offset (value: int) = Interop.mkAttr "offset" value
+    static member inline offset (value: float) = Interop.mkAttr "offset" value
+    static member inline crossOffset (value: int) = Interop.mkAttr "crossOffset" value
+    static member inline crossOffset (value: float) = Interop.mkAttr "crossOffset" value
+    static member inline shouldFlip (value: bool) = Interop.mkAttr "shouldFlip" value
+    static member inline onOpenChange (handler: bool -> unit) = Interop.mkAttr "onOpenChange" handler
+
+[<Erase>]
 type TooltipTrigger =
     static member inline children (xs: seq<ReactElement>) = prop.children(xs)
     static member inline offset (value: int) = Interop.mkAttr "offset" value

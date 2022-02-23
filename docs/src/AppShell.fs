@@ -32,6 +32,7 @@ type DocsId =
     | Provider
     | Flex
     | Grid
+    | ActionMenu
     | ActionButton
     | ActionGroup
     | Button
@@ -60,6 +61,7 @@ type DocsId =
     | DialogContainer
     | DialogTrigger
     | Tooltip
+    | ContextualHelp
     | ComboBox
     | Picker
     | RangeSlider
@@ -116,6 +118,7 @@ let buildNavSections () =
             makeNavItem DocsId.ToggleButton "ToggleButton"
         ]
         makeNavSection SectionId.Collections "Collections" [
+            makeNavItem DocsId.ActionMenu "ActionMenu"
             makeNavItem DocsId.ListBox "ListBox"
             makeNavItem DocsId.Menu "Menu"
             makeNavItem DocsId.MenuTrigger "MenuTrigger"
@@ -146,6 +149,7 @@ let buildNavSections () =
             makeNavItem DocsId.DialogContainer "DialogContainer"
             makeNavItem DocsId.DialogTrigger "DialogTrigger"
             makeNavItem DocsId.Tooltip "Tooltip"
+            makeNavItem DocsId.ContextualHelp "ContextualHelp"
         ]
         makeNavSection SectionId.Pickers "Pickers" [
             makeNavItem DocsId.ComboBox "ComboBox"
@@ -188,6 +192,7 @@ let getDocs = function
     | DocsId.Flex -> FlexDocs ()
     | DocsId.Grid -> GridDocs ()
     | DocsId.LogicButton -> LogicButtonDocs ()
+    | DocsId.ActionMenu -> ActionMenuDocs ()
     | DocsId.ListBox -> ListBoxDocs ()
     | DocsId.Menu -> MenuDocs ()
     | DocsId.MenuTrigger -> MenuTriggerDocs ()
@@ -210,6 +215,7 @@ let getDocs = function
     | DocsId.DialogContainer -> DialogContainerDocs ()
     | DocsId.DialogTrigger -> DialogTriggerDocs ()
     | DocsId.Tooltip -> TooltipDocs ()
+    | DocsId.ContextualHelp -> ContextualHelpDocs ()
     | DocsId.ComboBox -> ComboBoxDocs ()
     | DocsId.Picker -> PickerDocs ()
     | DocsId.RangeSlider -> RangeSliderDocs ()
@@ -242,6 +248,7 @@ let parseUrl = function
     | [ "buttongroup" ] -> DocsId.ButtonGroup
     | [ "logicbutton" ] -> DocsId.LogicButton
     | [ "togglebutton" ] -> DocsId.ToggleButton
+    | [ "actionmenu" ] -> DocsId.ActionMenu
     | [ "listbox" ] -> DocsId.ListBox
     | [ "menu" ] -> DocsId.Menu
     | [ "menutrigger" ] -> DocsId.MenuTrigger
@@ -264,6 +271,7 @@ let parseUrl = function
     | [ "dialogcontainer" ] -> DocsId.DialogContainer
     | [ "dialogtrigger" ] -> DocsId.DialogTrigger
     | [ "tooltip" ] -> DocsId.Tooltip
+    | [ "contextualhelp" ] -> DocsId.ContextualHelp
     | [ "combobox" ] -> DocsId.ComboBox
     | [ "picker" ] -> DocsId.Picker
     | [ "rangeslider" ] -> DocsId.RangeSlider
@@ -297,6 +305,7 @@ let makeUrl = function
     | DocsId.ButtonGroup -> Router.format "buttongroup"
     | DocsId.LogicButton -> Router.format "logicbutton"
     | DocsId.ToggleButton -> Router.format "togglebutton"
+    | DocsId.ActionMenu -> Router.format "actionmenu"
     | DocsId.ListBox -> Router.format "listbox"
     | DocsId.Menu -> Router.format "menu"
     | DocsId.MenuTrigger -> Router.format "menutrigger"
@@ -319,6 +328,7 @@ let makeUrl = function
     | DocsId.DialogContainer -> Router.format "dialogcontainer"
     | DocsId.DialogTrigger -> Router.format "dialogtrigger"
     | DocsId.Tooltip -> Router.format "tooltip"
+    | DocsId.ContextualHelp -> Router.format "contextualhelp"
     | DocsId.ComboBox -> Router.format "combobox"
     | DocsId.Picker -> Router.format "picker"
     | DocsId.RangeSlider -> Router.format "rangeslider"
@@ -435,7 +445,6 @@ let view (model: Model) dispatch =
         Provider.defaultTheme
         Provider.colorScheme ColorScheme.Light
         Provider.locale "en-US"
-        Provider.scale Scale.Medium
         Provider.id "spectrum-provider"
         Provider.children [
             Shell model dispatch

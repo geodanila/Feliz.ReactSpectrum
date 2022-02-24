@@ -1,4 +1,4 @@
-# Feliz.ReactSpectrum
+# Feliz.ReactSpectrum [<img src="https://img.shields.io/nuget/v/Feliz.ReactSpectrum.svg?style=square">](https://www.nuget.org/packages/Feliz.ReactSpectrum/)
 Feliz-style Fable bindings for Adobe's [React Spectrum components](https://react-spectrum.adobe.com/react-spectrum/getting-started.html)
 
 # Installing
